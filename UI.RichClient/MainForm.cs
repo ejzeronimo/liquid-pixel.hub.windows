@@ -15,7 +15,7 @@ namespace UI.RichClient
         Slow_Breath,
         Custom
     }
-
+    //hoi mike
     public partial class MainForm : Form
     {
         private SerialPort _portleft;
