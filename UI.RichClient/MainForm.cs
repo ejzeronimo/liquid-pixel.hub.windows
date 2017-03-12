@@ -177,5 +177,24 @@ namespace UI.RichClient
         private void ModeBox_SelectedIndexChanged(object sender, EventArgs e)
         {
         }
+
+        private void stageToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+            Stage stg = new Stage();
+            stg.Show();
+        }
+
+        private void portsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Ports prt = new Ports();
+            prt.Show();
+        }
+
+        private void boxesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Boxes bxs = new Boxes();
+            bxs.Show();
+        }
     }
 }
