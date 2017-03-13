@@ -17,7 +17,7 @@ namespace UI.RichClient
     }
     public partial class MainForm : Form
     {
-        private SerialPort _portleft;
+        private SerialPort portleft_;
         string in_data;
         string time;
         DateTime datetime;
@@ -31,7 +31,7 @@ namespace UI.RichClient
         {
             InitializeComponent();
 
-            _portleft = new SerialPort();
+            portleft_ = new SerialPort();
 
         }
 
@@ -39,7 +39,7 @@ namespace UI.RichClient
         {
             try
             {
-                _portleft.Write("5");
+                portleft_.Write("5");
                 MessageBox.Show("Started");
             }
             catch
@@ -52,7 +52,7 @@ namespace UI.RichClient
         {
             try
             {
-                _portleft.Write("6");
+                portleft_.Write("6");
                 MessageBox.Show("Stopped");
             }
             catch
@@ -63,29 +63,12 @@ namespace UI.RichClient
 
         private void MakeConnection(object sender, EventArgs e)
         {
-
-            _portleft.PortName = ComPort.Text;
-            _portleft.BaudRate = 9600;
-            _portleft.Parity = Parity.None;
-            _portleft.DataBits = 8;
-            _portleft.StopBits = StopBits.One;
-            _portleft.Encoding = Encoding.ASCII;
-            _portleft.DataReceived += Myport_DataReceived;
-            try
-            {
-                _portleft.Open();
-                ArduinoBox.Text = "";
-            }
-            catch (Exception ex)
-            {
-                //doing nothing
-            }
         }
 
         private void Myport_DataReceived(object sender, SerialDataReceivedEventArgs e)
         {
 
-            in_data = _portleft.ReadLine();
+            in_data = portleft_.ReadLine();
             Invoke(new EventHandler(displaydata_event));
         }
 
@@ -117,7 +100,7 @@ namespace UI.RichClient
         {
             try
             {
-                _portleft.Close();
+                portleft_.Close();
             }
             catch (Exception ex)
             {
@@ -157,7 +140,7 @@ namespace UI.RichClient
         {
             try
             {
-                _portleft.Write(package);
+                portleft_.Write(package);
                 MessageBox.Show("Success");
             }
             catch
