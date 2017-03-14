@@ -26,6 +26,8 @@ namespace UI.RichClient
         String g = String.Empty;
         String b = String.Empty;
         private string typenm;
+        private string box;
+        private int delay;
 
         public MainForm()
         {
@@ -63,6 +65,20 @@ namespace UI.RichClient
 
         private void MakeConnection(object sender, EventArgs e)
         {
+            portleft_.PortName = ComPort.Text;
+            portleft_.BaudRate = 9600;
+            portleft_.Parity = Parity.None;
+            portleft_.DataBits = 8;
+            portleft_.StopBits = StopBits.One;
+            portleft_.Encoding = Encoding.ASCII;
+            try
+            {
+                portleft_.Open();
+            }
+            catch (Exception ex)
+            {
+                //doing nothing
+            }
         }
 
         private void Myport_DataReceived(object sender, SerialDataReceivedEventArgs e)
@@ -131,9 +147,12 @@ namespace UI.RichClient
 
         private void UpdateString(object sender, EventArgs e)
         {
-            typenm = "color";
-            package = typenm + "<" +  r + ">" + g + "?" + b + "{" + ModeBox.Text +  "}" + "~" + "*";
+            typenm = "cmd";
+            box = "bx1";
+            delay = 10;
+            package = typenm + "B" + box + "R" + r + "G" + g + "B" + b + "D" + delay +  "W" + "true" + "M" + ModeBox.Text + "~";
             StringBox.Text = package;
+            //cmdBbx1R255G255B255D10WtrueMbreath
         }
 
         private void SendString(object sender, EventArgs e)
