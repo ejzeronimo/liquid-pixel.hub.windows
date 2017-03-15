@@ -6,18 +6,9 @@ using System.Windows.Forms;
 
 namespace UI.RichClient
 {
-    public enum Mode
-    {
-        Solid = 0,
-        Breath,
-        Chase,
-        Wheels,
-        Slow_Breath,
-        Custom
-    }
+
     public partial class MainForm : Form
     {
-        private SerialPort portleft_;
         string in_data;
         string time;
         DateTime datetime;
@@ -28,20 +19,25 @@ namespace UI.RichClient
         private string typenm;
         private string box;
         private int delay;
+        private int randombool;
+        public SerialPort ComportMain;
+        private string port;
+        private string temport;
 
+        enum methodcall { }
+      
         public MainForm()
         {
             InitializeComponent();
 
-            portleft_ = new SerialPort();
+            ComportMain = new SerialPort();
 
         }
-
         private void Start(object sender, EventArgs e)
         {
             try
             {
-                portleft_.Write("5");
+                ComportMain.Write("5");
                 MessageBox.Show("Started");
             }
             catch
@@ -54,7 +50,7 @@ namespace UI.RichClient
         {
             try
             {
-                portleft_.Write("6");
+                ComportMain.Write("6");
                 MessageBox.Show("Stopped");
             }
             catch
@@ -62,18 +58,17 @@ namespace UI.RichClient
                 MessageBox.Show("Failure...Try Again :(");
             }
         }
-
         private void MakeConnection(object sender, EventArgs e)
         {
-            portleft_.PortName = ComPort.Text;
-            portleft_.BaudRate = 9600;
-            portleft_.Parity = Parity.None;
-            portleft_.DataBits = 8;
-            portleft_.StopBits = StopBits.One;
-            portleft_.Encoding = Encoding.ASCII;
+            ComportMain.PortName = PortBox.Text;
+            ComportMain.BaudRate = 9600;
+            ComportMain.Parity = Parity.None;
+            ComportMain.DataBits = 8;
+            ComportMain.StopBits = StopBits.One;
+            ComportMain.Encoding = Encoding.ASCII;
             try
             {
-                portleft_.Open();
+                ComportMain.Open();
             }
             catch (Exception ex)
             {
@@ -84,7 +79,7 @@ namespace UI.RichClient
         private void Myport_DataReceived(object sender, SerialDataReceivedEventArgs e)
         {
 
-            in_data = portleft_.ReadLine();
+            in_data = ComportMain.ReadLine();
             Invoke(new EventHandler(displaydata_event));
         }
 
@@ -92,23 +87,6 @@ namespace UI.RichClient
         {
             datetime = DateTime.Now;
             string time = datetime.Hour + ":" + datetime.Minute + ":" + datetime.Second;
-
-            // split in_data on the : this will give you an array of strings
-            // array[0] is the prefix split
-            // array[1] is the ascii character code as string
-            // int.Parse array[1]
-            // convert int to string
-            // diplay array[0] + the converted ascii to character
-            //var inDataSplit = in_data.Split(new char[] { ':' });
-            //string inDataAsText = null;
-            //if (inDataSplit.Length == 2)
-            //{
-                //var code = int.Parse(inDataSplit[1].Replace("\r", String.Empty));
-                //var character = Convert.ToString((char)code);
-                //inDataAsText = $"{inDataSplit[0]}:{character}";
-            //}
-            //inDataAsText = string.IsNullOrEmpty(inDataAsText) ? in_data : inDataAsText;
-
             ArduinoBox.AppendText(time + "\t\t\t\t" + in_data + "\n");
         }
 
@@ -116,7 +94,7 @@ namespace UI.RichClient
         {
             try
             {
-                portleft_.Close();
+                ComportMain.Close();
             }
             catch (Exception ex)
             {
@@ -147,10 +125,11 @@ namespace UI.RichClient
 
         private void UpdateString(object sender, EventArgs e)
         {
-            typenm = "cmd";
-            box = "bx1";
+            typenm = "0";
+            box = "1";
+            randombool = 0;
             delay = 10;
-            package = typenm + "B" + box + "R" + r + "G" + g + "B" + b + "D" + delay +  "W" + "true" + "M" + ModeBox.Text + "~";
+            package = typenm + "B" + box + "R" + r + "G" + g + "B" + b + "D" + delay +  "W" + randombool + "M" + "1" + "~";
             StringBox.Text = package;
             //cmdBbx1R255G255B255D10WtrueMbreath
         }
@@ -159,7 +138,7 @@ namespace UI.RichClient
         {
             try
             {
-                portleft_.Write(package);
+                ComportMain.Write(package);
                 MessageBox.Show("Success");
             }
             catch
@@ -171,32 +150,20 @@ namespace UI.RichClient
         private void Dropdown(object sender, EventArgs e)
         {
         }
-
         private void ArduinoBox_TextChanged(object sender, EventArgs e)
         {
         }
-
         private void ModeBox_SelectedIndexChanged(object sender, EventArgs e)
         {
         }
-
-        private void stageToolStripMenuItem_Click(object sender, EventArgs e)
+        private void MainForm_Load(object sender, EventArgs e)
         {
 
-            Stage stg = new Stage();
-            stg.Show();
         }
 
-        private void portsToolStripMenuItem_Click(object sender, EventArgs e)
+        private void PortBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            Ports prt = new Ports();
-            prt.Show();
-        }
 
-        private void boxesToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            Boxes bxs = new Boxes();
-            bxs.Show();
         }
     }
 }
