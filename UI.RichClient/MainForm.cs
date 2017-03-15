@@ -129,7 +129,7 @@ namespace UI.RichClient
             box = "1";
             randombool = 0;
             delay = 10;
-            package = typenm + "B" + box + "R" + r + "G" + g + "B" + b + "D" + delay +  "W" + randombool + "M" + "1" + "~";
+            package = $"T{typenm}C{box}R{r}G{g}B{b}D{delay}W{randombool}M1~";
             StringBox.Text = package;
             //cmdBbx1R255G255B255D10WtrueMbreath
         }
