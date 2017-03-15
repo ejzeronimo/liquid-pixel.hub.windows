@@ -45,6 +45,12 @@
             this.StringBox = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.PortBox = new System.Windows.Forms.ComboBox();
+            this.trackBar1 = new System.Windows.Forms.TrackBar();
+            this.trackBar2 = new System.Windows.Forms.TrackBar();
+            this.trackBar3 = new System.Windows.Forms.TrackBar();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar3)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -69,7 +75,7 @@
             // 
             this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.button1.ForeColor = System.Drawing.Color.Black;
-            this.button1.Location = new System.Drawing.Point(259, 40);
+            this.button1.Location = new System.Drawing.Point(285, 70);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(151, 59);
             this.button1.TabIndex = 2;
@@ -80,7 +86,7 @@
             // button2
             // 
             this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
-            this.button2.Location = new System.Drawing.Point(259, 105);
+            this.button2.Location = new System.Drawing.Point(285, 135);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(151, 59);
             this.button2.TabIndex = 3;
@@ -90,7 +96,7 @@
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(259, 170);
+            this.button3.Location = new System.Drawing.Point(285, 200);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(151, 59);
             this.button3.TabIndex = 4;
@@ -100,7 +106,7 @@
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(259, 235);
+            this.button4.Location = new System.Drawing.Point(285, 265);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(151, 59);
             this.button4.TabIndex = 5;
@@ -110,9 +116,9 @@
             // 
             // button5
             // 
-            this.button5.Location = new System.Drawing.Point(259, 300);
+            this.button5.Location = new System.Drawing.Point(12, 365);
             this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(396, 59);
+            this.button5.Size = new System.Drawing.Size(424, 59);
             this.button5.TabIndex = 6;
             this.button5.Text = "Color Wheel";
             this.button5.UseVisualStyleBackColor = true;
@@ -121,7 +127,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(476, 43);
+            this.label2.Location = new System.Drawing.Point(257, 46);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(53, 13);
             this.label2.TabIndex = 7;
@@ -130,7 +136,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(494, 81);
+            this.label3.Location = new System.Drawing.Point(452, 46);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(37, 13);
             this.label3.TabIndex = 9;
@@ -147,7 +153,7 @@
             "Sweep",
             "Twinkle",
             "Random Twinke"});
-            this.ModeBox.Location = new System.Drawing.Point(535, 78);
+            this.ModeBox.Location = new System.Drawing.Point(493, 43);
             this.ModeBox.Name = "ModeBox";
             this.ModeBox.Size = new System.Drawing.Size(121, 21);
             this.ModeBox.TabIndex = 10;
@@ -157,7 +163,7 @@
             // 
             // button6
             // 
-            this.button6.Location = new System.Drawing.Point(416, 170);
+            this.button6.Location = new System.Drawing.Point(442, 300);
             this.button6.Name = "button6";
             this.button6.Size = new System.Drawing.Size(239, 59);
             this.button6.TabIndex = 11;
@@ -167,7 +173,7 @@
             // 
             // button7
             // 
-            this.button7.Location = new System.Drawing.Point(416, 235);
+            this.button7.Location = new System.Drawing.Point(442, 365);
             this.button7.Name = "button7";
             this.button7.Size = new System.Drawing.Size(239, 59);
             this.button7.TabIndex = 12;
@@ -177,7 +183,7 @@
             // 
             // StringBox
             // 
-            this.StringBox.Location = new System.Drawing.Point(416, 144);
+            this.StringBox.Location = new System.Drawing.Point(442, 274);
             this.StringBox.Name = "StringBox";
             this.StringBox.Size = new System.Drawing.Size(240, 20);
             this.StringBox.TabIndex = 13;
@@ -185,7 +191,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(416, 128);
+            this.label4.Location = new System.Drawing.Point(442, 258);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(37, 13);
             this.label4.TabIndex = 14;
@@ -201,18 +207,42 @@
             "COM4",
             "COM5",
             "COM6"});
-            this.PortBox.Location = new System.Drawing.Point(534, 40);
+            this.PortBox.Location = new System.Drawing.Point(315, 43);
             this.PortBox.Name = "PortBox";
             this.PortBox.Size = new System.Drawing.Size(121, 21);
             this.PortBox.TabIndex = 15;
             this.PortBox.Text = "COM1";
             this.PortBox.SelectedIndexChanged += new System.EventHandler(this.PortBox_SelectedIndexChanged);
             // 
+            // trackBar1
+            // 
+            this.trackBar1.Location = new System.Drawing.Point(455, 84);
+            this.trackBar1.Name = "trackBar1";
+            this.trackBar1.Size = new System.Drawing.Size(226, 45);
+            this.trackBar1.TabIndex = 16;
+            // 
+            // trackBar2
+            // 
+            this.trackBar2.Location = new System.Drawing.Point(456, 149);
+            this.trackBar2.Name = "trackBar2";
+            this.trackBar2.Size = new System.Drawing.Size(226, 45);
+            this.trackBar2.TabIndex = 17;
+            // 
+            // trackBar3
+            // 
+            this.trackBar3.Location = new System.Drawing.Point(455, 210);
+            this.trackBar3.Name = "trackBar3";
+            this.trackBar3.Size = new System.Drawing.Size(226, 45);
+            this.trackBar3.TabIndex = 18;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(669, 396);
+            this.ClientSize = new System.Drawing.Size(896, 441);
+            this.Controls.Add(this.trackBar3);
+            this.Controls.Add(this.trackBar2);
+            this.Controls.Add(this.trackBar1);
             this.Controls.Add(this.PortBox);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.StringBox);
@@ -232,6 +262,9 @@
             this.Name = "MainForm";
             this.Text = "Box";
             this.Load += new System.EventHandler(this.MainForm_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar3)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -255,6 +288,9 @@
         private System.Windows.Forms.TextBox StringBox;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.ComboBox PortBox;
+        private System.Windows.Forms.TrackBar trackBar1;
+        private System.Windows.Forms.TrackBar trackBar2;
+        private System.Windows.Forms.TrackBar trackBar3;
     }
 }
 
