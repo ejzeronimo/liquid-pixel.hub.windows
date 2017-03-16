@@ -50,19 +50,25 @@
             this.label7 = new System.Windows.Forms.Label();
             this.BrightBarQ = new System.Windows.Forms.TrackBar();
             this.ModeBarQ = new System.Windows.Forms.TrackBar();
-            this.trackBar3 = new System.Windows.Forms.TrackBar();
-            this.label8 = new System.Windows.Forms.Label();
+            this.Delayq = new System.Windows.Forms.TrackBar();
             this.StringBoxQ = new System.Windows.Forms.TextBox();
             this.SendStringQ = new System.Windows.Forms.Button();
             this.UpdateStringQ = new System.Windows.Forms.Button();
             this.ModeBoxQ = new System.Windows.Forms.ComboBox();
             this.label9 = new System.Windows.Forms.Label();
+            this.button1q = new System.Windows.Forms.Button();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.DelayBar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ModeBar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.BrightBar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.BrightBarQ)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ModeBarQ)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBar3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Delayq)).BeginInit();
             this.SuspendLayout();
             // 
             // button3
@@ -89,9 +95,11 @@
             // 
             // button5
             // 
+            this.button5.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button5.BackgroundImage")));
+            this.button5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.button5.Location = new System.Drawing.Point(12, 365);
             this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(176, 59);
+            this.button5.Size = new System.Drawing.Size(176, 73);
             this.button5.TabIndex = 6;
             this.button5.Text = "Color Wheel";
             this.button5.UseVisualStyleBackColor = true;
@@ -125,7 +133,8 @@
             "Flash",
             "Sweep",
             "Twinkle",
-            "Random Twinke"});
+            "Random Twinke",
+            "Fade"});
             this.ModeBox.Location = new System.Drawing.Point(249, 55);
             this.ModeBox.Name = "ModeBox";
             this.ModeBox.Size = new System.Drawing.Size(121, 21);
@@ -146,9 +155,11 @@
             // 
             // button7
             // 
+            this.button7.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button7.BackgroundImage")));
+            this.button7.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.button7.Location = new System.Drawing.Point(199, 365);
             this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(239, 59);
+            this.button7.Size = new System.Drawing.Size(239, 73);
             this.button7.TabIndex = 12;
             this.button7.Text = "Send String";
             this.button7.UseVisualStyleBackColor = true;
@@ -202,7 +213,7 @@
             this.ModeBar.BackColor = System.Drawing.Color.DarkGray;
             this.ModeBar.LargeChange = 1;
             this.ModeBar.Location = new System.Drawing.Point(211, 82);
-            this.ModeBar.Maximum = 6;
+            this.ModeBar.Maximum = 7;
             this.ModeBar.Name = "ModeBar";
             this.ModeBar.Size = new System.Drawing.Size(226, 45);
             this.ModeBar.TabIndex = 17;
@@ -238,7 +249,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(969, 130);
+            this.label1.Location = new System.Drawing.Point(957, 96);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(37, 13);
             this.label1.TabIndex = 31;
@@ -247,7 +258,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(969, 194);
+            this.label7.Location = new System.Drawing.Point(957, 160);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(56, 13);
             this.label7.TabIndex = 30;
@@ -256,50 +267,44 @@
             // BrightBarQ
             // 
             this.BrightBarQ.BackColor = System.Drawing.Color.DarkGray;
-            this.BrightBarQ.Location = new System.Drawing.Point(972, 210);
+            this.BrightBarQ.Location = new System.Drawing.Point(957, 176);
             this.BrightBarQ.Maximum = 255;
             this.BrightBarQ.Name = "BrightBarQ";
-            this.BrightBarQ.Size = new System.Drawing.Size(226, 45);
+            this.BrightBarQ.Size = new System.Drawing.Size(240, 45);
             this.BrightBarQ.TabIndex = 29;
             // 
             // ModeBarQ
             // 
             this.ModeBarQ.BackColor = System.Drawing.Color.DarkGray;
             this.ModeBarQ.LargeChange = 1;
-            this.ModeBarQ.Location = new System.Drawing.Point(971, 82);
-            this.ModeBarQ.Maximum = 6;
+            this.ModeBarQ.Location = new System.Drawing.Point(957, 48);
+            this.ModeBarQ.Maximum = 7;
             this.ModeBarQ.Name = "ModeBarQ";
-            this.ModeBarQ.Size = new System.Drawing.Size(226, 45);
+            this.ModeBarQ.Size = new System.Drawing.Size(239, 45);
             this.ModeBarQ.TabIndex = 28;
+            this.ModeBarQ.Scroll += new System.EventHandler(this.ModeBarQ_Scroll);
             // 
-            // trackBar3
+            // Delayq
             // 
-            this.trackBar3.BackColor = System.Drawing.Color.DarkGray;
-            this.trackBar3.Location = new System.Drawing.Point(972, 146);
-            this.trackBar3.Maximum = 50;
-            this.trackBar3.Name = "trackBar3";
-            this.trackBar3.Size = new System.Drawing.Size(226, 45);
-            this.trackBar3.TabIndex = 27;
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(958, 258);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(37, 13);
-            this.label8.TabIndex = 26;
-            this.label8.Text = "String:";
+            this.Delayq.BackColor = System.Drawing.Color.DarkGray;
+            this.Delayq.Location = new System.Drawing.Point(957, 112);
+            this.Delayq.Maximum = 50;
+            this.Delayq.Name = "Delayq";
+            this.Delayq.Size = new System.Drawing.Size(240, 45);
+            this.Delayq.TabIndex = 27;
             // 
             // StringBoxQ
             // 
-            this.StringBoxQ.Location = new System.Drawing.Point(958, 274);
+            this.StringBoxQ.Location = new System.Drawing.Point(957, 227);
             this.StringBoxQ.Name = "StringBoxQ";
             this.StringBoxQ.Size = new System.Drawing.Size(240, 20);
             this.StringBoxQ.TabIndex = 25;
             // 
             // SendStringQ
             // 
-            this.SendStringQ.Location = new System.Drawing.Point(959, 365);
+            this.SendStringQ.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("SendStringQ.BackgroundImage")));
+            this.SendStringQ.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.SendStringQ.Location = new System.Drawing.Point(957, 318);
             this.SendStringQ.Name = "SendStringQ";
             this.SendStringQ.Size = new System.Drawing.Size(239, 59);
             this.SendStringQ.TabIndex = 24;
@@ -308,12 +313,13 @@
             // 
             // UpdateStringQ
             // 
-            this.UpdateStringQ.Location = new System.Drawing.Point(958, 300);
+            this.UpdateStringQ.Location = new System.Drawing.Point(957, 253);
             this.UpdateStringQ.Name = "UpdateStringQ";
             this.UpdateStringQ.Size = new System.Drawing.Size(239, 59);
             this.UpdateStringQ.TabIndex = 23;
             this.UpdateStringQ.Text = "Update String";
             this.UpdateStringQ.UseVisualStyleBackColor = true;
+            this.UpdateStringQ.Click += new System.EventHandler(this.UpdateStringQ_Click);
             // 
             // ModeBoxQ
             // 
@@ -325,33 +331,108 @@
             "Flash",
             "Sweep",
             "Twinkle",
-            "Random Twinke"});
-            this.ModeBoxQ.Location = new System.Drawing.Point(1009, 55);
+            "Random Twinke",
+            "Fade"});
+            this.ModeBoxQ.Location = new System.Drawing.Point(1000, 21);
             this.ModeBoxQ.Name = "ModeBoxQ";
             this.ModeBoxQ.Size = new System.Drawing.Size(121, 21);
             this.ModeBoxQ.TabIndex = 22;
             this.ModeBoxQ.Text = "Off";
+            this.ModeBoxQ.SelectedIndexChanged += new System.EventHandler(this.ModeBoxQ_SelectedIndexChanged);
             // 
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(969, 66);
+            this.label9.Location = new System.Drawing.Point(957, 32);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(37, 13);
             this.label9.TabIndex = 21;
             this.label9.Text = "Mode:";
             // 
+            // button1q
+            // 
+            this.button1q.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button1q.BackgroundImage")));
+            this.button1q.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.button1q.Location = new System.Drawing.Point(957, 383);
+            this.button1q.Name = "button1q";
+            this.button1q.Size = new System.Drawing.Size(240, 55);
+            this.button1q.TabIndex = 34;
+            this.button1q.Text = "Color Wheel";
+            this.button1q.UseVisualStyleBackColor = true;
+            this.button1q.Click += new System.EventHandler(this.button1q_Click);
+            // 
+            // panel1
+            // 
+            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Location = new System.Drawing.Point(444, 82);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(247, 277);
+            this.panel1.TabIndex = 35;
+            // 
+            // panel2
+            // 
+            this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel2.Location = new System.Drawing.Point(704, 82);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(247, 277);
+            this.panel2.TabIndex = 36;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F);
+            this.label8.Location = new System.Drawing.Point(631, 29);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(124, 31);
+            this.label8.TabIndex = 37;
+            this.label8.Text = "Queuing:";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(441, 66);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(59, 13);
+            this.label10.TabIndex = 38;
+            this.label10.Text = "Color Now:";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(701, 66);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(61, 13);
+            this.label11.TabIndex = 39;
+            this.label11.Text = "Color Later:";
+            this.label11.Click += new System.EventHandler(this.label11_Click);
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(444, 365);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(507, 73);
+            this.button1.TabIndex = 40;
+            this.button1.Text = "Queue Up Now";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // DelayBarQ
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1209, 441);
+            this.ClientSize = new System.Drawing.Size(1209, 444);
+            this.Controls.Add(this.button1);
+            this.Controls.Add(this.label11);
+            this.Controls.Add(this.label10);
+            this.Controls.Add(this.label8);
+            this.Controls.Add(this.panel2);
+            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.button1q);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.BrightBarQ);
             this.Controls.Add(this.ModeBarQ);
-            this.Controls.Add(this.trackBar3);
-            this.Controls.Add(this.label8);
+            this.Controls.Add(this.Delayq);
             this.Controls.Add(this.StringBoxQ);
             this.Controls.Add(this.SendStringQ);
             this.Controls.Add(this.UpdateStringQ);
@@ -382,7 +463,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.BrightBar)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.BrightBarQ)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ModeBarQ)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBar3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Delayq)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -410,13 +491,19 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TrackBar BrightBarQ;
         private System.Windows.Forms.TrackBar ModeBarQ;
-        private System.Windows.Forms.TrackBar trackBar3;
-        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.TrackBar Delayq;
         private System.Windows.Forms.TextBox StringBoxQ;
         private System.Windows.Forms.Button SendStringQ;
         private System.Windows.Forms.Button UpdateStringQ;
         private System.Windows.Forms.ComboBox ModeBoxQ;
         private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Button button1q;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Button button1;
     }
 }
 

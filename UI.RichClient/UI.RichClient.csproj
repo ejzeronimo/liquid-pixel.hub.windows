@@ -74,6 +74,12 @@
       <DependentUpon>Boxes.cs</DependentUpon>
     </Compile>
     <Compile Include="Global.cs" />
+    <Compile Include="Group.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Group.Designer.cs">
+      <DependentUpon>Group.cs</DependentUpon>
+    </Compile>
     <Compile Include="Hub.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -102,6 +108,9 @@
     </Compile>
     <EmbeddedResource Include="Boxes.resx">
       <DependentUpon>Boxes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Group.resx">
+      <DependentUpon>Group.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Hub.resx">
       <DependentUpon>Hub.cs</DependentUpon>

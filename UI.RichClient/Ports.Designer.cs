@@ -91,6 +91,7 @@
             this.Box1.Size = new System.Drawing.Size(100, 20);
             this.Box1.TabIndex = 4;
             this.Box1.Text = "COM1";
+            this.Box1.TextChanged += new System.EventHandler(this.Box1_TextChanged);
             // 
             // Box2
             // 
@@ -99,6 +100,7 @@
             this.Box2.Size = new System.Drawing.Size(100, 20);
             this.Box2.TabIndex = 5;
             this.Box2.Text = "COM2";
+            this.Box2.TextChanged += new System.EventHandler(this.Box2_TextChanged);
             // 
             // Box3
             // 
@@ -107,6 +109,7 @@
             this.Box3.Size = new System.Drawing.Size(100, 20);
             this.Box3.TabIndex = 6;
             this.Box3.Text = "COM3";
+            this.Box3.TextChanged += new System.EventHandler(this.Box3_TextChanged);
             // 
             // Box4
             // 
@@ -115,6 +118,7 @@
             this.Box4.Size = new System.Drawing.Size(100, 20);
             this.Box4.TabIndex = 8;
             this.Box4.Text = "COM4";
+            this.Box4.TextChanged += new System.EventHandler(this.Box4_TextChanged);
             // 
             // label4
             // 
@@ -132,6 +136,7 @@
             this.Box5.Size = new System.Drawing.Size(100, 20);
             this.Box5.TabIndex = 10;
             this.Box5.Text = "COM5";
+            this.Box5.TextChanged += new System.EventHandler(this.Box5_TextChanged);
             // 
             // label5
             // 
@@ -149,6 +154,7 @@
             this.Box6.Size = new System.Drawing.Size(100, 20);
             this.Box6.TabIndex = 12;
             this.Box6.Text = "COM6";
+            this.Box6.TextChanged += new System.EventHandler(this.Box6_TextChanged);
             // 
             // label6
             // 

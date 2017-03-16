@@ -13,7 +13,7 @@ namespace UI.RichClient
         String r = String.Empty;
         String g = String.Empty;
         String b = String.Empty;
-        private string typenm;
+        private int typenm;
         private string box;
         private int delay;
         private int randombool;
@@ -21,6 +21,14 @@ namespace UI.RichClient
         private string port;
         private string temport;
         private int moder;
+        private int moderq;
+        private int randomboolq;
+        private int delayq;
+        private string packageq;
+        private string rq;
+        private string bq;
+        private string gq;
+        private int brightq;
 
         enum methodcall { }
       
@@ -68,6 +76,7 @@ namespace UI.RichClient
                 r = clr.R.ToString();
                 g = clr.G.ToString();
                 b = clr.B.ToString();
+                panel1.BackColor = cdlg.Color;
             }
             catch (Exception ex)
             {
@@ -75,16 +84,17 @@ namespace UI.RichClient
             }
 
         }
-
         private void UpdateString(object sender, EventArgs e)
         {
-            typenm = "0";
-            box = "1";
-            randombool = 0;
-            delay = DelayBar.Value;
-            package = $"T{typenm}C{box}R{r}G{g}B{b}D{delay}X{randombool}M{moder}~";
-            StringBox.Text = package;
+ 
+                typenm = BrightBar.Value;
+                box = "1";
+                randombool = 0;
+                delay = DelayBar.Value;
+                package = $"T{typenm}C{box}R{r}G{g}B{b}D{delay}X{randombool}M{moder}~";
+                StringBox.Text = package;
             //cmdBbx1R255G255B255D10WtrueMbreath
+
         }
 
         private void SendString(object sender, EventArgs e)
@@ -136,6 +146,10 @@ namespace UI.RichClient
             {
                 moder = 6;
             }
+            if (ModeBox.Text == "Fade")
+            {
+                moder = 7;
+            }
         }
         private void MainForm_Load(object sender, EventArgs e)
         {
@@ -177,6 +191,124 @@ namespace UI.RichClient
             {
                 ModeBox.Text = "Random Twinkle";
             }
+            if (ModeBar.Value == 7)
+            {
+                ModeBox.Text = "Fade";
+            }
+        }
+
+        private void button1q_Click(object sender, EventArgs e)
+        {
+            ColorDialog cdlg = new ColorDialog();
+            cdlg.ShowDialog();
+            Color clr = cdlg.Color;
+            try
+            {
+                rq = clr.R.ToString();
+                gq = clr.G.ToString();
+                bq = clr.B.ToString();
+                panel2.BackColor = cdlg.Color;
+            }
+            catch (Exception ex)
+            {
+                //doing nothing
+            }
+        }
+
+        private void label11_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            string fader = $"T{0}C{box}R{r}G{g}B{b}D{delay}X{randombool}M{7}~"; ;
+            ComportMain.Write(fader);
+
+            ComportMain.Write(packageq);
+        }
+
+        private void ModeBarQ_Scroll(object sender, EventArgs e)
+        {
+            if (ModeBarQ.Value == 0)
+            {
+                ModeBoxQ.Text = "Off";
+            }
+            if (ModeBarQ.Value == 1)
+            {
+                ModeBoxQ.Text = "Solid";
+            }
+            if (ModeBarQ.Value == 2)
+            {
+                ModeBoxQ.Text = "Random Cloudy";
+            }
+            if (ModeBarQ.Value == 3)
+            {
+                ModeBoxQ.Text = "Flash";
+            }
+            if (ModeBarQ.Value == 4)
+            {
+                ModeBoxQ.Text = "Sweep";
+            }
+            if (ModeBarQ.Value == 5)
+            {
+                ModeBoxQ.Text = "Twinkle";
+            }
+            if (ModeBarQ.Value == 6)
+            {
+                ModeBoxQ.Text = "Random Twinkle";
+            }
+            if (ModeBarQ.Value == 7)
+            {
+                ModeBoxQ.Text = "Fade";
+            }
+        }
+
+        private void ModeBoxQ_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (ModeBoxQ.Text == "Off")
+            {
+                moderq = 0;
+            }
+            if (ModeBoxQ.Text == "Solid")
+            {
+                moderq = 1;
+            }
+            if (ModeBoxQ.Text == "Random Cloudy")
+            {
+                moderq = 2;
+            }
+            if (ModeBoxQ.Text == "Flash")
+            {
+                moderq = 3;
+            }
+            if (ModeBoxQ.Text == "Sweep")
+            {
+                moderq = 4;
+            }
+            if (ModeBoxQ.Text == "Twinkle")
+            {
+                moderq = 5;
+            }
+            if (ModeBoxQ.Text == "Random Twinkle")
+            {
+                moderq = 6;
+            }
+            if (ModeBoxQ.Text == "Fade")
+            {
+                moderq = 7;
+            }
+        }
+
+        private void UpdateStringQ_Click(object sender, EventArgs e)
+        {
+            box = "1";
+            randomboolq = 0;
+            delayq = Delayq.Value;
+            brightq = BrightBarQ.Value;
+            packageq = $"T{brightq}C{box}R{rq}G{gq}B{bq}D{delayq}X{randomboolq}M{moderq}~";
+            StringBoxQ.Text = packageq;
+            //cmdBbx1R255G255B255D10WtrueMbreath
         }
     }
 }
