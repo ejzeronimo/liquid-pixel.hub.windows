@@ -19,7 +19,7 @@ namespace UI.RichClient
 
         private void boxToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            MainForm bxs = new MainForm();
+            DelayBarQ bxs = new DelayBarQ();
             bxs.Show();
         }
 

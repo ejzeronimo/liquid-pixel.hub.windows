@@ -7,11 +7,8 @@ using System.Windows.Forms;
 namespace UI.RichClient
 {
 
-    public partial class MainForm : Form
+    public partial class DelayBarQ : Form
     {
-        string in_data;
-        string time;
-        DateTime datetime;
         string package;
         String r = String.Empty;
         String g = String.Empty;
@@ -23,40 +20,14 @@ namespace UI.RichClient
         public SerialPort ComportMain;
         private string port;
         private string temport;
+        private int moder;
 
         enum methodcall { }
       
-        public MainForm()
+        public DelayBarQ()
         {
             InitializeComponent();
-
             ComportMain = new SerialPort();
-
-        }
-        private void Start(object sender, EventArgs e)
-        {
-            try
-            {
-                ComportMain.Write("5");
-                MessageBox.Show("Started");
-            }
-            catch
-            {
-                MessageBox.Show("Failure...Try Again :(");
-            }
-        }
-
-        private void Stop(object sender, EventArgs e)
-        {
-            try
-            {
-                ComportMain.Write("6");
-                MessageBox.Show("Stopped");
-            }
-            catch
-            {
-                MessageBox.Show("Failure...Try Again :(");
-            }
         }
         private void MakeConnection(object sender, EventArgs e)
         {
@@ -75,21 +46,6 @@ namespace UI.RichClient
                 //doing nothing
             }
         }
-
-        private void Myport_DataReceived(object sender, SerialDataReceivedEventArgs e)
-        {
-
-            in_data = ComportMain.ReadLine();
-            Invoke(new EventHandler(displaydata_event));
-        }
-
-        private void displaydata_event(object sender, EventArgs e)
-        {
-            datetime = DateTime.Now;
-            string time = datetime.Hour + ":" + datetime.Minute + ":" + datetime.Second;
-            ArduinoBox.AppendText(time + "\t\t\t\t" + in_data + "\n");
-        }
-
         private void CloseConnection(object sender, EventArgs e)
         {
             try
@@ -107,11 +63,8 @@ namespace UI.RichClient
             ColorDialog cdlg = new ColorDialog();
             cdlg.ShowDialog();
             Color clr = cdlg.Color;
-
-            
             try
             {
-
                 r = clr.R.ToString();
                 g = clr.G.ToString();
                 b = clr.B.ToString();
@@ -128,8 +81,8 @@ namespace UI.RichClient
             typenm = "0";
             box = "1";
             randombool = 0;
-            delay = 10;
-            package = $"T{typenm}C{box}R{r}G{g}B{b}D{delay}W{randombool}M1~";
+            delay = DelayBar.Value;
+            package = $"T{typenm}C{box}R{r}G{g}B{b}D{delay}X{randombool}M{moder}~";
             StringBox.Text = package;
             //cmdBbx1R255G255B255D10WtrueMbreath
         }
@@ -155,15 +108,75 @@ namespace UI.RichClient
         }
         private void ModeBox_SelectedIndexChanged(object sender, EventArgs e)
         {
+            if(ModeBox.Text == "Off" )
+            {
+                moder = 0;
+            }
+            if (ModeBox.Text == "Solid")
+            {
+                moder = 1;
+            }
+            if (ModeBox.Text == "Random Cloudy")
+            {
+                moder = 2;
+            }
+            if (ModeBox.Text == "Flash")
+            {
+                moder = 3;
+            }
+            if (ModeBox.Text == "Sweep")
+            {
+                moder = 4;
+            }
+            if (ModeBox.Text == "Twinkle")
+            {
+                moder = 5;
+            }
+            if (ModeBox.Text == "Random Twinkle")
+            {
+                moder = 6;
+            }
         }
         private void MainForm_Load(object sender, EventArgs e)
         {
-
         }
-
         private void PortBox_SelectedIndexChanged(object sender, EventArgs e)
         {
+        }
+        private void label4_Click(object sender, EventArgs e)
+        {
+        }
 
+        private void ModeBar_Scroll(object sender, EventArgs e)
+        {
+            if (ModeBar.Value == 0)
+            {
+                ModeBox.Text = "Off";
+            }
+            if (ModeBar.Value == 1)
+            {
+                ModeBox.Text = "Solid";
+            }
+            if (ModeBar.Value == 2)
+            {
+                ModeBox.Text = "Random Cloudy";
+            }
+            if (ModeBar.Value == 3)
+            {
+                ModeBox.Text = "Flash";
+            }
+            if (ModeBar.Value == 4)
+            {
+                ModeBox.Text = "Sweep";
+            }
+            if (ModeBar.Value == 5)
+            {
+                ModeBox.Text = "Twinkle";
+            }
+            if (ModeBar.Value == 6)
+            {
+                ModeBox.Text = "Random Twinkle";
+            }
         }
     }
 }
