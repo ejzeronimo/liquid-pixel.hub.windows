@@ -240,9 +240,39 @@ namespace UI.RichClient
                 moder = 6;
                 return;
             }
-            if (comboBox.Text == "Fade")
+            if (comboBox.Text == "Random Flash")
             {
                 moder = 7;
+                return;
+            }
+            if (comboBox.Text == "Theater Chase")
+            {
+                moder = 8;
+                return;
+            }
+            if (comboBox.Text == "Fade")
+            {
+                moder = 9;
+                return;
+            }
+            if (comboBox.Text == "Chroma")
+            {
+                moder = 10;
+                return;
+            }
+            if (comboBox.Text == "Breath")
+            {
+                moder = 11;
+                return;
+            }
+            if (comboBox.Text == "Fade In")
+            {
+                moder = 12;
+                return;
+            }
+            if (comboBox.Text == "Fade Out")
+            {
+                moder = 13;
                 return;
             }
         }
@@ -264,24 +294,12 @@ namespace UI.RichClient
                 Comport2.DataBits = 8;
                 Comport2.StopBits = StopBits.One;
                 Comport2.Encoding = Encoding.ASCII;
-                Comport3.PortName = "COM6";
-                Comport3.BaudRate = 9600;
-                Comport3.Parity = Parity.None;
-                Comport3.DataBits = 8;
-                Comport3.StopBits = StopBits.One;
-                Comport3.Encoding = Encoding.ASCII;
                 Comport4.PortName = "COM7";
                 Comport4.BaudRate = 9600;
                 Comport4.Parity = Parity.None;
                 Comport4.DataBits = 8;
                 Comport4.StopBits = StopBits.One;
-                Comport4.Encoding = Encoding.ASCII;
-                Comport5.PortName = "COM8";
-                Comport5.BaudRate = 9600;
-                Comport5.Parity = Parity.None;
-                Comport5.DataBits = 8;
-                Comport5.StopBits = StopBits.One;
-                Comport5.Encoding = Encoding.ASCII;
+                Comport4.Encoding = Encoding.ASCII; 
                 Comport6.PortName = "COM9";
                 Comport6.BaudRate = 9600;
                 Comport6.Parity = Parity.None;
@@ -493,6 +511,16 @@ namespace UI.RichClient
         private void queueCheckedListBox_SelectedIndexChanged(object sender, EventArgs e)
         {     
             queueSelectedCommands = queueCheckedListBox.CheckedIndices;
+        }
+
+        private void mode1ComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void mode2ComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
