@@ -250,7 +250,7 @@ namespace UI.RichClient
                 moder = 8;
                 return;
             }
-            if (comboBox.Text == "Fade")
+            if (comboBox.Text == "FadeIO")
             {
                 moder = 9;
                 return;
@@ -273,6 +273,11 @@ namespace UI.RichClient
             if (comboBox.Text == "Fade Out")
             {
                 moder = 13;
+                return;
+            }
+            if (comboBox.Text == "Fade Random IO")
+            {
+                moder = 14;
                 return;
             }
         }
