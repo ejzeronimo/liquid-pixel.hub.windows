@@ -379,18 +379,14 @@ namespace UI.RichClient
             this.mode1ComboBox.Items.AddRange(new object[] {
             "Off",
             "Solid",
-            "Random Cloudy",
             "Flash",
             "Sweep",
             "Twinkle",
             "Random Twinkle",
             "Random Flash",
             "Theater Chase",
-            "Fade IO",
-            "Chroma",
             "Fade In",
-            "Fade Out",
-            "Random Fade IO"});
+            "Fade Out"});
             this.mode1ComboBox.Location = new System.Drawing.Point(13, 400);
             this.mode1ComboBox.Name = "mode1ComboBox";
             this.mode1ComboBox.Size = new System.Drawing.Size(100, 21);
@@ -403,18 +399,14 @@ namespace UI.RichClient
             this.mode2ComboBox.Items.AddRange(new object[] {
             "Off",
             "Solid",
-            "Random Cloudy",
             "Flash",
             "Sweep",
             "Twinkle",
             "Random Twinkle",
             "Random Flash",
             "Theater Chase",
-            "Fade IO",
-            "Chroma",
             "Fade In",
-            "Fade Out",
-            "Random Fade IO"});
+            "Fade Out"});
             this.mode2ComboBox.Location = new System.Drawing.Point(218, 400);
             this.mode2ComboBox.Name = "mode2ComboBox";
             this.mode2ComboBox.Size = new System.Drawing.Size(100, 21);
@@ -427,18 +419,14 @@ namespace UI.RichClient
             this.mode3ComboBox.Items.AddRange(new object[] {
             "Off",
             "Solid",
-            "Random Cloudy",
             "Flash",
             "Sweep",
             "Twinkle",
             "Random Twinkle",
             "Random Flash",
             "Theater Chase",
-            "Fade IO",
-            "Chroma",
             "Fade In",
-            "Fade Out",
-            "Random Fade IO"});
+            "Fade Out"});
             this.mode3ComboBox.Location = new System.Drawing.Point(424, 400);
             this.mode3ComboBox.Name = "mode3ComboBox";
             this.mode3ComboBox.Size = new System.Drawing.Size(100, 21);
@@ -450,18 +438,14 @@ namespace UI.RichClient
             this.mode4ComboBox.Items.AddRange(new object[] {
             "Off",
             "Solid",
-            "Random Cloudy",
             "Flash",
             "Sweep",
             "Twinkle",
             "Random Twinkle",
             "Random Flash",
             "Theater Chase",
-            "Fade IO",
-            "Chroma",
             "Fade In",
-            "Fade Out",
-            "Random Fade IO"});
+            "Fade Out"});
             this.mode4ComboBox.Location = new System.Drawing.Point(630, 400);
             this.mode4ComboBox.Name = "mode4ComboBox";
             this.mode4ComboBox.Size = new System.Drawing.Size(100, 21);
@@ -473,18 +457,14 @@ namespace UI.RichClient
             this.mode5ComboBox.Items.AddRange(new object[] {
             "Off",
             "Solid",
-            "Random Cloudy",
             "Flash",
             "Sweep",
             "Twinkle",
             "Random Twinkle",
             "Random Flash",
             "Theater Chase",
-            "Fade IO",
-            "Chroma",
             "Fade In",
-            "Fade Out",
-            "Random Fade IO"});
+            "Fade Out"});
             this.mode5ComboBox.Location = new System.Drawing.Point(836, 400);
             this.mode5ComboBox.Name = "mode5ComboBox";
             this.mode5ComboBox.Size = new System.Drawing.Size(100, 21);
