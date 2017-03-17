@@ -120,8 +120,8 @@ namespace UI.RichClient
             this.command1CommPortCheckedListBox.Items.AddRange(new object[] {
             "COM4",
             "COM5",
-            "COM7",
-            "COM9"});
+            "COM6",
+            "COM7"});
             this.command1CommPortCheckedListBox.Location = new System.Drawing.Point(12, 235);
             this.command1CommPortCheckedListBox.Name = "command1CommPortCheckedListBox";
             this.command1CommPortCheckedListBox.Size = new System.Drawing.Size(77, 94);
@@ -200,8 +200,8 @@ namespace UI.RichClient
             this.command2CommPortCheckedListBox.Items.AddRange(new object[] {
             "COM4",
             "COM5",
-            "COM7",
-            "COM9"});
+            "COM6",
+            "COM7"});
             this.command2CommPortCheckedListBox.Location = new System.Drawing.Point(218, 235);
             this.command2CommPortCheckedListBox.Name = "command2CommPortCheckedListBox";
             this.command2CommPortCheckedListBox.Size = new System.Drawing.Size(77, 94);
@@ -224,8 +224,8 @@ namespace UI.RichClient
             this.command3CommPortCheckedListBox.Items.AddRange(new object[] {
             "COM4",
             "COM5",
-            "COM7",
-            "COM9"});
+            "COM6",
+            "COM7"});
             this.command3CommPortCheckedListBox.Location = new System.Drawing.Point(424, 235);
             this.command3CommPortCheckedListBox.Name = "command3CommPortCheckedListBox";
             this.command3CommPortCheckedListBox.Size = new System.Drawing.Size(77, 94);
@@ -247,8 +247,8 @@ namespace UI.RichClient
             this.command4CommPortCheckedListBox.Items.AddRange(new object[] {
             "COM4",
             "COM5",
-            "COM7",
-            "COM9"});
+            "COM6",
+            "COM7"});
             this.command4CommPortCheckedListBox.Location = new System.Drawing.Point(630, 235);
             this.command4CommPortCheckedListBox.Name = "command4CommPortCheckedListBox";
             this.command4CommPortCheckedListBox.Size = new System.Drawing.Size(77, 94);
@@ -270,8 +270,8 @@ namespace UI.RichClient
             this.command5CommPortCheckedListBox.Items.AddRange(new object[] {
             "COM4",
             "COM5",
-            "COM7",
-            "COM9"});
+            "COM6",
+            "COM7"});
             this.command5CommPortCheckedListBox.Location = new System.Drawing.Point(836, 235);
             this.command5CommPortCheckedListBox.Name = "command5CommPortCheckedListBox";
             this.command5CommPortCheckedListBox.Size = new System.Drawing.Size(77, 94);
@@ -294,9 +294,7 @@ namespace UI.RichClient
             "COM4",
             "COM5",
             "COM6",
-            "COM7",
-            "COM8",
-            "COM9"});
+            "COM7"});
             this.command6CommPortCheckedListBox.Location = new System.Drawing.Point(1042, 235);
             this.command6CommPortCheckedListBox.Name = "command6CommPortCheckedListBox";
             this.command6CommPortCheckedListBox.Size = new System.Drawing.Size(77, 94);
