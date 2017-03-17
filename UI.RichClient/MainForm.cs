@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Drawing;
 using System.IO.Ports;
 using System.Text;
@@ -102,7 +103,7 @@ namespace UI.RichClient
             try
             {
                 ComportMain.Write(package);
-                MessageBox.Show("Success");
+              
             }
             catch
             {
@@ -156,6 +157,17 @@ namespace UI.RichClient
         }
         private void PortBox_SelectedIndexChanged(object sender, EventArgs e)
         {
+            var items = new List<string>
+            {
+                Global.port1,
+                Global.port2,
+                Global.port3,
+                Global.port4,
+                Global.port5,
+                Global.port6
+
+        };
+           // PortBox.DataSource = items;
         }
         private void label4_Click(object sender, EventArgs e)
         {
@@ -227,7 +239,6 @@ namespace UI.RichClient
 
             ComportMain.Write(packageq);
         }
-
         private void ModeBarQ_Scroll(object sender, EventArgs e)
         {
             if (ModeBarQ.Value == 0)
