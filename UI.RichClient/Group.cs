@@ -52,53 +52,34 @@ namespace UI.RichClient
         public SerialPort Comport4;
         public SerialPort Comport5;
         public SerialPort Comport6;
-        public bool check11;
-        public bool check12;
-        public bool check13;
-        public bool check14;
-        public bool check15;
-        public bool check16;
-        public bool check21;
-        public bool check22;
-        public bool check23;
-        public bool check24;
-        public bool check25;
-        public bool check26;
-        public bool check31;
-        public bool check32;
-        public bool check33;
-        public bool check34;
-        public bool check35;
-        public bool check36;
-        public bool check41;
-        public bool check42;
-        public bool check43;
-        public bool check44;
-        public bool check45;
-        public bool check46;
-        public bool check51;
-        public bool check52;
-        public bool check53;
-        public bool check54;
-        public bool check55;
-        public bool check56;
-        public bool check61;
-        public bool check62;
-        public bool check63;
-        public bool check64;
-        public bool check65;
-        public bool check66;
-        public bool check01;
-        public bool check02;
-        public bool check03;
-        public bool check04;
-        public bool check05;
-        public bool check06;
+        public CheckedListBox.CheckedIndexCollection command1SelectedCommPorts;
+        public CheckedListBox.CheckedIndexCollection command2SelectedCommPorts;
+        public CheckedListBox.CheckedIndexCollection command3SelectedCommPorts;
+        public CheckedListBox.CheckedIndexCollection command4SelectedCommPorts;
+        public CheckedListBox.CheckedIndexCollection command5SelectedCommPorts;
+        public CheckedListBox.CheckedIndexCollection command6SelectedCommPorts;
+        public CheckedListBox.CheckedIndexCollection queueSelectedCommands;
 
         public Group()
         {
             InitializeComponent();
-            
+
+            // custom wired queue this event handlers
+            button1.Click += (sender, EventArgs) => { queueCommand_Click(sender, EventArgs, 0, package1, command1SelectedCommPorts); };
+            button2.Click += (sender, EventArgs) => { queueCommand_Click(sender, EventArgs, 1, package2, command2SelectedCommPorts); };
+            button3.Click += (sender, EventArgs) => { queueCommand_Click(sender, EventArgs, 2, package3, command3SelectedCommPorts); };
+            button4.Click += (sender, EventArgs) => { queueCommand_Click(sender, EventArgs, 3, package4, command4SelectedCommPorts); };
+            button5.Click += (sender, EventArgs) => { queueCommand_Click(sender, EventArgs, 4, package5, command5SelectedCommPorts); };
+            button6.Click += (sender, EventArgs) => { queueCommand_Click(sender, EventArgs, 5, package6, command6SelectedCommPorts); };
+
+            // custom wired select mode event handlers
+            mode1ComboBox.SelectedIndexChanged += (sender, EventArgs) => { modeComboBox_SelectedIndexChanged(sender, EventArgs, ref moder1); };
+            mode2ComboBox.SelectedIndexChanged += (sender, EventArgs) => { modeComboBox_SelectedIndexChanged(sender, EventArgs, ref moder2); };
+            mode3ComboBox.SelectedIndexChanged += (sender, EventArgs) => { modeComboBox_SelectedIndexChanged(sender, EventArgs, ref moder3); };
+            mode4ComboBox.SelectedIndexChanged += (sender, EventArgs) => { modeComboBox_SelectedIndexChanged(sender, EventArgs, ref moder4); };
+            mode5ComboBox.SelectedIndexChanged += (sender, EventArgs) => { modeComboBox_SelectedIndexChanged(sender, EventArgs, ref moder5); };
+            mode6ComboBox.SelectedIndexChanged += (sender, EventArgs) => { modeComboBox_SelectedIndexChanged(sender, EventArgs, ref moder6); };
+
             Comport1 = new SerialPort();
             Comport2 = new SerialPort();
             Comport3 = new SerialPort();
@@ -113,16 +94,6 @@ namespace UI.RichClient
             {
                 //doing nothing
             }
-        }
-
-        private void checkedListBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            check01 = checkedListBox1.GetItemChecked(0);
-            check02 = checkedListBox1.GetItemChecked(1);
-            check03 = checkedListBox1.GetItemChecked(2);
-            check04 = checkedListBox1.GetItemChecked(3);
-            check05 = checkedListBox1.GetItemChecked(4);
-            check06 = checkedListBox1.GetItemChecked(5);
         }
 
         private void button7_Click(object sender, EventArgs e)
@@ -233,39 +204,48 @@ namespace UI.RichClient
             }
         }
 
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        private void modeComboBox_SelectedIndexChanged(object sender, EventArgs e, ref int moder)
         {
-            if (comboBox1.Text == "Off")
+            var comboBox = (ComboBox)sender;
+            if (comboBox.Text == "Off")
             {
-                moder1 = 0;
+                moder = 0;
+                return;
             }
-            if (comboBox1.Text == "Solid")
+            if (comboBox.Text == "Solid")
             {
-                moder1 = 1;
+                moder = 1;
+                return;
             }
-            if (comboBox1.Text == "Random Cloudy")
+            if (comboBox.Text == "Random Cloudy")
             {
-                moder1 = 2;
+                moder = 2;
+                return;
             }
-            if (comboBox1.Text == "Flash")
+            if (comboBox.Text == "Flash")
             {
-                moder1 = 3;
+                moder = 3;
+                return;
             }
-            if (comboBox1.Text == "Sweep")
+            if (comboBox.Text == "Sweep")
             {
-                moder1 = 4;
+                moder = 4;
+                return;
             }
-            if (comboBox1.Text == "Twinkle")
+            if (comboBox.Text == "Twinkle")
             {
-                moder1 = 5;
+                moder = 5;
+                return;
             }
-            if (comboBox1.Text == "Random Twinkle")
+            if (comboBox.Text == "Random Twinkle")
             {
-                moder1 = 6;
+                moder = 6;
+                return;
             }
-            if (comboBox1.Text == "Fade")
+            if (comboBox.Text == "Fade")
             {
-                moder1 = 7;
+                moder = 7;
+                return;
             }
         }
 
@@ -340,7 +320,7 @@ namespace UI.RichClient
         private void button16_Click(object sender, EventArgs e)
         {
             box = "1";
-            delay4 = command3Delay.Value;
+            delay4 = command4Delay.Value;
             package4 = $"T0C{box}R{r4}G{g4}B{b4}D{delay4}X0M{moder4}~";
         }
 
@@ -363,39 +343,39 @@ namespace UI.RichClient
             string package = string.Empty;
             int qDelay = 0;
             Action packagePortSender = null;
-            for (int i = 1; i <= 6; i++)
+            for (int i = 0; i < queueSelectedCommands?.Count; i++)
             {
-                switch (i)
+                switch (queueSelectedCommands[i])
                 {
-                    case 1:
+                    case 0:
                         package = package1 ?? string.Empty;
                         qDelay = q1Delay.Value;
-                        packagePortSender = () => booltopackage0(true, package);
+                        packagePortSender = () => queueCommand_Click(sender, e, 0, package, command1SelectedCommPorts);
                         break;
-                    case 2:
+                    case 1:
                         package = package2 ?? string.Empty;
                         qDelay = q2Delay.Value;
-                        packagePortSender = () => booltopackage1(true, package);
+                        packagePortSender = () => queueCommand_Click(sender, e, 0, package, command2SelectedCommPorts);
                         break;
-                    case 3:
+                    case 2:
                         package = package3 ?? string.Empty;
                         qDelay = q3Delay.Value;
-                        packagePortSender = () => booltopackage2(true, package);
+                        packagePortSender = () => queueCommand_Click(sender, e, 0, package, command3SelectedCommPorts);
                         break;
-                    case 4:
+                    case 3:
                         package = package4 ?? string.Empty;
                         qDelay = q4Delay.Value;
-                        packagePortSender = () => booltopackage3(true, package);
+                        packagePortSender = () => queueCommand_Click(sender, e, 0, package, command4SelectedCommPorts);
                         break;
-                    case 5:
+                    case 4:
                         package = package5 ?? string.Empty;
                         qDelay = q5Delay.Value;
-                        packagePortSender = () => booltopackage4(true, package);
+                        packagePortSender = () => queueCommand_Click(sender, e, 0, package, command5SelectedCommPorts);
                         break;
-                    case 6:
+                    case 5:
                         package = package6 ?? string.Empty;
                         qDelay = q6Delay.Value;
-                        packagePortSender = () => booltopackage5(true, package);
+                        packagePortSender = () => queueCommand_Click(sender, e, 0, package, command6SelectedCommPorts);
                         break;
                     default:
                         break;
@@ -411,121 +391,76 @@ namespace UI.RichClient
             }
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void queueCommand_Click(object sender, EventArgs e, int index, string package, CheckedListBox.CheckedIndexCollection checkedCommPorts)
         {
-            //boolset1
-            booltopackage0(check11, package1);
-            booltopackage0(check12, package1);
-            booltopackage0(check13, package1);
-            booltopackage0(check14, package1);
-            booltopackage0(check15, package1);
-            booltopackage0(check16, package1);
-        }
-        private void button2_Click(object sender, EventArgs e)
-        {
-            //boolset2
-            booltopackage1(check21, package2);
-            booltopackage1(check22, package2);
-            booltopackage1(check23, package2);
-            booltopackage1(check24, package2);
-            booltopackage1(check25, package2);
-            booltopackage1(check26, package2);
+
+            for (int i = 0; i < checkedCommPorts?.Count; i++)
+            {
+                switch (checkedCommPorts[i])
+                {
+                    case 0:
+                        if (Comport1.IsOpen)
+                            Comport1.Write(package);
+                        break;
+                    case 1:
+                        if (Comport2.IsOpen)
+                            Comport2.Write(package);
+                        break;
+                    case 2:
+                        if (Comport3.IsOpen)
+                            Comport3.Write(package);
+                        break;
+                    case 3:
+                        if (Comport4.IsOpen)
+                            Comport4.Write(package);
+                        break;
+                    case 4:
+                        if (Comport5.IsOpen)
+                            Comport5.Write(package);
+                        break;
+                    case 5:
+                        if (Comport6.IsOpen)
+                            Comport6.Write(package);
+                        break;
+                    default:
+                        break;
+                }
+            }
         }
 
-        private void button3_Click(object sender, EventArgs e)
+        private void command1CommPortList_SelectedIndexChanged(object sender, EventArgs e)
         {
-            //boolset3
-            booltopackage2(check31, package3);
-            booltopackage2(check32, package3);
-            booltopackage2(check33, package3);
-            booltopackage2(check34, package3);
-            booltopackage2(check35, package3);
-            booltopackage2(check36, package3);
+            command1SelectedCommPorts = command1CommPortCheckedListBox.CheckedIndices;
         }
 
-        private void button4_Click(object sender, EventArgs e)
+        private void command2CommPortList_SelectedIndexChanged(object sender, EventArgs e)
         {
-            //boolset4
-            booltopackage3(check41, package4);
-            booltopackage3(check42, package4);
-            booltopackage3(check43, package4);
-            booltopackage3(check44, package4);
-            booltopackage3(check45, package4);
-            booltopackage3(check46, package4);
+            command2SelectedCommPorts = command2CommPortCheckedListBox.CheckedIndices;
         }
 
-        private void button5_Click(object sender, EventArgs e)
+        private void command3CommPortList_SelectedIndexChanged(object sender, EventArgs e)
         {
-            //boolset5
-            booltopackage4(check51, package5);
-            booltopackage4(check52, package5);
-            booltopackage4(check53, package5);
-            booltopackage4(check54, package5);
-            booltopackage4(check55, package5);
-            booltopackage4(check56, package5);
+            command3SelectedCommPorts = command3CommPortCheckedListBox.CheckedIndices;
         }
 
-        private void button6_Click(object sender, EventArgs e)
+        private void command4CommPortList_SelectedIndexChanged(object sender, EventArgs e)
         {
-            //boolset6
-            booltopackage5(check61, package6);
-            booltopackage5(check62, package6);
-            booltopackage5(check63, package6);
-            booltopackage5(check64, package6);
-            booltopackage5(check65, package6);
-            booltopackage5(check66, package6);
+            command4SelectedCommPorts = command4CommPortCheckedListBox.CheckedIndices;
         }
 
-        private void checkedListBox7_SelectedIndexChanged(object sender, EventArgs e)
+        private void command5CommPortList_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            command5SelectedCommPorts = command5CommPortCheckedListBox.CheckedIndices;
+        }
+
+        private void command6CommPortList_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            command6SelectedCommPorts = command6CommPortCheckedListBox.CheckedIndices;
+        }
+
+        private void queueCheckedListBox_SelectedIndexChanged(object sender, EventArgs e)
         {     
-            check01 = checkedListBox7.GetItemChecked(0);
-            check02 = checkedListBox7.GetItemChecked(1);
-            check03 = checkedListBox7.GetItemChecked(2);
-            check04 = checkedListBox7.GetItemChecked(3);
-            check05 = checkedListBox7.GetItemChecked(4);
-            check06 = checkedListBox7.GetItemChecked(5);
-        }
-        void booltopackage0(bool bob, string sender)
-        {
-            if (bob == true && Comport1.IsOpen)
-            {
-                Comport1.Write(sender);
-            }
-        }
-        void booltopackage1(bool bob, string sender)
-        {
-            if (bob == true && Comport2.IsOpen)
-            {
-                Comport2.Write(sender);
-            }
-        }
-        void booltopackage2(bool bob, string sender)
-        {
-            if (bob == true && Comport3.IsOpen)
-            {
-                Comport3.Write(sender);
-            }
-        }
-        void booltopackage3(bool bob, string sender)
-        {
-            if (bob == true && Comport4.IsOpen)
-            {
-                Comport4.Write(sender);
-            }
-        }
-        void booltopackage4(bool bob, string sender)
-        {
-            if (bob == true && Comport5.IsOpen)
-            {
-                Comport5.Write(sender);
-            }
-        }
-        void booltopackage5(bool bob, string sender)
-        {
-            if (bob == true && Comport6.IsOpen)
-            {
-                Comport6.Write(sender);
-            }
+            queueSelectedCommands = queueCheckedListBox.CheckedIndices;
         }
     }
 }
