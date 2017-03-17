@@ -99,7 +99,7 @@ namespace UI.RichClient
             this.button10 = new System.Windows.Forms.Button();
             this.button9 = new System.Windows.Forms.Button();
             this.button8 = new System.Windows.Forms.Button();
-            this.button20 = new System.Windows.Forms.Button();
+            this.initializeCommPortsButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.command1Delay)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.command2Delay)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.command3Delay)).BeginInit();
@@ -841,20 +841,20 @@ namespace UI.RichClient
             // 
             // button20
             // 
-            this.button20.Location = new System.Drawing.Point(12, 658);
-            this.button20.Name = "button20";
-            this.button20.Size = new System.Drawing.Size(77, 27);
-            this.button20.TabIndex = 65;
-            this.button20.Text = "Start";
-            this.button20.UseVisualStyleBackColor = true;
-            this.button20.Click += new System.EventHandler(this.button20_Click);
+            this.initializeCommPortsButton.Location = new System.Drawing.Point(12, 658);
+            this.initializeCommPortsButton.Name = "button20";
+            this.initializeCommPortsButton.Size = new System.Drawing.Size(77, 27);
+            this.initializeCommPortsButton.TabIndex = 65;
+            this.initializeCommPortsButton.Text = "Start";
+            this.initializeCommPortsButton.UseVisualStyleBackColor = true;
+            this.initializeCommPortsButton.Click += new System.EventHandler(this.initializeCommPortsButton_Click);
             // 
             // Group
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1237, 686);
-            this.Controls.Add(this.button20);
+            this.Controls.Add(this.initializeCommPortsButton);
             this.Controls.Add(this.QueueUpNow);
             this.Controls.Add(this.queueCheckedListBox);
             this.Controls.Add(this.label18);
@@ -1018,6 +1018,6 @@ namespace UI.RichClient
         private System.Windows.Forms.Button button10;
         private System.Windows.Forms.Button button9;
         private System.Windows.Forms.Button button8;
-        private System.Windows.Forms.Button button20;
+        private System.Windows.Forms.Button initializeCommPortsButton;
     }
 }

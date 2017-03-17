@@ -47,11 +47,17 @@ namespace UI.RichClient
         private int moder5;
         private int moder6;
         public SerialPort Comport1;
+        public bool IsComport1Connected => Comport1.IsOpen;
         public SerialPort Comport2;
+        public bool IsComport2Connected => Comport2.IsOpen;
         public SerialPort Comport3;
+        public bool IsComport3Connected => Comport3.IsOpen;
         public SerialPort Comport4;
+        public bool IsComport4Connected => Comport4.IsOpen;
         public SerialPort Comport5;
+        public bool IsComport5Connected => Comport5.IsOpen;
         public SerialPort Comport6;
+        public bool IsComport6Connected => Comport5.IsOpen;
         public CheckedListBox.CheckedIndexCollection command1SelectedCommPorts;
         public CheckedListBox.CheckedIndexCollection command2SelectedCommPorts;
         public CheckedListBox.CheckedIndexCollection command3SelectedCommPorts;
@@ -86,14 +92,6 @@ namespace UI.RichClient
             Comport4 = new SerialPort();
             Comport5 = new SerialPort();
             Comport6 = new SerialPort();
-            try
-            {
-                Comport1.Open();
-            }
-            catch (Exception ex)
-            {
-                //doing nothing
-            }
         }
 
         private void button7_Click(object sender, EventArgs e)
@@ -250,50 +248,84 @@ namespace UI.RichClient
         }
 
 
-        private void button20_Click(object sender, EventArgs e)
+        private void initializeCommPortsButton_Click(object sender, EventArgs e)
         {
-            Comport1.PortName = "COM4";
-            Comport1.BaudRate = 9600;
-            Comport1.Parity = Parity.None;
-            Comport1.DataBits = 8;
-            Comport1.StopBits = StopBits.One;
-            Comport1.Encoding = Encoding.ASCII;
-            Comport2.PortName = "COM5";
-            Comport2.BaudRate = 9600;
-            Comport2.Parity = Parity.None;
-            Comport2.DataBits = 8;
-            Comport2.StopBits = StopBits.One;
-            Comport2.Encoding = Encoding.ASCII;
-            Comport3.PortName = "COM6";
-            Comport3.BaudRate = 9600;
-            Comport3.Parity = Parity.None;
-            Comport3.DataBits = 8;
-            Comport3.StopBits = StopBits.One;
-            Comport3.Encoding = Encoding.ASCII;
-            Comport4.PortName = "COM7";
-            Comport4.BaudRate = 9600;
-            Comport4.Parity = Parity.None;
-            Comport4.DataBits = 8;
-            Comport4.StopBits = StopBits.One;
-            Comport4.Encoding = Encoding.ASCII;
-            Comport5.PortName = "COM8";
-            Comport5.BaudRate = 9600;
-            Comport5.Parity = Parity.None;
-            Comport5.DataBits = 8;
-            Comport5.StopBits = StopBits.One;
-            Comport5.Encoding = Encoding.ASCII;
-            Comport6.PortName = "COM9";
-            Comport6.BaudRate = 9600;
-            Comport6.Parity = Parity.None;
-            Comport6.DataBits = 8;
-            Comport6.StopBits = StopBits.One;
-            Comport6.Encoding = Encoding.ASCII;
-            Comport1.Open();
-            Comport2.Open();
-            Comport3.Open();
-            Comport4.Open();
-            Comport5.Open();
-            Comport6.Open();
+            try
+            {
+                Comport1.PortName = "COM4";
+                Comport1.BaudRate = 9600;
+                Comport1.Parity = Parity.None;
+                Comport1.DataBits = 8;
+                Comport1.StopBits = StopBits.One;
+                Comport1.Encoding = Encoding.ASCII;
+                Comport2.PortName = "COM5";
+                Comport2.BaudRate = 9600;
+                Comport2.Parity = Parity.None;
+                Comport2.DataBits = 8;
+                Comport2.StopBits = StopBits.One;
+                Comport2.Encoding = Encoding.ASCII;
+                Comport3.PortName = "COM6";
+                Comport3.BaudRate = 9600;
+                Comport3.Parity = Parity.None;
+                Comport3.DataBits = 8;
+                Comport3.StopBits = StopBits.One;
+                Comport3.Encoding = Encoding.ASCII;
+                Comport4.PortName = "COM7";
+                Comport4.BaudRate = 9600;
+                Comport4.Parity = Parity.None;
+                Comport4.DataBits = 8;
+                Comport4.StopBits = StopBits.One;
+                Comport4.Encoding = Encoding.ASCII;
+                Comport5.PortName = "COM8";
+                Comport5.BaudRate = 9600;
+                Comport5.Parity = Parity.None;
+                Comport5.DataBits = 8;
+                Comport5.StopBits = StopBits.One;
+                Comport5.Encoding = Encoding.ASCII;
+                Comport6.PortName = "COM9";
+                Comport6.BaudRate = 9600;
+                Comport6.Parity = Parity.None;
+                Comport6.DataBits = 8;
+                Comport6.StopBits = StopBits.One;
+                Comport6.Encoding = Encoding.ASCII;
+            }
+            catch { }
+
+            try
+            {
+                Comport1.Open();
+            }
+            catch { }
+
+            try
+            {
+                Comport2.Open();
+            }
+            catch { }
+
+            try
+            {
+                Comport3.Open();
+            }
+            catch { }
+
+            try
+            {
+                Comport4.Open();
+            }
+            catch { }
+
+            try
+            {
+                Comport5.Open();
+            }
+            catch { }
+
+            try
+            {
+                Comport6.Open();
+            }
+            catch { }
         }
 
         private void button13_Click(object sender, EventArgs e)
