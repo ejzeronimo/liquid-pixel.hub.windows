@@ -32,12 +32,12 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.windowsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.groupOBoxesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.boxToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.portsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.infoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
-            this.groupOBoxesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
@@ -69,6 +69,13 @@
             this.windowsToolStripMenuItem.Name = "windowsToolStripMenuItem";
             this.windowsToolStripMenuItem.Size = new System.Drawing.Size(68, 20);
             this.windowsToolStripMenuItem.Text = "Windows";
+            // 
+            // groupOBoxesToolStripMenuItem
+            // 
+            this.groupOBoxesToolStripMenuItem.Name = "groupOBoxesToolStripMenuItem";
+            this.groupOBoxesToolStripMenuItem.Size = new System.Drawing.Size(153, 22);
+            this.groupOBoxesToolStripMenuItem.Text = "Group o\' Boxes";
+            this.groupOBoxesToolStripMenuItem.Click += new System.EventHandler(this.groupOBoxesToolStripMenuItem_Click);
             // 
             // boxToolStripMenuItem
             // 
@@ -108,12 +115,6 @@
             this.progressBar1.Name = "progressBar1";
             this.progressBar1.Size = new System.Drawing.Size(23, 296);
             this.progressBar1.TabIndex = 2;
-            // 
-            // groupOBoxesToolStripMenuItem
-            // 
-            this.groupOBoxesToolStripMenuItem.Name = "groupOBoxesToolStripMenuItem";
-            this.groupOBoxesToolStripMenuItem.Size = new System.Drawing.Size(153, 22);
-            this.groupOBoxesToolStripMenuItem.Text = "Group o\' Boxes";
             // 
             // Hub
             // 

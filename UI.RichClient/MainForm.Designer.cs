@@ -186,17 +186,17 @@
             // 
             this.PortBox.FormattingEnabled = true;
             this.PortBox.Items.AddRange(new object[] {
-            "COM1",
-            "COM2",
-            "COM3",
             "COM4",
             "COM5",
-            "COM6"});
+            "COM6",
+            "COM7",
+            "COM8",
+            "COM9"});
             this.PortBox.Location = new System.Drawing.Point(67, 44);
             this.PortBox.Name = "PortBox";
             this.PortBox.Size = new System.Drawing.Size(121, 21);
             this.PortBox.TabIndex = 15;
-            this.PortBox.Text = "COM1";
+            this.PortBox.Text = "COM4";
             this.PortBox.SelectedIndexChanged += new System.EventHandler(this.PortBox_SelectedIndexChanged);
             // 
             // DelayBar

@@ -33,5 +33,11 @@ namespace UI.RichClient
         {
             MessageBox.Show('"' + "Madrix is insuperior, Liquid Pixel is the best" + '"' +  "-Elliot");
         }
+
+        private void groupOBoxesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Group prts = new RichClient.Group();
+            prts.Show();
+        }
     }
 }
