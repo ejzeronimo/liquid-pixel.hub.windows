@@ -388,10 +388,11 @@ namespace UI.RichClient
             "Random Twinkle",
             "Random Flash",
             "Theater Chase",
-            "Fade",
+            "Fade IO",
             "Chroma",
             "Fade In",
-            "Fade Out"});
+            "Fade Out",
+            "Random Fade IO"});
             this.mode1ComboBox.Location = new System.Drawing.Point(13, 400);
             this.mode1ComboBox.Name = "mode1ComboBox";
             this.mode1ComboBox.Size = new System.Drawing.Size(100, 21);
@@ -411,10 +412,11 @@ namespace UI.RichClient
             "Random Twinkle",
             "Random Flash",
             "Theater Chase",
-            "Fade",
+            "Fade IO",
             "Chroma",
             "Fade In",
-            "Fade Out"});
+            "Fade Out",
+            "Random Fade IO"});
             this.mode2ComboBox.Location = new System.Drawing.Point(218, 400);
             this.mode2ComboBox.Name = "mode2ComboBox";
             this.mode2ComboBox.Size = new System.Drawing.Size(100, 21);
@@ -434,10 +436,11 @@ namespace UI.RichClient
             "Random Twinkle",
             "Random Flash",
             "Theater Chase",
-            "Fade",
+            "Fade IO",
             "Chroma",
             "Fade In",
-            "Fade Out"});
+            "Fade Out",
+            "Random Fade IO"});
             this.mode3ComboBox.Location = new System.Drawing.Point(424, 400);
             this.mode3ComboBox.Name = "mode3ComboBox";
             this.mode3ComboBox.Size = new System.Drawing.Size(100, 21);
@@ -456,10 +459,11 @@ namespace UI.RichClient
             "Random Twinkle",
             "Random Flash",
             "Theater Chase",
-            "Fade",
+            "Fade IO",
             "Chroma",
             "Fade In",
-            "Fade Out"});
+            "Fade Out",
+            "Random Fade IO"});
             this.mode4ComboBox.Location = new System.Drawing.Point(630, 400);
             this.mode4ComboBox.Name = "mode4ComboBox";
             this.mode4ComboBox.Size = new System.Drawing.Size(100, 21);
@@ -478,10 +482,11 @@ namespace UI.RichClient
             "Random Twinkle",
             "Random Flash",
             "Theater Chase",
-            "Fade",
+            "Fade IO",
             "Chroma",
             "Fade In",
-            "Fade Out"});
+            "Fade Out",
+            "Random Fade IO"});
             this.mode5ComboBox.Location = new System.Drawing.Point(836, 400);
             this.mode5ComboBox.Name = "mode5ComboBox";
             this.mode5ComboBox.Size = new System.Drawing.Size(100, 21);
@@ -500,10 +505,11 @@ namespace UI.RichClient
             "Random Twinkle",
             "Random Flash",
             "Theater Chase",
-            "Fade",
+            "Fade IO",
             "Chroma",
             "Fade In",
-            "Fade Out"});
+            "Fade Out",
+            "Random Fade IO"});
             this.mode6ComboBox.Location = new System.Drawing.Point(1042, 399);
             this.mode6ComboBox.Name = "mode6ComboBox";
             this.mode6ComboBox.Size = new System.Drawing.Size(100, 21);
