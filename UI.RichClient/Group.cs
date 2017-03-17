@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Drawing;
 using System.IO.Ports;
 using System.Text;
@@ -57,7 +58,7 @@ namespace UI.RichClient
         public SerialPort Comport5;
         public bool IsComport5Connected => Comport5.IsOpen;
         public SerialPort Comport6;
-        public bool IsComport6Connected => Comport5.IsOpen;
+        public bool IsComport6Connected => Comport6.IsOpen;
         public CheckedListBox.CheckedIndexCollection command1SelectedCommPorts;
         public CheckedListBox.CheckedIndexCollection command2SelectedCommPorts;
         public CheckedListBox.CheckedIndexCollection command3SelectedCommPorts;
@@ -349,6 +350,15 @@ namespace UI.RichClient
                 Comport6.Open();
             }
             catch { }
+
+            // capture the status of the ports
+            Global.CommPortsConnectionStatus.Clear();
+            Global.CommPortsConnectionStatus.Add(Comport1.PortName, Comport1.IsOpen);
+            Global.CommPortsConnectionStatus.Add(Comport2.PortName, Comport2.IsOpen);
+            Global.CommPortsConnectionStatus.Add(Comport3.PortName, Comport3.IsOpen);
+            Global.CommPortsConnectionStatus.Add(Comport4.PortName, Comport4.IsOpen);
+            Global.CommPortsConnectionStatus.Add(Comport5.PortName, Comport5.IsOpen);
+            Global.CommPortsConnectionStatus.Add(Comport6.PortName, Comport6.IsOpen);
         }
 
         private void button13_Click(object sender, EventArgs e)
