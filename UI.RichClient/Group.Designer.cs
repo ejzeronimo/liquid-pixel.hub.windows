@@ -120,9 +120,7 @@ namespace UI.RichClient
             this.command1CommPortCheckedListBox.Items.AddRange(new object[] {
             "COM4",
             "COM5",
-            "COM6",
             "COM7",
-            "COM8",
             "COM9"});
             this.command1CommPortCheckedListBox.Location = new System.Drawing.Point(12, 235);
             this.command1CommPortCheckedListBox.Name = "command1CommPortCheckedListBox";
@@ -202,9 +200,7 @@ namespace UI.RichClient
             this.command2CommPortCheckedListBox.Items.AddRange(new object[] {
             "COM4",
             "COM5",
-            "COM6",
             "COM7",
-            "COM8",
             "COM9"});
             this.command2CommPortCheckedListBox.Location = new System.Drawing.Point(218, 235);
             this.command2CommPortCheckedListBox.Name = "command2CommPortCheckedListBox";
@@ -228,9 +224,7 @@ namespace UI.RichClient
             this.command3CommPortCheckedListBox.Items.AddRange(new object[] {
             "COM4",
             "COM5",
-            "COM6",
             "COM7",
-            "COM8",
             "COM9"});
             this.command3CommPortCheckedListBox.Location = new System.Drawing.Point(424, 235);
             this.command3CommPortCheckedListBox.Name = "command3CommPortCheckedListBox";
@@ -253,9 +247,7 @@ namespace UI.RichClient
             this.command4CommPortCheckedListBox.Items.AddRange(new object[] {
             "COM4",
             "COM5",
-            "COM6",
             "COM7",
-            "COM8",
             "COM9"});
             this.command4CommPortCheckedListBox.Location = new System.Drawing.Point(630, 235);
             this.command4CommPortCheckedListBox.Name = "command4CommPortCheckedListBox";
@@ -278,9 +270,7 @@ namespace UI.RichClient
             this.command5CommPortCheckedListBox.Items.AddRange(new object[] {
             "COM4",
             "COM5",
-            "COM6",
             "COM7",
-            "COM8",
             "COM9"});
             this.command5CommPortCheckedListBox.Location = new System.Drawing.Point(836, 235);
             this.command5CommPortCheckedListBox.Name = "command5CommPortCheckedListBox";
@@ -396,11 +386,17 @@ namespace UI.RichClient
             "Sweep",
             "Twinkle",
             "Random Twinkle",
-            "Fade"});
+            "Random Flash",
+            "Theater Chase",
+            "Fade",
+            "Chroma",
+            "Fade In",
+            "Fade Out"});
             this.mode1ComboBox.Location = new System.Drawing.Point(13, 400);
             this.mode1ComboBox.Name = "mode1ComboBox";
             this.mode1ComboBox.Size = new System.Drawing.Size(100, 21);
             this.mode1ComboBox.TabIndex = 27;
+            this.mode1ComboBox.SelectedIndexChanged += new System.EventHandler(this.mode1ComboBox_SelectedIndexChanged);
             // 
             // mode2ComboBox
             // 
@@ -413,11 +409,17 @@ namespace UI.RichClient
             "Sweep",
             "Twinkle",
             "Random Twinkle",
-            "Fade"});
+            "Random Flash",
+            "Theater Chase",
+            "Fade",
+            "Chroma",
+            "Fade In",
+            "Fade Out"});
             this.mode2ComboBox.Location = new System.Drawing.Point(218, 400);
             this.mode2ComboBox.Name = "mode2ComboBox";
             this.mode2ComboBox.Size = new System.Drawing.Size(100, 21);
             this.mode2ComboBox.TabIndex = 28;
+            this.mode2ComboBox.SelectedIndexChanged += new System.EventHandler(this.mode2ComboBox_SelectedIndexChanged);
             // 
             // mode3ComboBox
             // 
@@ -430,7 +432,12 @@ namespace UI.RichClient
             "Sweep",
             "Twinkle",
             "Random Twinkle",
-            "Fade"});
+            "Random Flash",
+            "Theater Chase",
+            "Fade",
+            "Chroma",
+            "Fade In",
+            "Fade Out"});
             this.mode3ComboBox.Location = new System.Drawing.Point(424, 400);
             this.mode3ComboBox.Name = "mode3ComboBox";
             this.mode3ComboBox.Size = new System.Drawing.Size(100, 21);
@@ -447,7 +454,12 @@ namespace UI.RichClient
             "Sweep",
             "Twinkle",
             "Random Twinkle",
-            "Fade"});
+            "Random Flash",
+            "Theater Chase",
+            "Fade",
+            "Chroma",
+            "Fade In",
+            "Fade Out"});
             this.mode4ComboBox.Location = new System.Drawing.Point(630, 400);
             this.mode4ComboBox.Name = "mode4ComboBox";
             this.mode4ComboBox.Size = new System.Drawing.Size(100, 21);
@@ -464,7 +476,12 @@ namespace UI.RichClient
             "Sweep",
             "Twinkle",
             "Random Twinkle",
-            "Fade"});
+            "Random Flash",
+            "Theater Chase",
+            "Fade",
+            "Chroma",
+            "Fade In",
+            "Fade Out"});
             this.mode5ComboBox.Location = new System.Drawing.Point(836, 400);
             this.mode5ComboBox.Name = "mode5ComboBox";
             this.mode5ComboBox.Size = new System.Drawing.Size(100, 21);
@@ -481,7 +498,12 @@ namespace UI.RichClient
             "Sweep",
             "Twinkle",
             "Random Twinkle",
-            "Fade"});
+            "Random Flash",
+            "Theater Chase",
+            "Fade",
+            "Chroma",
+            "Fade In",
+            "Fade Out"});
             this.mode6ComboBox.Location = new System.Drawing.Point(1042, 399);
             this.mode6ComboBox.Name = "mode6ComboBox";
             this.mode6ComboBox.Size = new System.Drawing.Size(100, 21);
@@ -551,6 +573,7 @@ namespace UI.RichClient
             // 
             this.command1Delay.BackColor = System.Drawing.Color.DarkGray;
             this.command1Delay.Location = new System.Drawing.Point(13, 442);
+            this.command1Delay.Maximum = 50;
             this.command1Delay.Name = "command1Delay";
             this.command1Delay.Size = new System.Drawing.Size(199, 45);
             this.command1Delay.TabIndex = 39;
@@ -559,6 +582,7 @@ namespace UI.RichClient
             // 
             this.command2Delay.BackColor = System.Drawing.Color.DarkGray;
             this.command2Delay.Location = new System.Drawing.Point(218, 442);
+            this.command2Delay.Maximum = 50;
             this.command2Delay.Name = "command2Delay";
             this.command2Delay.Size = new System.Drawing.Size(200, 45);
             this.command2Delay.TabIndex = 40;
@@ -567,6 +591,7 @@ namespace UI.RichClient
             // 
             this.command3Delay.BackColor = System.Drawing.Color.DarkGray;
             this.command3Delay.Location = new System.Drawing.Point(424, 442);
+            this.command3Delay.Maximum = 50;
             this.command3Delay.Name = "command3Delay";
             this.command3Delay.Size = new System.Drawing.Size(200, 45);
             this.command3Delay.TabIndex = 41;
@@ -575,6 +600,7 @@ namespace UI.RichClient
             // 
             this.command4Delay.BackColor = System.Drawing.Color.DarkGray;
             this.command4Delay.Location = new System.Drawing.Point(630, 441);
+            this.command4Delay.Maximum = 50;
             this.command4Delay.Name = "command4Delay";
             this.command4Delay.Size = new System.Drawing.Size(200, 45);
             this.command4Delay.TabIndex = 42;
@@ -583,6 +609,7 @@ namespace UI.RichClient
             // 
             this.command5Delay.BackColor = System.Drawing.Color.DarkGray;
             this.command5Delay.Location = new System.Drawing.Point(836, 441);
+            this.command5Delay.Maximum = 50;
             this.command5Delay.Name = "command5Delay";
             this.command5Delay.Size = new System.Drawing.Size(200, 45);
             this.command5Delay.TabIndex = 43;
@@ -591,6 +618,7 @@ namespace UI.RichClient
             // 
             this.command6Delay.BackColor = System.Drawing.Color.DarkGray;
             this.command6Delay.Location = new System.Drawing.Point(1042, 440);
+            this.command6Delay.Maximum = 50;
             this.command6Delay.Name = "command6Delay";
             this.command6Delay.Size = new System.Drawing.Size(200, 45);
             this.command6Delay.TabIndex = 44;
@@ -839,10 +867,10 @@ namespace UI.RichClient
             this.button8.UseVisualStyleBackColor = true;
             this.button8.Click += new System.EventHandler(this.button8_Click);
             // 
-            // button20
+            // initializeCommPortsButton
             // 
             this.initializeCommPortsButton.Location = new System.Drawing.Point(12, 658);
-            this.initializeCommPortsButton.Name = "button20";
+            this.initializeCommPortsButton.Name = "initializeCommPortsButton";
             this.initializeCommPortsButton.Size = new System.Drawing.Size(77, 27);
             this.initializeCommPortsButton.TabIndex = 65;
             this.initializeCommPortsButton.Text = "Start";
@@ -853,7 +881,7 @@ namespace UI.RichClient
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1237, 686);
+            this.ClientSize = new System.Drawing.Size(1251, 686);
             this.Controls.Add(this.initializeCommPortsButton);
             this.Controls.Add(this.QueueUpNow);
             this.Controls.Add(this.queueCheckedListBox);
