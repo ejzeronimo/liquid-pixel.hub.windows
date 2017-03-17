@@ -300,18 +300,18 @@ namespace UI.RichClient
                 Comport2.DataBits = 8;
                 Comport2.StopBits = StopBits.One;
                 Comport2.Encoding = Encoding.ASCII;
+                Comport3.PortName = "COM6";
+                Comport3.BaudRate = 9600;
+                Comport3.Parity = Parity.None;
+                Comport3.DataBits = 8;
+                Comport3.StopBits = StopBits.One;
+                Comport3.Encoding = Encoding.ASCII; 
                 Comport4.PortName = "COM7";
                 Comport4.BaudRate = 9600;
                 Comport4.Parity = Parity.None;
                 Comport4.DataBits = 8;
                 Comport4.StopBits = StopBits.One;
-                Comport4.Encoding = Encoding.ASCII; 
-                Comport6.PortName = "COM9";
-                Comport6.BaudRate = 9600;
-                Comport6.Parity = Parity.None;
-                Comport6.DataBits = 8;
-                Comport6.StopBits = StopBits.One;
-                Comport6.Encoding = Encoding.ASCII;
+                Comport4.Encoding = Encoding.ASCII;
             }
             catch { }
 
@@ -341,13 +341,13 @@ namespace UI.RichClient
 
             try
             {
-                Comport5.Open();
+                //Comport5.Open();
             }
             catch { }
 
             try
             {
-                Comport6.Open();
+                //Comport6.Open();
             }
             catch { }
 
@@ -357,8 +357,8 @@ namespace UI.RichClient
             Global.CommPortsConnectionStatus.Add(Comport2.PortName, Comport2.IsOpen);
             Global.CommPortsConnectionStatus.Add(Comport3.PortName, Comport3.IsOpen);
             Global.CommPortsConnectionStatus.Add(Comport4.PortName, Comport4.IsOpen);
-            Global.CommPortsConnectionStatus.Add(Comport5.PortName, Comport5.IsOpen);
-            Global.CommPortsConnectionStatus.Add(Comport6.PortName, Comport6.IsOpen);
+            //Global.CommPortsConnectionStatus.Add(Comport5.PortName, Comport5.IsOpen);
+            //Global.CommPortsConnectionStatus.Add(Comport6.PortName, Comport6.IsOpen);
         }
 
         private void button13_Click(object sender, EventArgs e)
