@@ -15,13 +15,6 @@ namespace UI.RichClient
         static public string port5;
         static public string port6;
 
-
-        // now for the states of the ports
-        static public string statport1;
-        static public string statport2;
-        static public string statport3;
-        static public string statport4;
-        static public string statport5;
-        static public string statport6;
+        public static readonly Dictionary<string, bool> CommPortsConnectionStatus = new Dictionary<string, bool>();
     }
 }
