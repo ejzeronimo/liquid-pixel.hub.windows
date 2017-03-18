@@ -391,7 +391,6 @@ namespace UI.RichClient
             this.mode1ComboBox.Name = "mode1ComboBox";
             this.mode1ComboBox.Size = new System.Drawing.Size(100, 21);
             this.mode1ComboBox.TabIndex = 27;
-            this.mode1ComboBox.SelectedIndexChanged += new System.EventHandler(this.mode1ComboBox_SelectedIndexChanged);
             // 
             // mode2ComboBox
             // 
@@ -411,7 +410,6 @@ namespace UI.RichClient
             this.mode2ComboBox.Name = "mode2ComboBox";
             this.mode2ComboBox.Size = new System.Drawing.Size(100, 21);
             this.mode2ComboBox.TabIndex = 28;
-            this.mode2ComboBox.SelectedIndexChanged += new System.EventHandler(this.mode2ComboBox_SelectedIndexChanged);
             // 
             // mode3ComboBox
             // 
