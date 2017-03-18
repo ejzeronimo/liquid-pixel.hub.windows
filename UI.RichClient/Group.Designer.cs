@@ -554,55 +554,67 @@ namespace UI.RichClient
             // command1Delay
             // 
             this.command1Delay.BackColor = System.Drawing.Color.DarkGray;
+            this.command1Delay.LargeChange = 10;
             this.command1Delay.Location = new System.Drawing.Point(13, 442);
-            this.command1Delay.Maximum = 50;
+            this.command1Delay.Maximum = 100;
             this.command1Delay.Name = "command1Delay";
             this.command1Delay.Size = new System.Drawing.Size(199, 45);
+            this.command1Delay.SmallChange = 5;
             this.command1Delay.TabIndex = 39;
             // 
             // command2Delay
             // 
             this.command2Delay.BackColor = System.Drawing.Color.DarkGray;
+            this.command2Delay.LargeChange = 10;
             this.command2Delay.Location = new System.Drawing.Point(218, 442);
-            this.command2Delay.Maximum = 50;
+            this.command2Delay.Maximum = 100;
             this.command2Delay.Name = "command2Delay";
             this.command2Delay.Size = new System.Drawing.Size(200, 45);
+            this.command2Delay.SmallChange = 5;
             this.command2Delay.TabIndex = 40;
             // 
             // command3Delay
             // 
             this.command3Delay.BackColor = System.Drawing.Color.DarkGray;
+            this.command3Delay.LargeChange = 10;
             this.command3Delay.Location = new System.Drawing.Point(424, 442);
-            this.command3Delay.Maximum = 50;
+            this.command3Delay.Maximum = 100;
             this.command3Delay.Name = "command3Delay";
             this.command3Delay.Size = new System.Drawing.Size(200, 45);
+            this.command3Delay.SmallChange = 5;
             this.command3Delay.TabIndex = 41;
             // 
             // command4Delay
             // 
             this.command4Delay.BackColor = System.Drawing.Color.DarkGray;
+            this.command4Delay.LargeChange = 10;
             this.command4Delay.Location = new System.Drawing.Point(630, 441);
-            this.command4Delay.Maximum = 50;
+            this.command4Delay.Maximum = 100;
             this.command4Delay.Name = "command4Delay";
             this.command4Delay.Size = new System.Drawing.Size(200, 45);
+            this.command4Delay.SmallChange = 5;
             this.command4Delay.TabIndex = 42;
             // 
             // command5Delay
             // 
             this.command5Delay.BackColor = System.Drawing.Color.DarkGray;
+            this.command5Delay.LargeChange = 10;
             this.command5Delay.Location = new System.Drawing.Point(836, 441);
-            this.command5Delay.Maximum = 50;
+            this.command5Delay.Maximum = 100;
             this.command5Delay.Name = "command5Delay";
             this.command5Delay.Size = new System.Drawing.Size(200, 45);
+            this.command5Delay.SmallChange = 5;
             this.command5Delay.TabIndex = 43;
             // 
             // command6Delay
             // 
             this.command6Delay.BackColor = System.Drawing.Color.DarkGray;
+            this.command6Delay.LargeChange = 10;
             this.command6Delay.Location = new System.Drawing.Point(1042, 440);
-            this.command6Delay.Maximum = 50;
+            this.command6Delay.Maximum = 100;
             this.command6Delay.Name = "command6Delay";
             this.command6Delay.Size = new System.Drawing.Size(200, 45);
+            this.command6Delay.SmallChange = 5;
             this.command6Delay.TabIndex = 44;
             // 
             // label7
