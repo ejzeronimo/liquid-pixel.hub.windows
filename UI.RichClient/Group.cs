@@ -359,6 +359,8 @@ namespace UI.RichClient
             Global.CommPortsConnectionStatus.Add(Comport4.PortName, Comport4.IsOpen);
             //Global.CommPortsConnectionStatus.Add(Comport5.PortName, Comport5.IsOpen);
             //Global.CommPortsConnectionStatus.Add(Comport6.PortName, Comport6.IsOpen);
+
+            SendWatchdogResetAsyncInfiniteLoop();
         }
 
         private void button13_Click(object sender, EventArgs e)
@@ -458,38 +460,11 @@ namespace UI.RichClient
 
         private void queueCommand_Click(object sender, EventArgs e, int index, string package, CheckedListBox.CheckedIndexCollection checkedCommPorts)
         {
-
+            int selectedIndex;
             for (int i = 0; i < checkedCommPorts?.Count; i++)
             {
-                switch (checkedCommPorts[i])
-                {
-                    case 0:
-                        if (Comport1.IsOpen)
-                            Comport1.Write(package);
-                        break;
-                    case 1:
-                        if (Comport2.IsOpen)
-                            Comport2.Write(package);
-                        break;
-                    case 2:
-                        if (Comport3.IsOpen)
-                            Comport3.Write(package);
-                        break;
-                    case 3:
-                        if (Comport4.IsOpen)
-                            Comport4.Write(package);
-                        break;
-                    case 4:
-                        if (Comport5.IsOpen)
-                            Comport5.Write(package);
-                        break;
-                    case 5:
-                        if (Comport6.IsOpen)
-                            Comport6.Write(package);
-                        break;
-                    default:
-                        break;
-                }
+                selectedIndex = checkedCommPorts[i];
+                SendDataToSerialPorts(package, selectedIndex);
             }
         }
 
@@ -528,14 +503,51 @@ namespace UI.RichClient
             queueSelectedCommands = queueCheckedListBox.CheckedIndices;
         }
 
-        private void mode1ComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        private void SendDataToSerialPorts(string package, int selectedIndex)
         {
-
+            switch (selectedIndex)
+            {
+                case 0:
+                    if (Comport1.IsOpen)
+                        Comport1.Write(package);
+                    break;
+                case 1:
+                    if (Comport2.IsOpen)
+                        Comport2.Write(package);
+                    break;
+                case 2:
+                    if (Comport3.IsOpen)
+                        Comport3.Write(package);
+                    break;
+                case 3:
+                    if (Comport4.IsOpen)
+                        Comport4.Write(package);
+                    break;
+                case 4:
+                    if (Comport5.IsOpen)
+                        Comport5.Write(package);
+                    break;
+                case 5:
+                    if (Comport6.IsOpen)
+                        Comport6.Write(package);
+                    break;
+                default:
+                    break;
+            }
         }
 
-        private void mode2ComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        private async Task SendWatchdogResetAsyncInfiniteLoop()
         {
+            var keepAlivePackage = $"T99~";
+            while (true)
+            {
+                for (int i = 0; i < 6; i++)
+                {
+                    SendDataToSerialPorts(keepAlivePackage, i);
+                }
 
+                await Task.Delay(750);
+            }
         }
     }
 }
