@@ -360,7 +360,7 @@ namespace UI.RichClient
             //Global.CommPortsConnectionStatus.Add(Comport5.PortName, Comport5.IsOpen);
             //Global.CommPortsConnectionStatus.Add(Comport6.PortName, Comport6.IsOpen);
 
-            SendWatchdogResetAsyncInfiniteLoop();
+            //SendWatchdogResetAsyncInfiniteLoop();
         }
 
         private void button13_Click(object sender, EventArgs e)
@@ -448,9 +448,6 @@ namespace UI.RichClient
                         break;
                 }
 
-                if (string.IsNullOrEmpty(package.Trim()))
-                    continue;
-
                 // send payload out serial port and wait
                 var payloadSenderTask = Task.Run(packagePortSender);
                 var delayTask = Task.Delay(TimeSpan.FromSeconds(qDelay));
@@ -505,6 +502,9 @@ namespace UI.RichClient
 
         private void SendDataToSerialPorts(string package, int selectedIndex)
         {
+            if (string.IsNullOrEmpty(package?.Trim()))
+                return;
+
             switch (selectedIndex)
             {
                 case 0:
@@ -546,7 +546,7 @@ namespace UI.RichClient
                     SendDataToSerialPorts(keepAlivePackage, i);
                 }
 
-                await Task.Delay(750);
+                await Task.Delay(2000);
             }
         }
     }
