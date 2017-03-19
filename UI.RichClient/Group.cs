@@ -251,7 +251,7 @@ namespace UI.RichClient
                 moder = 8;
                 return;
             }
-            if (comboBox.Text == "FadeIO")
+            if (comboBox.Text == "Breath")
             {
                 moder = 9;
                 return;
@@ -261,11 +261,11 @@ namespace UI.RichClient
                 moder = 10;
                 return;
             }
-            if (comboBox.Text == "Breath")
-            {
-                moder = 11;
-                return;
-            }
+            //if (comboBox.Text == "Breath")
+            //{
+            //    moder = 11;
+            //    return;
+            //}
             if (comboBox.Text == "Fade In")
             {
                 moder = 12;
@@ -276,9 +276,14 @@ namespace UI.RichClient
                 moder = 13;
                 return;
             }
-            if (comboBox.Text == "Fade Random IO")
+            if (comboBox.Text == "Random Breath")
             {
                 moder = 14;
+                return;
+            }
+            if (comboBox.Text == "Sudden Flash")
+            {
+                moder = 15;
                 return;
             }
         }

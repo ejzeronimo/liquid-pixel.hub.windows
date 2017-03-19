@@ -386,7 +386,10 @@ namespace UI.RichClient
             "Random Flash",
             "Theater Chase",
             "Fade In",
-            "Fade Out"});
+            "Fade Out",
+            "Breath",
+            "Random Breath",
+            "Sudden Flash"});
             this.mode1ComboBox.Location = new System.Drawing.Point(13, 400);
             this.mode1ComboBox.Name = "mode1ComboBox";
             this.mode1ComboBox.Size = new System.Drawing.Size(100, 21);
@@ -405,7 +408,10 @@ namespace UI.RichClient
             "Random Flash",
             "Theater Chase",
             "Fade In",
-            "Fade Out"});
+            "Fade Out",
+            "Breath",
+            "Random Breath",
+            "Sudden Flash"});
             this.mode2ComboBox.Location = new System.Drawing.Point(218, 400);
             this.mode2ComboBox.Name = "mode2ComboBox";
             this.mode2ComboBox.Size = new System.Drawing.Size(100, 21);
@@ -424,7 +430,10 @@ namespace UI.RichClient
             "Random Flash",
             "Theater Chase",
             "Fade In",
-            "Fade Out"});
+            "Fade Out",
+            "Breath",
+            "Random Breath",
+            "Sudden Flash"});
             this.mode3ComboBox.Location = new System.Drawing.Point(424, 400);
             this.mode3ComboBox.Name = "mode3ComboBox";
             this.mode3ComboBox.Size = new System.Drawing.Size(100, 21);
@@ -443,7 +452,10 @@ namespace UI.RichClient
             "Random Flash",
             "Theater Chase",
             "Fade In",
-            "Fade Out"});
+            "Fade Out",
+            "Breath",
+            "Random Breath",
+            "Sudden Flash"});
             this.mode4ComboBox.Location = new System.Drawing.Point(630, 400);
             this.mode4ComboBox.Name = "mode4ComboBox";
             this.mode4ComboBox.Size = new System.Drawing.Size(100, 21);
@@ -462,7 +474,10 @@ namespace UI.RichClient
             "Random Flash",
             "Theater Chase",
             "Fade In",
-            "Fade Out"});
+            "Fade Out",
+            "Breath",
+            "Random Breath",
+            "Sudden Flash"});
             this.mode5ComboBox.Location = new System.Drawing.Point(836, 400);
             this.mode5ComboBox.Name = "mode5ComboBox";
             this.mode5ComboBox.Size = new System.Drawing.Size(100, 21);
@@ -474,18 +489,17 @@ namespace UI.RichClient
             this.mode6ComboBox.Items.AddRange(new object[] {
             "Off",
             "Solid",
-            "Random Cloudy",
             "Flash",
             "Sweep",
             "Twinkle",
             "Random Twinkle",
             "Random Flash",
             "Theater Chase",
-            "Fade IO",
-            "Chroma",
             "Fade In",
             "Fade Out",
-            "Random Fade IO"});
+            "Breath",
+            "Random Breath",
+            "Sudden Flash"});
             this.mode6ComboBox.Location = new System.Drawing.Point(1042, 399);
             this.mode6ComboBox.Name = "mode6ComboBox";
             this.mode6ComboBox.Size = new System.Drawing.Size(100, 21);
@@ -556,7 +570,7 @@ namespace UI.RichClient
             this.command1Delay.BackColor = System.Drawing.Color.DarkGray;
             this.command1Delay.LargeChange = 10;
             this.command1Delay.Location = new System.Drawing.Point(13, 442);
-            this.command1Delay.Maximum = 100;
+            this.command1Delay.Maximum = 200;
             this.command1Delay.Name = "command1Delay";
             this.command1Delay.Size = new System.Drawing.Size(199, 45);
             this.command1Delay.SmallChange = 5;
@@ -567,7 +581,7 @@ namespace UI.RichClient
             this.command2Delay.BackColor = System.Drawing.Color.DarkGray;
             this.command2Delay.LargeChange = 10;
             this.command2Delay.Location = new System.Drawing.Point(218, 442);
-            this.command2Delay.Maximum = 100;
+            this.command2Delay.Maximum = 200;
             this.command2Delay.Name = "command2Delay";
             this.command2Delay.Size = new System.Drawing.Size(200, 45);
             this.command2Delay.SmallChange = 5;
@@ -578,7 +592,7 @@ namespace UI.RichClient
             this.command3Delay.BackColor = System.Drawing.Color.DarkGray;
             this.command3Delay.LargeChange = 10;
             this.command3Delay.Location = new System.Drawing.Point(424, 442);
-            this.command3Delay.Maximum = 100;
+            this.command3Delay.Maximum = 200;
             this.command3Delay.Name = "command3Delay";
             this.command3Delay.Size = new System.Drawing.Size(200, 45);
             this.command3Delay.SmallChange = 5;
@@ -589,7 +603,7 @@ namespace UI.RichClient
             this.command4Delay.BackColor = System.Drawing.Color.DarkGray;
             this.command4Delay.LargeChange = 10;
             this.command4Delay.Location = new System.Drawing.Point(630, 441);
-            this.command4Delay.Maximum = 100;
+            this.command4Delay.Maximum = 200;
             this.command4Delay.Name = "command4Delay";
             this.command4Delay.Size = new System.Drawing.Size(200, 45);
             this.command4Delay.SmallChange = 5;
@@ -600,7 +614,7 @@ namespace UI.RichClient
             this.command5Delay.BackColor = System.Drawing.Color.DarkGray;
             this.command5Delay.LargeChange = 10;
             this.command5Delay.Location = new System.Drawing.Point(836, 441);
-            this.command5Delay.Maximum = 100;
+            this.command5Delay.Maximum = 200;
             this.command5Delay.Name = "command5Delay";
             this.command5Delay.Size = new System.Drawing.Size(200, 45);
             this.command5Delay.SmallChange = 5;
@@ -611,7 +625,7 @@ namespace UI.RichClient
             this.command6Delay.BackColor = System.Drawing.Color.DarkGray;
             this.command6Delay.LargeChange = 10;
             this.command6Delay.Location = new System.Drawing.Point(1042, 440);
-            this.command6Delay.Maximum = 100;
+            this.command6Delay.Maximum = 200;
             this.command6Delay.Name = "command6Delay";
             this.command6Delay.Size = new System.Drawing.Size(200, 45);
             this.command6Delay.SmallChange = 5;
