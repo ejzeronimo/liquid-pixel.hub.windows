@@ -129,13 +129,20 @@
             this.ModeBox.Items.AddRange(new object[] {
             "Off",
             "Solid",
-            "Random Cloudy",
             "Flash",
             "Sweep",
             "Twinkle",
-            "Random Twinke",
-            "Fade"});
-            this.ModeBox.Location = new System.Drawing.Point(249, 55);
+            "Random Twinkle",
+            "Random Flash",
+            "Theater Chase",
+            "Fade In",
+            "Fade Out",
+            "Breath",
+            "Random Breath",
+            "Sudden Flash",
+            "Chroma",
+            "Random Cloudy"});
+            this.ModeBox.Location = new System.Drawing.Point(252, 55);
             this.ModeBox.Name = "ModeBox";
             this.ModeBox.Size = new System.Drawing.Size(121, 21);
             this.ModeBox.TabIndex = 10;
@@ -213,10 +220,10 @@
             this.ModeBar.BackColor = System.Drawing.Color.DarkGray;
             this.ModeBar.LargeChange = 1;
             this.ModeBar.Location = new System.Drawing.Point(211, 82);
-            this.ModeBar.Maximum = 7;
+            this.ModeBar.Maximum = 14;
             this.ModeBar.Name = "ModeBar";
             this.ModeBar.Size = new System.Drawing.Size(226, 45);
-            this.ModeBar.TabIndex = 17;
+            this.ModeBar.TabIndex = 28;
             this.ModeBar.Scroll += new System.EventHandler(this.ModeBar_Scroll);
             // 
             // BrightBar
@@ -278,7 +285,7 @@
             this.ModeBarQ.BackColor = System.Drawing.Color.DarkGray;
             this.ModeBarQ.LargeChange = 1;
             this.ModeBarQ.Location = new System.Drawing.Point(957, 48);
-            this.ModeBarQ.Maximum = 7;
+            this.ModeBarQ.Maximum = 14;
             this.ModeBarQ.Name = "ModeBarQ";
             this.ModeBarQ.Size = new System.Drawing.Size(239, 45);
             this.ModeBarQ.TabIndex = 28;
@@ -327,12 +334,19 @@
             this.ModeBoxQ.Items.AddRange(new object[] {
             "Off",
             "Solid",
-            "Random Cloudy",
             "Flash",
             "Sweep",
             "Twinkle",
-            "Random Twinke",
-            "Fade"});
+            "Random Twinkle",
+            "Random Flash",
+            "Theater Chase",
+            "Fade In",
+            "Fade Out",
+            "Breath",
+            "Random Breath",
+            "Sudden Flash",
+            "Chroma",
+            "Random Cloudy"});
             this.ModeBoxQ.Location = new System.Drawing.Point(1000, 21);
             this.ModeBoxQ.Name = "ModeBoxQ";
             this.ModeBoxQ.Size = new System.Drawing.Size(121, 21);

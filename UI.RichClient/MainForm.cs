@@ -119,7 +119,7 @@ namespace UI.RichClient
         }
         private void ModeBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if(ModeBox.Text == "Off" )
+            if (ModeBox.Text == "Off")
             {
                 moder = 0;
             }
@@ -147,9 +147,37 @@ namespace UI.RichClient
             {
                 moder = 6;
             }
-            if (ModeBox.Text == "Fade")
+            if (ModeBox.Text == "Random Flash")
             {
                 moder = 7;
+            }
+            if (ModeBox.Text == "Theater Chase")
+            {
+                moder = 8;
+            }
+            if (ModeBox.Text == "Chroma")
+            {
+                moder = 9;
+            }
+            if (ModeBox.Text == "Fade In")
+            {
+                moder = 10;
+            }
+            if (ModeBox.Text == "Fade Out")
+            {
+                moder = 11;
+            }
+            if (ModeBox.Text == "Sudden Flash")
+            {
+                moder = 12;
+            }
+            if (ModeBox.Text == "Random Breath")
+            {
+                moder = 13;
+            }
+            if (ModeBox.Text == "Breath")
+            {
+                moder = 14;
             }
         }
         private void MainForm_Load(object sender, EventArgs e)
@@ -205,7 +233,35 @@ namespace UI.RichClient
             }
             if (ModeBar.Value == 7)
             {
-                ModeBox.Text = "Fade";
+                ModeBox.Text = "Random Flash";
+            }
+            if (ModeBar.Value == 8)
+            {
+                ModeBox.Text = "Theater Chase";
+            }
+            if (ModeBar.Value == 9)
+            {
+                ModeBox.Text = "Chroma";
+            }
+            if (ModeBar.Value == 10)
+            {
+                ModeBox.Text = "Fade In";
+            }
+            if (ModeBar.Value == 11)
+            {
+                ModeBox.Text = "Fade Out";
+            }
+            if (ModeBar.Value == 12)
+            {
+                ModeBox.Text = "Sudden Flash";
+            }
+            if (ModeBar.Value == 13)
+            {
+                ModeBox.Text = "Random Breath";
+            }
+            if (ModeBar.Value == 14)
+            {
+                ModeBox.Text = "Breath";
             }
         }
 
