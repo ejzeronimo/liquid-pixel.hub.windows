@@ -312,18 +312,18 @@ namespace UI.RichClient
                 Comport4.DataBits = 8;
                 Comport4.StopBits = StopBits.One;
                 Comport4.Encoding = Encoding.ASCII;
-                Comport4.PortName = Global.port5;
-                Comport4.BaudRate = 9600;
-                Comport4.Parity = Parity.None;
-                Comport4.DataBits = 8;
-                Comport4.StopBits = StopBits.One;
-                Comport4.Encoding = Encoding.ASCII;
-                Comport4.PortName = Global.port6;
-                Comport4.BaudRate = 9600;
-                Comport4.Parity = Parity.None;
-                Comport4.DataBits = 8;
-                Comport4.StopBits = StopBits.One;
-                Comport4.Encoding = Encoding.ASCII;
+                Comport5.PortName = Global.port5;
+                Comport5.BaudRate = 9600;
+                Comport5.Parity = Parity.None;
+                Comport5.DataBits = 8;
+                Comport5.StopBits = StopBits.One;
+                Comport5.Encoding = Encoding.ASCII;
+                Comport6.PortName = Global.port6;
+                Comport6.BaudRate = 9600;
+                Comport6.Parity = Parity.None;
+                Comport6.DataBits = 8;
+                Comport6.StopBits = StopBits.One;
+                Comport6.Encoding = Encoding.ASCII;
             }
             catch { }
             Global.CommPortsConnectionStatus.Clear();
@@ -563,10 +563,42 @@ namespace UI.RichClient
 
         private void Disconnect(object sender, EventArgs e)
         {
-            for (int i = 0; i < 6; i++)
+            try
             {
-                Comport1.Write($"T99~");
+                Comport1.Close();
+                Global.CommPortsConnectionStatus.Add(Comport1.PortName, !Comport1.IsOpen);
             }
+            catch { }
+            try
+            {
+                Comport2.Close();
+                Global.CommPortsConnectionStatus.Add(Comport2.PortName, !Comport2.IsOpen);
+            }
+            catch { }
+            try
+            {
+                Comport3.Close();
+                Global.CommPortsConnectionStatus.Add(Comport3.PortName, !Comport3.IsOpen);
+            }
+            catch { }
+            try
+            {
+                Comport4.Close();
+                Global.CommPortsConnectionStatus.Add(Comport4.PortName, !Comport4.IsOpen);
+            }
+            catch { }
+            try
+            {
+                Comport5.Close();
+                Global.CommPortsConnectionStatus.Add(Comport5.PortName, !Comport5.IsOpen);
+            }
+            catch { }
+            try
+            {
+                Comport6.Close();
+                Global.CommPortsConnectionStatus.Add(Comport6.PortName, !Comport6.IsOpen);
+            }
+            catch { }
         }
     }
 }

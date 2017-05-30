@@ -28,7 +28,6 @@ namespace UI.RichClient
             UpdateCommPortStatusInUi(Box5.Text, Status5);
             UpdateCommPortStatusInUi(Box6.Text, Status6);
         }
-
         private void UpdateCommPortStatusInUi(string boxtText, TextBox statusBox)
         {
             bool status;
