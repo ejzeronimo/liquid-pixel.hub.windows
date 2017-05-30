@@ -271,7 +271,35 @@ namespace UI.RichClient
             }
             if (ModeBarQ.Value == 7)
             {
-                ModeBoxQ.Text = "Fade";
+                ModeBoxQ.Text = "Random Flash";
+            }
+            if (ModeBarQ.Value == 8)
+            {
+                ModeBoxQ.Text = "Theater Chase";
+            }
+            if (ModeBarQ.Value == 9)
+            {
+                ModeBoxQ.Text = "Chroma";
+            }
+            if (ModeBarQ.Value == 10)
+            {
+                ModeBoxQ.Text = "Fade In";
+            }
+            if (ModeBarQ.Value == 11)
+            {
+                ModeBoxQ.Text = "Fade Out";
+            }
+            if (ModeBarQ.Value == 12)
+            {
+                ModeBoxQ.Text = "Sudden Flash";
+            }
+            if (ModeBarQ.Value == 13)
+            {
+                ModeBoxQ.Text = "Random Breath";
+            }
+            if (ModeBarQ.Value == 14)
+            {
+                ModeBoxQ.Text = "Breath";
             }
         }
 
@@ -305,9 +333,37 @@ namespace UI.RichClient
             {
                 moderq = 6;
             }
-            if (ModeBoxQ.Text == "Fade")
+            if (ModeBoxQ.Text == "Random Flash")
             {
                 moderq = 7;
+            }
+            if (ModeBoxQ.Text == "Theater Chase")
+            {
+                moderq = 8;
+            }
+            if (ModeBoxQ.Text == "Chroma")
+            {
+                moderq = 9;
+            }
+            if (ModeBoxQ.Text == "Fade In")
+            {
+                moderq = 10;
+            }
+            if (ModeBoxQ.Text == "Fade Out")
+            {
+                moderq = 11;
+            }
+            if (ModeBoxQ.Text == "Sudden Flash")
+            {
+                moderq = 12;
+            }
+            if (ModeBoxQ.Text == "Random Breath")
+            {
+                moderq = 13;
+            }
+            if (ModeBoxQ.Text == "Breath")
+            {
+                moderq = 14;
             }
         }
 
