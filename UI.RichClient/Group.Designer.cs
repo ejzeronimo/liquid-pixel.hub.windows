@@ -100,6 +100,7 @@ namespace UI.RichClient
             this.button9 = new System.Windows.Forms.Button();
             this.button8 = new System.Windows.Forms.Button();
             this.initializeCommPortsButton = new System.Windows.Forms.Button();
+            this.button19 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.command1Delay)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.command2Delay)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.command3Delay)).BeginInit();
@@ -118,10 +119,12 @@ namespace UI.RichClient
             // 
             this.command1CommPortCheckedListBox.FormattingEnabled = true;
             this.command1CommPortCheckedListBox.Items.AddRange(new object[] {
-            "COM4",
-            "COM5",
-            "COM6",
-            "COM7"});
+            "Box_1",
+            "Box_2",
+            "Box_3",
+            "Box_4",
+            "Box_5",
+            "Box_6"});
             this.command1CommPortCheckedListBox.Location = new System.Drawing.Point(12, 235);
             this.command1CommPortCheckedListBox.Name = "command1CommPortCheckedListBox";
             this.command1CommPortCheckedListBox.Size = new System.Drawing.Size(77, 94);
@@ -198,10 +201,12 @@ namespace UI.RichClient
             // 
             this.command2CommPortCheckedListBox.FormattingEnabled = true;
             this.command2CommPortCheckedListBox.Items.AddRange(new object[] {
-            "COM4",
-            "COM5",
-            "COM6",
-            "COM7"});
+            "Box_1",
+            "Box_2",
+            "Box_3",
+            "Box_4",
+            "Box_5",
+            "Box_6"});
             this.command2CommPortCheckedListBox.Location = new System.Drawing.Point(218, 235);
             this.command2CommPortCheckedListBox.Name = "command2CommPortCheckedListBox";
             this.command2CommPortCheckedListBox.Size = new System.Drawing.Size(77, 94);
@@ -222,10 +227,12 @@ namespace UI.RichClient
             // 
             this.command3CommPortCheckedListBox.FormattingEnabled = true;
             this.command3CommPortCheckedListBox.Items.AddRange(new object[] {
-            "COM4",
-            "COM5",
-            "COM6",
-            "COM7"});
+            "Box_1",
+            "Box_2",
+            "Box_3",
+            "Box_4",
+            "Box_5",
+            "Box_6"});
             this.command3CommPortCheckedListBox.Location = new System.Drawing.Point(424, 235);
             this.command3CommPortCheckedListBox.Name = "command3CommPortCheckedListBox";
             this.command3CommPortCheckedListBox.Size = new System.Drawing.Size(77, 94);
@@ -245,10 +252,12 @@ namespace UI.RichClient
             // 
             this.command4CommPortCheckedListBox.FormattingEnabled = true;
             this.command4CommPortCheckedListBox.Items.AddRange(new object[] {
-            "COM4",
-            "COM5",
-            "COM6",
-            "COM7"});
+            "Box_1",
+            "Box_2",
+            "Box_3",
+            "Box_4",
+            "Box_5",
+            "Box_6"});
             this.command4CommPortCheckedListBox.Location = new System.Drawing.Point(630, 235);
             this.command4CommPortCheckedListBox.Name = "command4CommPortCheckedListBox";
             this.command4CommPortCheckedListBox.Size = new System.Drawing.Size(77, 94);
@@ -268,10 +277,12 @@ namespace UI.RichClient
             // 
             this.command5CommPortCheckedListBox.FormattingEnabled = true;
             this.command5CommPortCheckedListBox.Items.AddRange(new object[] {
-            "COM4",
-            "COM5",
-            "COM6",
-            "COM7"});
+            "Box_1",
+            "Box_2",
+            "Box_3",
+            "Box_4",
+            "Box_5",
+            "Box_6"});
             this.command5CommPortCheckedListBox.Location = new System.Drawing.Point(836, 235);
             this.command5CommPortCheckedListBox.Name = "command5CommPortCheckedListBox";
             this.command5CommPortCheckedListBox.Size = new System.Drawing.Size(77, 94);
@@ -291,10 +302,12 @@ namespace UI.RichClient
             // 
             this.command6CommPortCheckedListBox.FormattingEnabled = true;
             this.command6CommPortCheckedListBox.Items.AddRange(new object[] {
-            "COM4",
-            "COM5",
-            "COM6",
-            "COM7"});
+            "Box_1",
+            "Box_2",
+            "Box_3",
+            "Box_4",
+            "Box_5",
+            "Box_6"});
             this.command6CommPortCheckedListBox.Location = new System.Drawing.Point(1042, 235);
             this.command6CommPortCheckedListBox.Name = "command6CommPortCheckedListBox";
             this.command6CommPortCheckedListBox.Size = new System.Drawing.Size(77, 94);
@@ -389,7 +402,9 @@ namespace UI.RichClient
             "Fade Out",
             "Breath",
             "Random Breath",
-            "Sudden Flash"});
+            "Sudden Flash",
+            "Chroma",
+            "Random Cloudy"});
             this.mode1ComboBox.Location = new System.Drawing.Point(13, 400);
             this.mode1ComboBox.Name = "mode1ComboBox";
             this.mode1ComboBox.Size = new System.Drawing.Size(100, 21);
@@ -411,7 +426,9 @@ namespace UI.RichClient
             "Fade Out",
             "Breath",
             "Random Breath",
-            "Sudden Flash"});
+            "Sudden Flash",
+            "Chroma",
+            "Random Cloudy"});
             this.mode2ComboBox.Location = new System.Drawing.Point(218, 400);
             this.mode2ComboBox.Name = "mode2ComboBox";
             this.mode2ComboBox.Size = new System.Drawing.Size(100, 21);
@@ -433,7 +450,9 @@ namespace UI.RichClient
             "Fade Out",
             "Breath",
             "Random Breath",
-            "Sudden Flash"});
+            "Sudden Flash",
+            "Chroma",
+            "Random Cloudy"});
             this.mode3ComboBox.Location = new System.Drawing.Point(424, 400);
             this.mode3ComboBox.Name = "mode3ComboBox";
             this.mode3ComboBox.Size = new System.Drawing.Size(100, 21);
@@ -455,7 +474,9 @@ namespace UI.RichClient
             "Fade Out",
             "Breath",
             "Random Breath",
-            "Sudden Flash"});
+            "Sudden Flash",
+            "Chroma",
+            "Random Cloudy"});
             this.mode4ComboBox.Location = new System.Drawing.Point(630, 400);
             this.mode4ComboBox.Name = "mode4ComboBox";
             this.mode4ComboBox.Size = new System.Drawing.Size(100, 21);
@@ -477,7 +498,9 @@ namespace UI.RichClient
             "Fade Out",
             "Breath",
             "Random Breath",
-            "Sudden Flash"});
+            "Sudden Flash",
+            "Chroma",
+            "Random Cloudy"});
             this.mode5ComboBox.Location = new System.Drawing.Point(836, 400);
             this.mode5ComboBox.Name = "mode5ComboBox";
             this.mode5ComboBox.Size = new System.Drawing.Size(100, 21);
@@ -499,7 +522,9 @@ namespace UI.RichClient
             "Fade Out",
             "Breath",
             "Random Breath",
-            "Sudden Flash"});
+            "Sudden Flash",
+            "Chroma",
+            "Random Cloudy"});
             this.mode6ComboBox.Location = new System.Drawing.Point(1042, 399);
             this.mode6ComboBox.Name = "mode6ComboBox";
             this.mode6ComboBox.Size = new System.Drawing.Size(100, 21);
@@ -799,7 +824,7 @@ namespace UI.RichClient
             "Q6"});
             this.queueCheckedListBox.Location = new System.Drawing.Point(12, 558);
             this.queueCheckedListBox.Name = "queueCheckedListBox";
-            this.queueCheckedListBox.Size = new System.Drawing.Size(77, 94);
+            this.queueCheckedListBox.Size = new System.Drawing.Size(77, 124);
             this.queueCheckedListBox.TabIndex = 63;
             this.queueCheckedListBox.SelectedIndexChanged += new System.EventHandler(this.queueCheckedListBox_SelectedIndexChanged);
             // 
@@ -807,9 +832,9 @@ namespace UI.RichClient
             // 
             this.QueueUpNow.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.QueueUpNow.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F);
-            this.QueueUpNow.Location = new System.Drawing.Point(95, 558);
+            this.QueueUpNow.Location = new System.Drawing.Point(218, 558);
             this.QueueUpNow.Name = "QueueUpNow";
-            this.QueueUpNow.Size = new System.Drawing.Size(1147, 127);
+            this.QueueUpNow.Size = new System.Drawing.Size(1024, 127);
             this.QueueUpNow.TabIndex = 64;
             this.QueueUpNow.Text = "Queue Up Now!";
             this.QueueUpNow.UseVisualStyleBackColor = false;
@@ -877,19 +902,30 @@ namespace UI.RichClient
             // 
             // initializeCommPortsButton
             // 
-            this.initializeCommPortsButton.Location = new System.Drawing.Point(12, 658);
+            this.initializeCommPortsButton.Location = new System.Drawing.Point(95, 558);
             this.initializeCommPortsButton.Name = "initializeCommPortsButton";
-            this.initializeCommPortsButton.Size = new System.Drawing.Size(77, 27);
+            this.initializeCommPortsButton.Size = new System.Drawing.Size(117, 59);
             this.initializeCommPortsButton.TabIndex = 65;
             this.initializeCommPortsButton.Text = "Start";
             this.initializeCommPortsButton.UseVisualStyleBackColor = true;
             this.initializeCommPortsButton.Click += new System.EventHandler(this.initializeCommPortsButton_Click);
+            // 
+            // button19
+            // 
+            this.button19.Location = new System.Drawing.Point(95, 623);
+            this.button19.Name = "button19";
+            this.button19.Size = new System.Drawing.Size(117, 58);
+            this.button19.TabIndex = 66;
+            this.button19.Text = "Disconnect";
+            this.button19.UseVisualStyleBackColor = true;
+            this.button19.Click += new System.EventHandler(this.Disconnect);
             // 
             // Group
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1251, 686);
+            this.Controls.Add(this.button19);
             this.Controls.Add(this.initializeCommPortsButton);
             this.Controls.Add(this.QueueUpNow);
             this.Controls.Add(this.queueCheckedListBox);
@@ -1055,5 +1091,6 @@ namespace UI.RichClient
         private System.Windows.Forms.Button button9;
         private System.Windows.Forms.Button button8;
         private System.Windows.Forms.Button initializeCommPortsButton;
+        private System.Windows.Forms.Button button19;
     }
 }

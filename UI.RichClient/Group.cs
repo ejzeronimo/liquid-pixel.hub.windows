@@ -251,39 +251,34 @@ namespace UI.RichClient
                 moder = 8;
                 return;
             }
-            if (comboBox.Text == "Breath")
+            if (comboBox.Text == "Chroma")
             {
                 moder = 9;
                 return;
             }
-            if (comboBox.Text == "Chroma")
+            if (comboBox.Text == "Fade In")
             {
                 moder = 10;
                 return;
             }
-            //if (comboBox.Text == "Breath")
-            //{
-            //    moder = 11;
-            //    return;
-            //}
-            if (comboBox.Text == "Fade In")
-            {
-                moder = 12;
-                return;
-            }
             if (comboBox.Text == "Fade Out")
             {
-                moder = 13;
-                return;
-            }
-            if (comboBox.Text == "Random Breath")
-            {
-                moder = 14;
+                moder = 11;
                 return;
             }
             if (comboBox.Text == "Sudden Flash")
             {
-                moder = 15;
+                moder = 12;
+                return;
+            }
+            if (comboBox.Text == "Random Breath")
+            {
+                moder = 13;
+                return;
+            }
+            if (comboBox.Text == "Breath")
+            {
+                moder = 14;
                 return;
             }
         }
@@ -293,25 +288,37 @@ namespace UI.RichClient
         {
             try
             {
-                Comport1.PortName = "COM4";
+                Comport1.PortName = Global.port1;
                 Comport1.BaudRate = 9600;
                 Comport1.Parity = Parity.None;
                 Comport1.DataBits = 8;
                 Comport1.StopBits = StopBits.One;
                 Comport1.Encoding = Encoding.ASCII;
-                Comport2.PortName = "COM5";
+                Comport2.PortName = Global.port2;
                 Comport2.BaudRate = 9600;
                 Comport2.Parity = Parity.None;
                 Comport2.DataBits = 8;
                 Comport2.StopBits = StopBits.One;
                 Comport2.Encoding = Encoding.ASCII;
-                Comport3.PortName = "COM6";
+                Comport3.PortName = Global.port3;
                 Comport3.BaudRate = 9600;
                 Comport3.Parity = Parity.None;
                 Comport3.DataBits = 8;
                 Comport3.StopBits = StopBits.One;
                 Comport3.Encoding = Encoding.ASCII; 
-                Comport4.PortName = "COM7";
+                Comport4.PortName = Global.port4;
+                Comport4.BaudRate = 9600;
+                Comport4.Parity = Parity.None;
+                Comport4.DataBits = 8;
+                Comport4.StopBits = StopBits.One;
+                Comport4.Encoding = Encoding.ASCII;
+                Comport4.PortName = Global.port5;
+                Comport4.BaudRate = 9600;
+                Comport4.Parity = Parity.None;
+                Comport4.DataBits = 8;
+                Comport4.StopBits = StopBits.One;
+                Comport4.Encoding = Encoding.ASCII;
+                Comport4.PortName = Global.port6;
                 Comport4.BaudRate = 9600;
                 Comport4.Parity = Parity.None;
                 Comport4.DataBits = 8;
@@ -319,53 +326,52 @@ namespace UI.RichClient
                 Comport4.Encoding = Encoding.ASCII;
             }
             catch { }
+            Global.CommPortsConnectionStatus.Clear();
 
             try
             {
                 Comport1.Open();
+                Global.CommPortsConnectionStatus.Add(Comport1.PortName, Comport1.IsOpen);
             }
             catch { }
 
             try
             {
                 Comport2.Open();
+                Global.CommPortsConnectionStatus.Add(Comport2.PortName, Comport2.IsOpen);
             }
             catch { }
 
             try
             {
                 Comport3.Open();
+                Global.CommPortsConnectionStatus.Add(Comport3.PortName, Comport3.IsOpen);
             }
             catch { }
 
             try
             {
                 Comport4.Open();
+                Global.CommPortsConnectionStatus.Add(Comport4.PortName, Comport4.IsOpen);
             }
             catch { }
 
             try
             {
-                //Comport5.Open();
+                Comport5.Open();
+                Global.CommPortsConnectionStatus.Add(Comport5.PortName, Comport5.IsOpen);
             }
             catch { }
 
             try
             {
-                //Comport6.Open();
+                Comport6.Open();
+                Global.CommPortsConnectionStatus.Add(Comport5.PortName, Comport5.IsOpen);
             }
             catch { }
-
-            // capture the status of the ports
-            Global.CommPortsConnectionStatus.Clear();
-            Global.CommPortsConnectionStatus.Add(Comport1.PortName, Comport1.IsOpen);
-            Global.CommPortsConnectionStatus.Add(Comport2.PortName, Comport2.IsOpen);
-            Global.CommPortsConnectionStatus.Add(Comport3.PortName, Comport3.IsOpen);
-            Global.CommPortsConnectionStatus.Add(Comport4.PortName, Comport4.IsOpen);
-            //Global.CommPortsConnectionStatus.Add(Comport5.PortName, Comport5.IsOpen);
-            //Global.CommPortsConnectionStatus.Add(Comport6.PortName, Comport6.IsOpen);
-
-            //SendWatchdogResetAsyncInfiniteLoop();
+            
+            
+          
         }
 
         private void button13_Click(object sender, EventArgs e)
@@ -548,10 +554,18 @@ namespace UI.RichClient
             {
                 for (int i = 0; i < 6; i++)
                 {
-                    SendDataToSerialPorts(keepAlivePackage, i);
+                    Comport1.Write($"T99~");
                 }
 
                 await Task.Delay(2000);
+            }
+        }
+
+        private void Disconnect(object sender, EventArgs e)
+        {
+            for (int i = 0; i < 6; i++)
+            {
+                Comport1.Write($"T99~");
             }
         }
     }
