@@ -515,7 +515,7 @@ namespace UI.RichClient
         {
             if (string.IsNullOrEmpty(package?.Trim()))
                 return;
-
+            //feature
             switch (selectedIndex)
             {
                 case 0:
@@ -566,37 +566,37 @@ namespace UI.RichClient
             try
             {
                 Comport1.Close();
-                Global.CommPortsConnectionStatus.Add(Comport1.PortName, !Comport1.IsOpen);
+                Global.CommPortsConnectionStatus.Add(Comport1.PortName, false);
             }
             catch { }
             try
             {
                 Comport2.Close();
-                Global.CommPortsConnectionStatus.Add(Comport2.PortName, !Comport2.IsOpen);
+                Global.CommPortsConnectionStatus.Add(Comport2.PortName, false);
             }
             catch { }
             try
             {
                 Comport3.Close();
-                Global.CommPortsConnectionStatus.Add(Comport3.PortName, !Comport3.IsOpen);
+                Global.CommPortsConnectionStatus.Add(Comport3.PortName, false);
             }
             catch { }
             try
             {
                 Comport4.Close();
-                Global.CommPortsConnectionStatus.Add(Comport4.PortName, !Comport4.IsOpen);
+                Global.CommPortsConnectionStatus.Add(Comport4.PortName, false);
             }
             catch { }
             try
             {
                 Comport5.Close();
-                Global.CommPortsConnectionStatus.Add(Comport5.PortName, !Comport5.IsOpen);
+                Global.CommPortsConnectionStatus.Add(Comport5.PortName, false);
             }
             catch { }
             try
             {
                 Comport6.Close();
-                Global.CommPortsConnectionStatus.Add(Comport6.PortName, !Comport6.IsOpen);
+                Global.CommPortsConnectionStatus.Add(Comport6.PortName, false);
             }
             catch { }
         }
