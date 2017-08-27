@@ -2,12 +2,14 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.IO.Ports;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
 
 namespace UI.RichClient
 {
@@ -21,12 +23,7 @@ namespace UI.RichClient
 
         private void Ports_Load(object sender, EventArgs e)
         {
-            UpdateCommPortStatusInUi(Box1.Text, Status1);
-            UpdateCommPortStatusInUi(Box2.Text, Status2);
-            UpdateCommPortStatusInUi(Box3.Text, Status3);
-            UpdateCommPortStatusInUi(Box4.Text, Status4);
-            UpdateCommPortStatusInUi(Box5.Text, Status5);
-            UpdateCommPortStatusInUi(Box6.Text, Status6);
+            UpdateCommPortStatusInUi(PortNum.Text, Status);
         }
         private void UpdateCommPortStatusInUi(string boxtText, TextBox statusBox)
         {
@@ -54,38 +51,89 @@ namespace UI.RichClient
 
         private void Box1_TextChanged(object sender, EventArgs e)
         {
-            Global.port1 = Box1.Text;
-            UpdateCommPortStatusInUi(Box1.Text, Status1);
+            //Box.Comport.PortName = PortNum.Text;
+            UpdateCommPortStatusInUi(PortNum.Text, Status);
+
         }
 
-        private void Box2_TextChanged(object sender, EventArgs e)
+        private void SaveLpcAsset(object sender, EventArgs e)
         {
-            Global.port2 = Box2.Text;
-            UpdateCommPortStatusInUi(Box2.Text, Status2);
+            byte i = 1;
+            //C:\_Src\Prod\LiquidPixel\UI.RichClient\bin\Debug save location
+            string filestruct = "Type=LpcAsset\r\nName=" + NameBox.Text + "\r\nComport=" + PortNum.Text;
+            if (NameBox.Text == "null" || PortNum.Text == "null")
+            {
+                MessageBox.Show("Must enter a name and port before this file can be saved");
+            }
+            else
+            {
+                if (i < 6)
+                {
+                    System.IO.StreamWriter file = new System.IO.StreamWriter(NameBox.Text + ".txt");
+                    file.WriteLine(filestruct);
+                    file.Close();
+                    switch (i)
+                    {
+                        case 1:
+                            Box1.Comport.PortName = PortNum.Text;
+                            Box1.Name = NameBox.Text;
+                            Box1.FileName = NameBox.Text + ".txt";
+                            break;
+                        case 2:
+                            Box2.Comport.PortName = PortNum.Text;
+                            Box2.Name = NameBox.Text;
+                            Box2.FileName = NameBox.Text + ".txt";
+                            break;
+                        case 3:
+                            Box3.Comport.PortName = PortNum.Text;
+                            Box3.Name = NameBox.Text;
+                            Box3.FileName = NameBox.Text + ".txt";
+                            break;
+                        case 4:
+                            Box4.Comport.PortName = PortNum.Text;
+                            Box4.Name = NameBox.Text;
+                            Box4.FileName = NameBox.Text + ".txt";
+                            break;
+                        case 5:
+                            Box5.Comport.PortName = PortNum.Text;
+                            Box5.Name = NameBox.Text;
+                            Box5.FileName = NameBox.Text + ".txt";
+                            break;
+                        case 6:
+                            Box6.Comport.PortName = PortNum.Text;
+                            Box6.Name = NameBox.Text;
+                            Box6.FileName = NameBox.Text + ".txt";
+                            break;
+                        default:
+                            break;
+                    }
+                            i++;
+                }
+                else
+                {
+                    MessageBox.Show("Beta has bugs");
+                }
+
+            }
+
         }
 
-        private void Box3_TextChanged(object sender, EventArgs e)
+        private void NameChange(object sender, EventArgs e)
         {
-            Global.port3 = Box3.Text;
-            UpdateCommPortStatusInUi(Box3.Text, Status3);
+
         }
 
-        private void Box4_TextChanged(object sender, EventArgs e)
+        private void OpenAssets(object sender, EventArgs e)
         {
-            Global.port4 = Box4.Text;
-            UpdateCommPortStatusInUi(Box4.Text, Status4);
-        }
+            //check and see what assets can be opened
+            //create new form that has all Assets 
 
-        private void Box5_TextChanged(object sender, EventArgs e)
-        {
-            Global.port5 = Box5.Text;
-            UpdateCommPortStatusInUi(Box5.Text, Status5);
-        }
-
-        private void Box6_TextChanged(object sender, EventArgs e)
-        {
-            Global.port6 = Box6.Text;
-            UpdateCommPortStatusInUi(Box6.Text, Status6);
+            OpenFileDialog log = new OpenFileDialog();
+            log.Filter = "Text Files (*.txt*)|*.txt*";
+            log.FilterIndex = 1;
+            log.Multiselect = true;
+            log.ShowDialog();
+            string address = log.FileName;
         }
     }
 }

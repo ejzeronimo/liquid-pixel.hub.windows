@@ -30,6 +30,7 @@ namespace UI.RichClient
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Group));
             this.command1CommPortCheckedListBox = new System.Windows.Forms.CheckedListBox();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -101,6 +102,8 @@ namespace UI.RichClient
             this.button8 = new System.Windows.Forms.Button();
             this.initializeCommPortsButton = new System.Windows.Forms.Button();
             this.button19 = new System.Windows.Forms.Button();
+            this.globalBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.globalBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.command1Delay)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.command2Delay)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.command3Delay)).BeginInit();
@@ -113,6 +116,8 @@ namespace UI.RichClient
             ((System.ComponentModel.ISupportInitialize)(this.q4Delay)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.q5Delay)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.q6Delay)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.globalBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.globalBindingSource1)).BeginInit();
             this.SuspendLayout();
             // 
             // command1CommPortCheckedListBox
@@ -388,23 +393,8 @@ namespace UI.RichClient
             // 
             // mode1ComboBox
             // 
+            this.mode1ComboBox.DataSource = this.globalBindingSource1;
             this.mode1ComboBox.FormattingEnabled = true;
-            this.mode1ComboBox.Items.AddRange(new object[] {
-            "Off",
-            "Solid",
-            "Flash",
-            "Sweep",
-            "Twinkle",
-            "Random Twinkle",
-            "Random Flash",
-            "Theater Chase",
-            "Fade In",
-            "Fade Out",
-            "Breath",
-            "Random Breath",
-            "Sudden Flash",
-            "Chroma",
-            "Random Cloudy"});
             this.mode1ComboBox.Location = new System.Drawing.Point(13, 400);
             this.mode1ComboBox.Name = "mode1ComboBox";
             this.mode1ComboBox.Size = new System.Drawing.Size(100, 21);
@@ -920,6 +910,14 @@ namespace UI.RichClient
             this.button19.UseVisualStyleBackColor = true;
             this.button19.Click += new System.EventHandler(this.Disconnect);
             // 
+            // globalBindingSource
+            // 
+            this.globalBindingSource.DataSource = typeof(UI.RichClient.Global);
+            // 
+            // globalBindingSource1
+            // 
+            this.globalBindingSource1.DataSource = typeof(UI.RichClient.Global);
+            // 
             // Group
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1010,6 +1008,8 @@ namespace UI.RichClient
             ((System.ComponentModel.ISupportInitialize)(this.q4Delay)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.q5Delay)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.q6Delay)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.globalBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.globalBindingSource1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1092,5 +1092,7 @@ namespace UI.RichClient
         private System.Windows.Forms.Button button8;
         private System.Windows.Forms.Button initializeCommPortsButton;
         private System.Windows.Forms.Button button19;
+        private System.Windows.Forms.BindingSource globalBindingSource1;
+        private System.Windows.Forms.BindingSource globalBindingSource;
     }
 }

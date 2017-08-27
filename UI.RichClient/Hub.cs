@@ -7,11 +7,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO.Ports;
 
 namespace UI.RichClient
 {
+   
+    
     public partial class Hub : Form
     {
+        public SerialPort Comport1;
         public Hub()
         {
             InitializeComponent();
@@ -23,12 +27,6 @@ namespace UI.RichClient
             bxs.Show();
         }
 
-        private void portsToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            Ports prts = new RichClient.Ports();
-            prts.Show();
-        }
-
         private void infoToolStripMenuItem_Click(object sender, EventArgs e)
         {
             MessageBox.Show('"' + "Madrix is insuperior, Liquid Pixel is the best" + '"' +  "-Elliot");
@@ -36,8 +34,19 @@ namespace UI.RichClient
 
         private void groupOBoxesToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Group prts = new RichClient.Group();
-            prts.Show();
+            Group grp = new RichClient.Group();
+            grp.Show();
+        }
+
+        private void NewLpcAssetCreate(object sender, EventArgs e)
+        {
+            Ports prt = new RichClient.Ports();
+            prt.Show();
+        }
+
+        private void UpdateGlobalHBox1(object sender, EventArgs e)
+        {
+            HBox1.Text = Box1.FileName;
         }
     }
 }

@@ -47,18 +47,17 @@ namespace UI.RichClient
         private int moder4;
         private int moder5;
         private int moder6;
-        public SerialPort Comport1;
-        public bool IsComport1Connected => Comport1.IsOpen;
+        //public bool IsComport1Connected => Comport1.IsOpen;
         public SerialPort Comport2;
-        public bool IsComport2Connected => Comport2.IsOpen;
+        //public bool IsComport2Connected => Comport2.IsOpen;
         public SerialPort Comport3;
-        public bool IsComport3Connected => Comport3.IsOpen;
+        //public bool IsComport3Connected => Comport3.IsOpen;
         public SerialPort Comport4;
-        public bool IsComport4Connected => Comport4.IsOpen;
+        //public bool IsComport4Connected => Comport4.IsOpen;
         public SerialPort Comport5;
-        public bool IsComport5Connected => Comport5.IsOpen;
+        //public bool IsComport5Connected => Comport5.IsOpen;
         public SerialPort Comport6;
-        public bool IsComport6Connected => Comport6.IsOpen;
+        //public bool IsComport6Connected => Comport6.IsOpen;
         public CheckedListBox.CheckedIndexCollection command1SelectedCommPorts;
         public CheckedListBox.CheckedIndexCollection command2SelectedCommPorts;
         public CheckedListBox.CheckedIndexCollection command3SelectedCommPorts;
@@ -66,33 +65,35 @@ namespace UI.RichClient
         public CheckedListBox.CheckedIndexCollection command5SelectedCommPorts;
         public CheckedListBox.CheckedIndexCollection command6SelectedCommPorts;
         public CheckedListBox.CheckedIndexCollection queueSelectedCommands;
-
         public Group()
         {
-            InitializeComponent();
 
             // custom wired queue this event handlers
-            button1.Click += (sender, EventArgs) => { queueCommand_Click(sender, EventArgs, 0, package1, command1SelectedCommPorts); };
-            button2.Click += (sender, EventArgs) => { queueCommand_Click(sender, EventArgs, 1, package2, command2SelectedCommPorts); };
-            button3.Click += (sender, EventArgs) => { queueCommand_Click(sender, EventArgs, 2, package3, command3SelectedCommPorts); };
-            button4.Click += (sender, EventArgs) => { queueCommand_Click(sender, EventArgs, 3, package4, command4SelectedCommPorts); };
-            button5.Click += (sender, EventArgs) => { queueCommand_Click(sender, EventArgs, 4, package5, command5SelectedCommPorts); };
-            button6.Click += (sender, EventArgs) => { queueCommand_Click(sender, EventArgs, 5, package6, command6SelectedCommPorts); };
+            //button1.Click += (sender, EventArgs) => { queueCommand_Click(sender, EventArgs, 0, package1, command1SelectedCommPorts); };
+            //button2.Click += (sender, EventArgs) => { queueCommand_Click(sender, EventArgs, 1, package2, command2SelectedCommPorts); };
+            //button3.Click += (sender, EventArgs) => { queueCommand_Click(sender, EventArgs, 2, package3, command3SelectedCommPorts); };
+            //button4.Click += (sender, EventArgs) => { queueCommand_Click(sender, EventArgs, 3, package4, command4SelectedCommPorts); };
+            //button5.Click += (sender, EventArgs) => { queueCommand_Click(sender, EventArgs, 4, package5, command5SelectedCommPorts); };
+            //button6.Click += (sender, EventArgs) => { queueCommand_Click(sender, EventArgs, 5, package6, command6SelectedCommPorts); };
 
             // custom wired select mode event handlers
-            mode1ComboBox.SelectedIndexChanged += (sender, EventArgs) => { modeComboBox_SelectedIndexChanged(sender, EventArgs, ref moder1); };
-            mode2ComboBox.SelectedIndexChanged += (sender, EventArgs) => { modeComboBox_SelectedIndexChanged(sender, EventArgs, ref moder2); };
-            mode3ComboBox.SelectedIndexChanged += (sender, EventArgs) => { modeComboBox_SelectedIndexChanged(sender, EventArgs, ref moder3); };
-            mode4ComboBox.SelectedIndexChanged += (sender, EventArgs) => { modeComboBox_SelectedIndexChanged(sender, EventArgs, ref moder4); };
-            mode5ComboBox.SelectedIndexChanged += (sender, EventArgs) => { modeComboBox_SelectedIndexChanged(sender, EventArgs, ref moder5); };
-            mode6ComboBox.SelectedIndexChanged += (sender, EventArgs) => { modeComboBox_SelectedIndexChanged(sender, EventArgs, ref moder6); };
+            //mode1ComboBox.SelectedIndexChanged += (sender, EventArgs) => { modeComboBox_SelectedIndexChanged(sender, EventArgs, ref moder1); };
+            //mode2ComboBox.SelectedIndexChanged += (sender, EventArgs) => { modeComboBox_SelectedIndexChanged(sender, EventArgs, ref moder2); };
+            //mode3ComboBox.SelectedIndexChanged += (sender, EventArgs) => { modeComboBox_SelectedIndexChanged(sender, EventArgs, ref moder3); };
+            //mode4ComboBox.SelectedIndexChanged += (sender, EventArgs) => { modeComboBox_SelectedIndexChanged(sender, EventArgs, ref moder4); };
+            //mode5ComboBox.SelectedIndexChanged += (sender, EventArgs) => { modeComboBox_SelectedIndexChanged(sender, EventArgs, ref moder5); };
+            //mode6ComboBox.SelectedIndexChanged += (sender, EventArgs) => { modeComboBox_SelectedIndexChanged(sender, EventArgs, ref moder6); };
 
-            Comport1 = new SerialPort();
             Comport2 = new SerialPort();
             Comport3 = new SerialPort();
             Comport4 = new SerialPort();
             Comport5 = new SerialPort();
             Comport6 = new SerialPort();
+        }
+
+        private void InitializeComponent(SerialPort comport1)
+        {
+            throw new NotImplementedException();
         }
 
         private void button7_Click(object sender, EventArgs e)
@@ -206,47 +207,47 @@ namespace UI.RichClient
         private void modeComboBox_SelectedIndexChanged(object sender, EventArgs e, ref int moder)
         {
             var comboBox = (ComboBox)sender;
-            if (comboBox.Text == "Off")
+            if (comboBox.Text == "Off")//done
             {
                 moder = 0;
                 return;
             }
-            if (comboBox.Text == "Solid")
+            if (comboBox.Text == "Solid")//done
             {
                 moder = 1;
                 return;
             }
-            if (comboBox.Text == "Random Cloudy")
+            if (comboBox.Text == "Random Cloudy")//done
             {
                 moder = 2;
                 return;
             }
-            if (comboBox.Text == "Flash")
+            if (comboBox.Text == "Flash")//done
             {
                 moder = 3;
                 return;
             }
-            if (comboBox.Text == "Sweep")
+            if (comboBox.Text == "Sweep")//done
             {
                 moder = 4;
                 return;
             }
-            if (comboBox.Text == "Twinkle")
+            if (comboBox.Text == "Twinkle")//done
             {
                 moder = 5;
                 return;
             }
-            if (comboBox.Text == "Random Twinkle")
+            if (comboBox.Text == "Random Twinkle")//done
             {
                 moder = 6;
                 return;
             }
-            if (comboBox.Text == "Random Flash")
+            if (comboBox.Text == "Random Flash")//done
             {
                 moder = 7;
                 return;
             }
-            if (comboBox.Text == "Theater Chase")
+            if (comboBox.Text == "Theater Chase")//done
             {
                 moder = 8;
                 return;
@@ -256,27 +257,27 @@ namespace UI.RichClient
                 moder = 9;
                 return;
             }
-            if (comboBox.Text == "Fade In")
+            if (comboBox.Text == "Fade In")//done
             {
                 moder = 10;
                 return;
             }
-            if (comboBox.Text == "Fade Out")
+            if (comboBox.Text == "Fade Out")//done
             {
                 moder = 11;
                 return;
             }
-            if (comboBox.Text == "Sudden Flash")
+            if (comboBox.Text == "Sudden Flash")//done
             {
                 moder = 12;
                 return;
             }
-            if (comboBox.Text == "Random Breath")
+            if (comboBox.Text == "Random Breath")//done
             {
                 moder = 13;
                 return;
             }
-            if (comboBox.Text == "Breath")
+            if (comboBox.Text == "Breath")//done
             {
                 moder = 14;
                 return;
@@ -288,12 +289,6 @@ namespace UI.RichClient
         {
             try
             {
-                Comport1.PortName = Global.port1;
-                Comport1.BaudRate = 9600;
-                Comport1.Parity = Parity.None;
-                Comport1.DataBits = 8;
-                Comport1.StopBits = StopBits.One;
-                Comport1.Encoding = Encoding.ASCII;
                 Comport2.PortName = Global.port2;
                 Comport2.BaudRate = 9600;
                 Comport2.Parity = Parity.None;
@@ -330,8 +325,8 @@ namespace UI.RichClient
 
             try
             {
-                Comport1.Open();
-                Global.CommPortsConnectionStatus.Add(Comport1.PortName, Comport1.IsOpen);
+                //Global.Comport1.Open();
+                //Global.CommPortsConnectionStatus.Add(Global.Comport1.PortName, Global.Comport1.IsOpen);
             }
             catch { }
 
@@ -519,8 +514,8 @@ namespace UI.RichClient
             switch (selectedIndex)
             {
                 case 0:
-                    if (Comport1.IsOpen)
-                        Comport1.Write(package);
+                    //if (Global.Comport1.IsOpen)
+                        //Global.Comport1.Write(package);
                     break;
                 case 1:
                     if (Comport2.IsOpen)
@@ -554,7 +549,7 @@ namespace UI.RichClient
             {
                 for (int i = 0; i < 6; i++)
                 {
-                    Comport1.Write($"T99~");
+                    //Global.Comport1.Write($"T99~");
                 }
 
                 await Task.Delay(2000);
@@ -565,8 +560,8 @@ namespace UI.RichClient
         {
             try
             {
-                Comport1.Close();
-                Global.CommPortsConnectionStatus.Add(Comport1.PortName, false);
+                //Global.Comport1.Close();
+                //Global.CommPortsConnectionStatus.Add(Global.Comport1.PortName, false);
             }
             catch { }
             try
