@@ -6,25 +6,30 @@ using System.Threading.Tasks;
 
 namespace UI.RichClient
 {
-    class Modes
+    public class Mode
     {
-        public enum Mode : byte
-        {
-            Off = 0,
-            Solid,
-            RandomCloudy,
-            Flash,
-            Sweep,
-            Twinkle,
-            RandomTwinkle,
-            RandomFlash,
-            TheaterChase,
-            Chroma,
-            FadeIn,
-            FadeOut,
-            SuddenFlash,
-            RandomBreath,
-            Breath
-        };
+        public string Name { get; set; }
+        public int Value { get; set; }
+
+
+
+        //public enum Mode : byte
+        //{
+        //    Off = 0,
+        //    Solid,
+        //    RandomCloudy,
+        //    Flash,
+        //    Sweep,
+        //    Twinkle,
+        //    RandomTwinkle,
+        //    RandomFlash,
+        //    TheaterChase,
+        //    Chroma,
+        //    FadeIn,
+        //    FadeOut,
+        //    SuddenFlash,
+        //    RandomBreath,
+        //    Breath
+        //};
     }
 }

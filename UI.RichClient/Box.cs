@@ -8,70 +8,17 @@ using System.IO.Ports;
 
 namespace UI.RichClient
 {
-    class Box1
+    public class LpcAsset
     {
-        static public SerialPort Comport = new SerialPort();
-        static public string FileName = "none";
-        static public string Name = "none";
-        static public bool IsOpen = false;
-        static public float CmdsPerSecond = 0.0f;
-        static public string LastSent = "none";
-        static public int[] LastColor = new int[] { 0, 0, 0 };
-        static public byte LastMode = 0;
-    }
-    class Box2
-    {
-        static public SerialPort Comport = new SerialPort();
-        static public string FileName = "none";
-        static public string Name = "none";
-        static public bool IsOpen = false;
-        static public float CmdsPerSecond = 0.0f;
-        static public string LastSent = "none";
-        static public int[] LastColor = new int[] { 0, 0, 0 };
-        static public byte LastMode = 0;
-    }
-    class Box3
-    {
-        static public SerialPort Comport = new SerialPort();
-        static public string FileName = "none";
-        static public string Name = "none";
-        static public bool IsOpen = false;
-        static public float CmdsPerSecond = 0.0f;
-        static public string LastSent = "none";
-        static public int[] LastColor = new int[] { 0, 0, 0 };
-        static public byte LastMode = 0;
-    }
-    class Box4
-    {
-        static public SerialPort Comport = new SerialPort();
-        static public string FileName = "none";
-        static public string Name = "none";
-        static public bool IsOpen = false;
-        static public float CmdsPerSecond = 0.0f;
-        static public string LastSent = "none";
-        static public int[] LastColor = new int[] { 0, 0, 0 };
-        static public byte LastMode = 0;
-    }
-    class Box5
-    {
-        static public SerialPort Comport = new SerialPort();
-        static public string FileName = "none";
-        static public string Name = "none";
-        static public bool IsOpen = false;
-        static public float CmdsPerSecond = 0.0f;
-        static public string LastSent = "none";
-        static public int[] LastColor = new int[] { 0, 0, 0 };
-        static public byte LastMode = 0;
-    }
-    class Box6
-    {
-        static public SerialPort Comport = new SerialPort();
-        static public string FileName = "none";
-        static public string Name = "none";
-        static public bool IsOpen = false;
-        static public float CmdsPerSecond = 0.0f;
-        static public string LastSent = "none";
-        static public int[] LastColor = new int[] { 0, 0, 0 };
-        static public byte LastMode = 0;
+        private readonly SerialPort _comport = new SerialPort();
+
+        public SerialPort Comport { get { return _comport; } }
+        public string FileName { get; set; }
+        public string Name { get; set; }
+        public bool IsOpen { get; set; }
+        public float CmdsPerSecond { get; set; }
+        public string LastSent { get; set; }
+        public int[] LastColor { get; set; }
+        public byte LastMode { get; set; }
     }
 }

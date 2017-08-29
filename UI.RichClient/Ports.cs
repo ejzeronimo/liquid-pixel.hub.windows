@@ -58,7 +58,6 @@ namespace UI.RichClient
 
         private void SaveLpcAsset(object sender, EventArgs e)
         {
-            byte i = 1;
             //C:\_Src\Prod\LiquidPixel\UI.RichClient\bin\Debug save location
             string filestruct = "Type=LpcAsset\r\nName=" + NameBox.Text + "\r\nComport=" + PortNum.Text;
             if (NameBox.Text == "null" || PortNum.Text == "null")
@@ -67,53 +66,14 @@ namespace UI.RichClient
             }
             else
             {
-                if (i < 6)
-                {
-                    System.IO.StreamWriter file = new System.IO.StreamWriter(NameBox.Text + ".txt");
-                    file.WriteLine(filestruct);
-                    file.Close();
-                    switch (i)
-                    {
-                        case 1:
-                            Box1.Comport.PortName = PortNum.Text;
-                            Box1.Name = NameBox.Text;
-                            Box1.FileName = NameBox.Text + ".txt";
-                            break;
-                        case 2:
-                            Box2.Comport.PortName = PortNum.Text;
-                            Box2.Name = NameBox.Text;
-                            Box2.FileName = NameBox.Text + ".txt";
-                            break;
-                        case 3:
-                            Box3.Comport.PortName = PortNum.Text;
-                            Box3.Name = NameBox.Text;
-                            Box3.FileName = NameBox.Text + ".txt";
-                            break;
-                        case 4:
-                            Box4.Comport.PortName = PortNum.Text;
-                            Box4.Name = NameBox.Text;
-                            Box4.FileName = NameBox.Text + ".txt";
-                            break;
-                        case 5:
-                            Box5.Comport.PortName = PortNum.Text;
-                            Box5.Name = NameBox.Text;
-                            Box5.FileName = NameBox.Text + ".txt";
-                            break;
-                        case 6:
-                            Box6.Comport.PortName = PortNum.Text;
-                            Box6.Name = NameBox.Text;
-                            Box6.FileName = NameBox.Text + ".txt";
-                            break;
-                        default:
-                            break;
-                    }
-                            i++;
-                }
-                else
-                {
-                    MessageBox.Show("Beta has bugs");
-                }
+                System.IO.StreamWriter file = new System.IO.StreamWriter(NameBox.Text + ".txt");
+                file.WriteLine(filestruct);
+                file.Close();
 
+                var myAsset = new LpcAsset();
+
+                myAsset.Comport.PortName = PortNum.Text;
+                myAsset.Name = NameBox.Text;
             }
 
         }

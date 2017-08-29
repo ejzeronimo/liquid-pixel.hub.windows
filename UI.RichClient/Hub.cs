@@ -46,7 +46,7 @@ namespace UI.RichClient
 
         private void UpdateGlobalHBox1(object sender, EventArgs e)
         {
-            HBox1.Text = Box1.FileName;
+            //HBox1.Text = Box1.FileName;
         }
     }
 }

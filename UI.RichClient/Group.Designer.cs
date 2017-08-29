@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace UI.RichClient
 {
@@ -30,6 +31,10 @@ namespace UI.RichClient
         /// </summary>
         private void InitializeComponent()
         {
+            var modeList = new List<Mode>();
+            modeList.Add(new RichClient.Mode { Name = "Foo", Value = 1 } );
+            modeList.Add(new RichClient.Mode { Name = "Bar", Value = 2 } );
+
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Group));
             this.command1CommPortCheckedListBox = new System.Windows.Forms.CheckedListBox();
@@ -393,7 +398,8 @@ namespace UI.RichClient
             // 
             // mode1ComboBox
             // 
-            this.mode1ComboBox.DataSource = this.globalBindingSource1;
+            this.mode1ComboBox.DataSource = modeList;
+            this.mode1ComboBox.DisplayMember = "Name";
             this.mode1ComboBox.FormattingEnabled = true;
             this.mode1ComboBox.Location = new System.Drawing.Point(13, 400);
             this.mode1ComboBox.Name = "mode1ComboBox";
@@ -403,22 +409,8 @@ namespace UI.RichClient
             // mode2ComboBox
             // 
             this.mode2ComboBox.FormattingEnabled = true;
-            this.mode2ComboBox.Items.AddRange(new object[] {
-            "Off",
-            "Solid",
-            "Flash",
-            "Sweep",
-            "Twinkle",
-            "Random Twinkle",
-            "Random Flash",
-            "Theater Chase",
-            "Fade In",
-            "Fade Out",
-            "Breath",
-            "Random Breath",
-            "Sudden Flash",
-            "Chroma",
-            "Random Cloudy"});
+            this.mode2ComboBox.DataSource = modeList;
+            this.mode2ComboBox.DisplayMember = "Name";
             this.mode2ComboBox.Location = new System.Drawing.Point(218, 400);
             this.mode2ComboBox.Name = "mode2ComboBox";
             this.mode2ComboBox.Size = new System.Drawing.Size(100, 21);
