@@ -67,7 +67,7 @@ namespace UI.RichClient
         public CheckedListBox.CheckedIndexCollection queueSelectedCommands;
         public Group()
         {
-
+            InitializeComponent();
             // custom wired queue this event handlers
             //button1.Click += (sender, EventArgs) => { queueCommand_Click(sender, EventArgs, 0, package1, command1SelectedCommPorts); };
             //button2.Click += (sender, EventArgs) => { queueCommand_Click(sender, EventArgs, 1, package2, command2SelectedCommPorts); };
@@ -84,11 +84,11 @@ namespace UI.RichClient
             //mode5ComboBox.SelectedIndexChanged += (sender, EventArgs) => { modeComboBox_SelectedIndexChanged(sender, EventArgs, ref moder5); };
             //mode6ComboBox.SelectedIndexChanged += (sender, EventArgs) => { modeComboBox_SelectedIndexChanged(sender, EventArgs, ref moder6); };
 
-            Comport2 = new SerialPort();
-            Comport3 = new SerialPort();
-            Comport4 = new SerialPort();
-            Comport5 = new SerialPort();
-            Comport6 = new SerialPort();
+            //Comport2 = new SerialPort();
+            //Comport3 = new SerialPort();
+            //Comport4 = new SerialPort();
+            //Comport5 = new SerialPort();
+            //Comport6 = new SerialPort();
         }
 
         private void InitializeComponent(SerialPort comport1)

@@ -912,11 +912,11 @@ namespace UI.RichClient
             // 
             // globalBindingSource
             // 
-            this.globalBindingSource.DataSource = typeof(UI.RichClient.Global);
+            //this.globalBindingSource.DataSource = typeof(UI.RichClient.Global);
             // 
             // globalBindingSource1
             // 
-            this.globalBindingSource1.DataSource = typeof(UI.RichClient.Global);
+            //this.globalBindingSource1.DataSource = typeof(UI.RichClient.Global);
             // 
             // Group
             // 
