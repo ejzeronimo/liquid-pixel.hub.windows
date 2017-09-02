@@ -41,29 +41,35 @@
             this.NameLabel = new System.Windows.Forms.Label();
             this.TypeBox = new System.Windows.Forms.TextBox();
             this.TypeLabel = new System.Windows.Forms.Label();
+            this.ColorPanel = new System.Windows.Forms.Panel();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.Baudrate = new System.Windows.Forms.TextBox();
+            this.BaudLabel = new System.Windows.Forms.Label();
+            this.PortSettingsLabel = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // PortLabel
             // 
             this.PortLabel.AutoSize = true;
-            this.PortLabel.Location = new System.Drawing.Point(115, 27);
+            this.PortLabel.Location = new System.Drawing.Point(9, 49);
             this.PortLabel.Name = "PortLabel";
-            this.PortLabel.Size = new System.Drawing.Size(29, 13);
+            this.PortLabel.Size = new System.Drawing.Size(34, 13);
             this.PortLabel.TabIndex = 1;
-            this.PortLabel.Text = "Port:";
+            this.PortLabel.Text = "COM:";
             // 
             // PortNum
             // 
-            this.PortNum.Location = new System.Drawing.Point(118, 43);
+            this.PortNum.Location = new System.Drawing.Point(12, 65);
             this.PortNum.Name = "PortNum";
-            this.PortNum.Size = new System.Drawing.Size(100, 20);
+            this.PortNum.Size = new System.Drawing.Size(99, 20);
             this.PortNum.TabIndex = 4;
-            this.PortNum.Text = "null";
+            this.PortNum.Text = "COM";
             // 
             // Status
             // 
-            this.Status.Location = new System.Drawing.Point(224, 43);
+            this.Status.Location = new System.Drawing.Point(12, 24);
             this.Status.Name = "Status";
             this.Status.ReadOnly = true;
             this.Status.Size = new System.Drawing.Size(100, 20);
@@ -73,7 +79,7 @@
             // StatusLabel
             // 
             this.StatusLabel.AutoSize = true;
-            this.StatusLabel.Location = new System.Drawing.Point(221, 27);
+            this.StatusLabel.Location = new System.Drawing.Point(9, 8);
             this.StatusLabel.Name = "StatusLabel";
             this.StatusLabel.Size = new System.Drawing.Size(40, 13);
             this.StatusLabel.TabIndex = 25;
@@ -85,7 +91,7 @@
             this.fileToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(336, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(464, 24);
             this.menuStrip1.TabIndex = 26;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -101,20 +107,20 @@
             // Open
             // 
             this.Open.Name = "Open";
-            this.Open.Size = new System.Drawing.Size(103, 22);
+            this.Open.Size = new System.Drawing.Size(152, 22);
             this.Open.Text = "Open";
             this.Open.Click += new System.EventHandler(this.OpenAssets);
             // 
             // saveToolStripMenuItem
             // 
             this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
-            this.saveToolStripMenuItem.Size = new System.Drawing.Size(103, 22);
+            this.saveToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.saveToolStripMenuItem.Text = "Save";
             this.saveToolStripMenuItem.Click += new System.EventHandler(this.SaveLpcAsset);
             // 
             // NameBox
             // 
-            this.NameBox.Location = new System.Drawing.Point(12, 43);
+            this.NameBox.Location = new System.Drawing.Point(218, 80);
             this.NameBox.Name = "NameBox";
             this.NameBox.Size = new System.Drawing.Size(100, 20);
             this.NameBox.TabIndex = 28;
@@ -123,7 +129,7 @@
             // NameLabel
             // 
             this.NameLabel.AutoSize = true;
-            this.NameLabel.Location = new System.Drawing.Point(9, 27);
+            this.NameLabel.Location = new System.Drawing.Point(215, 64);
             this.NameLabel.Name = "NameLabel";
             this.NameLabel.Size = new System.Drawing.Size(38, 13);
             this.NameLabel.TabIndex = 27;
@@ -131,34 +137,81 @@
             // 
             // TypeBox
             // 
-            this.TypeBox.Location = new System.Drawing.Point(12, 86);
+            this.TypeBox.Location = new System.Drawing.Point(218, 41);
             this.TypeBox.Name = "TypeBox";
             this.TypeBox.Size = new System.Drawing.Size(100, 20);
             this.TypeBox.TabIndex = 29;
-            this.TypeBox.Text = "null";
+            this.TypeBox.Text = "LpcAsset";
             // 
             // TypeLabel
             // 
             this.TypeLabel.AutoSize = true;
-            this.TypeLabel.Location = new System.Drawing.Point(12, 70);
+            this.TypeLabel.Location = new System.Drawing.Point(216, 25);
             this.TypeLabel.Name = "TypeLabel";
             this.TypeLabel.Size = new System.Drawing.Size(34, 13);
             this.TypeLabel.TabIndex = 30;
             this.TypeLabel.Text = "Type:";
             // 
+            // ColorPanel
+            // 
+            this.ColorPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.ColorPanel.Location = new System.Drawing.Point(12, 27);
+            this.ColorPanel.Name = "ColorPanel";
+            this.ColorPanel.Size = new System.Drawing.Size(200, 200);
+            this.ColorPanel.TabIndex = 31;
+            // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            this.panel1.Controls.Add(this.Baudrate);
+            this.panel1.Controls.Add(this.BaudLabel);
+            this.panel1.Controls.Add(this.PortNum);
+            this.panel1.Controls.Add(this.PortLabel);
+            this.panel1.Controls.Add(this.Status);
+            this.panel1.Controls.Add(this.StatusLabel);
+            this.panel1.Location = new System.Drawing.Point(324, 41);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(126, 186);
+            this.panel1.TabIndex = 32;
+            // 
+            // Baudrate
+            // 
+            this.Baudrate.Location = new System.Drawing.Point(12, 104);
+            this.Baudrate.Name = "Baudrate";
+            this.Baudrate.Size = new System.Drawing.Size(99, 20);
+            this.Baudrate.TabIndex = 27;
+            this.Baudrate.Text = "9600";
+            // 
+            // BaudLabel
+            // 
+            this.BaudLabel.AutoSize = true;
+            this.BaudLabel.Location = new System.Drawing.Point(9, 88);
+            this.BaudLabel.Name = "BaudLabel";
+            this.BaudLabel.Size = new System.Drawing.Size(53, 13);
+            this.BaudLabel.TabIndex = 26;
+            this.BaudLabel.Text = "Baudrate:";
+            // 
+            // PortSettingsLabel
+            // 
+            this.PortSettingsLabel.AutoSize = true;
+            this.PortSettingsLabel.Location = new System.Drawing.Point(324, 25);
+            this.PortSettingsLabel.Name = "PortSettingsLabel";
+            this.PortSettingsLabel.Size = new System.Drawing.Size(70, 13);
+            this.PortSettingsLabel.TabIndex = 33;
+            this.PortSettingsLabel.Text = "Port Settings:";
+            // 
             // Ports
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(336, 216);
+            this.ClientSize = new System.Drawing.Size(464, 255);
+            this.Controls.Add(this.PortSettingsLabel);
+            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.ColorPanel);
             this.Controls.Add(this.TypeLabel);
             this.Controls.Add(this.TypeBox);
             this.Controls.Add(this.NameBox);
             this.Controls.Add(this.NameLabel);
-            this.Controls.Add(this.StatusLabel);
-            this.Controls.Add(this.Status);
-            this.Controls.Add(this.PortNum);
-            this.Controls.Add(this.PortLabel);
             this.Controls.Add(this.menuStrip1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
@@ -167,6 +220,8 @@
             this.Load += new System.EventHandler(this.Ports_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -185,5 +240,10 @@
         private System.Windows.Forms.ToolStripMenuItem Open;
         private System.Windows.Forms.TextBox TypeBox;
         private System.Windows.Forms.Label TypeLabel;
+        private System.Windows.Forms.Panel ColorPanel;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.TextBox Baudrate;
+        private System.Windows.Forms.Label BaudLabel;
+        private System.Windows.Forms.Label PortSettingsLabel;
     }
 }

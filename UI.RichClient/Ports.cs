@@ -64,6 +64,7 @@ namespace UI.RichClient
                 Global.Assets.Add(new Mode() { Name = NameBox.Text, Value = Global.AssetAmount });
                 Global.AssetAmount++;
                 UpdatePortStatus(myAsset, Status);
+                this.Text = NameBox.Text;
             }
         }
         private void OpenAssets(object sender, EventArgs e)
@@ -114,6 +115,7 @@ namespace UI.RichClient
                     i++;
                 }
             }
+            this.Text = NameBox.Text;
             UpdatePortStatus(tempobj,Status);
         }
     }
