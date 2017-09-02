@@ -22,42 +22,24 @@ namespace UI.RichClient
         }
         private void Ports_Load(object sender, EventArgs e)
         {
-            UpdateCommPortStatusInUi(PortNum.Text, Status);
         }
-        private void UpdateCommPortStatusInUi(string boxtText, TextBox statusBox)
+        private void UpdatePortStatus(LpcAsset asset, TextBox statusBox)
         {
-            //bool status;
-            //statusBox.TextAlign = HorizontalAlignment.Center;
-            //if (!Global.CommPortsConnectionStatus.TryGetValue(boxtText, out status))
-            //{
-            //    statusBox.Text = "UNKNOWN";
-            //    statusBox.BackColor = Color.LightSlateGray;
-            //}
-            //else
-            //{
-            //    if (status)
-            //    {
-            //        statusBox.Text = "CONNECTED";
-            //        statusBox.BackColor = Color.LightGreen;
-            //    }
-            //    else
-            //    {
-            //        statusBox.Text = "NOT CONNECTED";
-            //        statusBox.BackColor = Color.Red;
-            //    }
-            //}
-        }
-
-        private void Box1_TextChanged(object sender, EventArgs e)
-        {
-            //Box.Comport.PortName = PortNum.Text;
-            UpdateCommPortStatusInUi(PortNum.Text, Status);
-
+            bool status = asset.Comport.IsOpen;
+            if (status)
+            {
+                statusBox.Text = "CONNECTED";
+                statusBox.BackColor = Color.LightGreen;
+            }
+            else
+            {
+                statusBox.Text = "NOT CONNECTED";
+                statusBox.BackColor = Color.LightSalmon;
+            }
         }
         private void SaveLpcAsset(object sender, EventArgs e)
         {
-            //C:\_Src\Prod\LiquidPixel\UI.RichClient\bin\Debug save location
-            
+            //C:\_Src\Prod\LiquidPixel\UI.RichClient\bin\Debug save location   
             if (NameBox.Text == "null" || PortNum.Text == "null")
             {
                 MessageBox.Show("Must enter a name and port before this file can be saved");
@@ -81,14 +63,9 @@ namespace UI.RichClient
                 myAsset.Name = NameBox.Text;
                 Global.Assets.Add(new Mode() { Name = NameBox.Text, Value = Global.AssetAmount });
                 Global.AssetAmount++;
+                UpdatePortStatus(myAsset, Status);
             }
         }
-
-        private void NameChange(object sender, EventArgs e)
-        {
-
-        }
-
         private void OpenAssets(object sender, EventArgs e)
         {
             //check and see what assets can be opened
@@ -105,6 +82,7 @@ namespace UI.RichClient
             string port = "";
             int i = 0;
             string line = "not null";
+            var tempobj = new LpcAsset();
             while (line != null && i < 3)
             {
                 line = file.ReadLine();
@@ -127,7 +105,6 @@ namespace UI.RichClient
                         port = line;
                         port = port.Replace("Comport=", null);
                         PortNum.Text = port;
-                        var tempobj = new LpcAsset();
                         Global.Assets.Add(new Mode() { Name = name, Value = Global.AssetAmount });
                         Global.AssetAmount++;
                         tempobj.Name = name;
@@ -136,10 +113,8 @@ namespace UI.RichClient
                     }
                     i++;
                 }
-                //file.Close();
-
             }
-           
+            UpdatePortStatus(tempobj,Status);
         }
     }
 }

@@ -36,7 +36,6 @@ namespace UI.RichClient
         public SerialPort Comport { get { return _comport; } }
         public string FileName { get; set; }
         public string Name { get; set; }
-        public bool IsOpen { get; set; }
         public float CmdsPerSecond { get; set; }
         public string Sent { get; set; }
         public int[] Color { get; set; }

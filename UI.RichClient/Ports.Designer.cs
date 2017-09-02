@@ -60,7 +60,6 @@
             this.PortNum.Size = new System.Drawing.Size(100, 20);
             this.PortNum.TabIndex = 4;
             this.PortNum.Text = "null";
-            this.PortNum.TextChanged += new System.EventHandler(this.Box1_TextChanged);
             // 
             // Status
             // 
@@ -102,14 +101,14 @@
             // Open
             // 
             this.Open.Name = "Open";
-            this.Open.Size = new System.Drawing.Size(152, 22);
+            this.Open.Size = new System.Drawing.Size(103, 22);
             this.Open.Text = "Open";
             this.Open.Click += new System.EventHandler(this.OpenAssets);
             // 
             // saveToolStripMenuItem
             // 
             this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
-            this.saveToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.saveToolStripMenuItem.Size = new System.Drawing.Size(103, 22);
             this.saveToolStripMenuItem.Text = "Save";
             this.saveToolStripMenuItem.Click += new System.EventHandler(this.SaveLpcAsset);
             // 
@@ -120,7 +119,6 @@
             this.NameBox.Size = new System.Drawing.Size(100, 20);
             this.NameBox.TabIndex = 28;
             this.NameBox.Text = "null";
-            this.NameBox.TextChanged += new System.EventHandler(this.NameChange);
             // 
             // NameLabel
             // 
