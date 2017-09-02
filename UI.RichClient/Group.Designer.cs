@@ -31,11 +31,6 @@ namespace UI.RichClient
         /// </summary>
         private void InitializeComponent()
         {
-            var modeList = new List<Mode>();
-            modeList.Add(new RichClient.Mode { Name = "Foo", Value = 1 } );
-            modeList.Add(new RichClient.Mode { Name = "Bar", Value = 2 } );
-
-            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Group));
             this.command1CommPortCheckedListBox = new System.Windows.Forms.CheckedListBox();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -68,12 +63,6 @@ namespace UI.RichClient
             this.mode4ComboBox = new System.Windows.Forms.ComboBox();
             this.mode5ComboBox = new System.Windows.Forms.ComboBox();
             this.mode6ComboBox = new System.Windows.Forms.ComboBox();
-            this.button13 = new System.Windows.Forms.Button();
-            this.button14 = new System.Windows.Forms.Button();
-            this.button15 = new System.Windows.Forms.Button();
-            this.button16 = new System.Windows.Forms.Button();
-            this.button17 = new System.Windows.Forms.Button();
-            this.button18 = new System.Windows.Forms.Button();
             this.command1Delay = new System.Windows.Forms.TrackBar();
             this.command2Delay = new System.Windows.Forms.TrackBar();
             this.command3Delay = new System.Windows.Forms.TrackBar();
@@ -107,8 +96,6 @@ namespace UI.RichClient
             this.button8 = new System.Windows.Forms.Button();
             this.initializeCommPortsButton = new System.Windows.Forms.Button();
             this.button19 = new System.Windows.Forms.Button();
-            this.globalBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.globalBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.command1Delay)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.command2Delay)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.command3Delay)).BeginInit();
@@ -121,8 +108,6 @@ namespace UI.RichClient
             ((System.ComponentModel.ISupportInitialize)(this.q4Delay)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.q5Delay)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.q6Delay)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.globalBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.globalBindingSource1)).BeginInit();
             this.SuspendLayout();
             // 
             // command1CommPortCheckedListBox
@@ -398,22 +383,20 @@ namespace UI.RichClient
             // 
             // mode1ComboBox
             // 
-            this.mode1ComboBox.DataSource = modeList;
             this.mode1ComboBox.DisplayMember = "Name";
             this.mode1ComboBox.FormattingEnabled = true;
             this.mode1ComboBox.Location = new System.Drawing.Point(13, 400);
             this.mode1ComboBox.Name = "mode1ComboBox";
-            this.mode1ComboBox.Size = new System.Drawing.Size(100, 21);
+            this.mode1ComboBox.Size = new System.Drawing.Size(199, 21);
             this.mode1ComboBox.TabIndex = 27;
             // 
             // mode2ComboBox
             // 
-            this.mode2ComboBox.FormattingEnabled = true;
-            this.mode2ComboBox.DataSource = modeList;
             this.mode2ComboBox.DisplayMember = "Name";
+            this.mode2ComboBox.FormattingEnabled = true;
             this.mode2ComboBox.Location = new System.Drawing.Point(218, 400);
             this.mode2ComboBox.Name = "mode2ComboBox";
-            this.mode2ComboBox.Size = new System.Drawing.Size(100, 21);
+            this.mode2ComboBox.Size = new System.Drawing.Size(199, 21);
             this.mode2ComboBox.TabIndex = 28;
             // 
             // mode3ComboBox
@@ -437,7 +420,7 @@ namespace UI.RichClient
             "Random Cloudy"});
             this.mode3ComboBox.Location = new System.Drawing.Point(424, 400);
             this.mode3ComboBox.Name = "mode3ComboBox";
-            this.mode3ComboBox.Size = new System.Drawing.Size(100, 21);
+            this.mode3ComboBox.Size = new System.Drawing.Size(199, 21);
             this.mode3ComboBox.TabIndex = 29;
             // 
             // mode4ComboBox
@@ -461,7 +444,7 @@ namespace UI.RichClient
             "Random Cloudy"});
             this.mode4ComboBox.Location = new System.Drawing.Point(630, 400);
             this.mode4ComboBox.Name = "mode4ComboBox";
-            this.mode4ComboBox.Size = new System.Drawing.Size(100, 21);
+            this.mode4ComboBox.Size = new System.Drawing.Size(200, 21);
             this.mode4ComboBox.TabIndex = 30;
             // 
             // mode5ComboBox
@@ -485,7 +468,7 @@ namespace UI.RichClient
             "Random Cloudy"});
             this.mode5ComboBox.Location = new System.Drawing.Point(836, 400);
             this.mode5ComboBox.Name = "mode5ComboBox";
-            this.mode5ComboBox.Size = new System.Drawing.Size(100, 21);
+            this.mode5ComboBox.Size = new System.Drawing.Size(200, 21);
             this.mode5ComboBox.TabIndex = 31;
             // 
             // mode6ComboBox
@@ -509,68 +492,8 @@ namespace UI.RichClient
             "Random Cloudy"});
             this.mode6ComboBox.Location = new System.Drawing.Point(1042, 399);
             this.mode6ComboBox.Name = "mode6ComboBox";
-            this.mode6ComboBox.Size = new System.Drawing.Size(100, 21);
+            this.mode6ComboBox.Size = new System.Drawing.Size(199, 21);
             this.mode6ComboBox.TabIndex = 32;
-            // 
-            // button13
-            // 
-            this.button13.Location = new System.Drawing.Point(120, 400);
-            this.button13.Name = "button13";
-            this.button13.Size = new System.Drawing.Size(92, 21);
-            this.button13.TabIndex = 33;
-            this.button13.Text = "Update String";
-            this.button13.UseVisualStyleBackColor = true;
-            this.button13.Click += new System.EventHandler(this.button13_Click);
-            // 
-            // button14
-            // 
-            this.button14.Location = new System.Drawing.Point(326, 399);
-            this.button14.Name = "button14";
-            this.button14.Size = new System.Drawing.Size(92, 22);
-            this.button14.TabIndex = 34;
-            this.button14.Text = "Update String";
-            this.button14.UseVisualStyleBackColor = true;
-            this.button14.Click += new System.EventHandler(this.button14_Click);
-            // 
-            // button15
-            // 
-            this.button15.Location = new System.Drawing.Point(532, 398);
-            this.button15.Name = "button15";
-            this.button15.Size = new System.Drawing.Size(92, 23);
-            this.button15.TabIndex = 35;
-            this.button15.Text = "Update String";
-            this.button15.UseVisualStyleBackColor = true;
-            this.button15.Click += new System.EventHandler(this.button15_Click);
-            // 
-            // button16
-            // 
-            this.button16.Location = new System.Drawing.Point(738, 398);
-            this.button16.Name = "button16";
-            this.button16.Size = new System.Drawing.Size(92, 23);
-            this.button16.TabIndex = 36;
-            this.button16.Text = "Update String";
-            this.button16.UseVisualStyleBackColor = true;
-            this.button16.Click += new System.EventHandler(this.button16_Click);
-            // 
-            // button17
-            // 
-            this.button17.Location = new System.Drawing.Point(944, 398);
-            this.button17.Name = "button17";
-            this.button17.Size = new System.Drawing.Size(92, 23);
-            this.button17.TabIndex = 37;
-            this.button17.Text = "Update String";
-            this.button17.UseVisualStyleBackColor = true;
-            this.button17.Click += new System.EventHandler(this.button17_Click);
-            // 
-            // button18
-            // 
-            this.button18.Location = new System.Drawing.Point(1150, 398);
-            this.button18.Name = "button18";
-            this.button18.Size = new System.Drawing.Size(92, 23);
-            this.button18.TabIndex = 38;
-            this.button18.Text = "Update String";
-            this.button18.UseVisualStyleBackColor = true;
-            this.button18.Click += new System.EventHandler(this.button18_Click);
             // 
             // command1Delay
             // 
@@ -902,14 +825,6 @@ namespace UI.RichClient
             this.button19.UseVisualStyleBackColor = true;
             this.button19.Click += new System.EventHandler(this.Disconnect);
             // 
-            // globalBindingSource
-            // 
-            //this.globalBindingSource.DataSource = typeof(UI.RichClient.Global);
-            // 
-            // globalBindingSource1
-            // 
-            //this.globalBindingSource1.DataSource = typeof(UI.RichClient.Global);
-            // 
             // Group
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -943,12 +858,6 @@ namespace UI.RichClient
             this.Controls.Add(this.command3Delay);
             this.Controls.Add(this.command2Delay);
             this.Controls.Add(this.command1Delay);
-            this.Controls.Add(this.button18);
-            this.Controls.Add(this.button17);
-            this.Controls.Add(this.button16);
-            this.Controls.Add(this.button15);
-            this.Controls.Add(this.button14);
-            this.Controls.Add(this.button13);
             this.Controls.Add(this.mode6ComboBox);
             this.Controls.Add(this.mode5ComboBox);
             this.Controls.Add(this.mode4ComboBox);
@@ -1000,8 +909,6 @@ namespace UI.RichClient
             ((System.ComponentModel.ISupportInitialize)(this.q4Delay)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.q5Delay)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.q6Delay)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.globalBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.globalBindingSource1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1045,12 +952,6 @@ namespace UI.RichClient
         private System.Windows.Forms.ComboBox mode4ComboBox;
         private System.Windows.Forms.ComboBox mode5ComboBox;
         private System.Windows.Forms.ComboBox mode6ComboBox;
-        private System.Windows.Forms.Button button13;
-        private System.Windows.Forms.Button button14;
-        private System.Windows.Forms.Button button15;
-        private System.Windows.Forms.Button button16;
-        private System.Windows.Forms.Button button17;
-        private System.Windows.Forms.Button button18;
         private System.Windows.Forms.TrackBar command1Delay;
         private System.Windows.Forms.TrackBar command2Delay;
         private System.Windows.Forms.TrackBar command3Delay;
@@ -1084,7 +985,5 @@ namespace UI.RichClient
         private System.Windows.Forms.Button button8;
         private System.Windows.Forms.Button initializeCommPortsButton;
         private System.Windows.Forms.Button button19;
-        private System.Windows.Forms.BindingSource globalBindingSource1;
-        private System.Windows.Forms.BindingSource globalBindingSource;
     }
 }

@@ -46,6 +46,7 @@
             this.DataChart = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.DataChart2 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.HBox1 = new System.Windows.Forms.TextBox();
+            this.HBox2 = new System.Windows.Forms.TextBox();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DataChart)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DataChart2)).BeginInit();
@@ -104,7 +105,7 @@
             // newBoxToolStripMenuItem
             // 
             this.newBoxToolStripMenuItem.Name = "newBoxToolStripMenuItem";
-            this.newBoxToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.newBoxToolStripMenuItem.Size = new System.Drawing.Size(151, 22);
             this.newBoxToolStripMenuItem.Text = "New Lpc Asset";
             this.newBoxToolStripMenuItem.Click += new System.EventHandler(this.NewLpcAssetCreate);
             // 
@@ -156,11 +157,21 @@
             this.HBox1.Text = "Box1";
             this.HBox1.MouseHover += new System.EventHandler(this.UpdateGlobalHBox1);
             // 
+            // HBox2
+            // 
+            this.HBox2.Location = new System.Drawing.Point(442, 63);
+            this.HBox2.Name = "HBox2";
+            this.HBox2.Size = new System.Drawing.Size(100, 20);
+            this.HBox2.TabIndex = 4;
+            this.HBox2.Text = "Box2";
+            this.HBox2.MouseHover += new System.EventHandler(this.UpdateGlobalHBox2);
+            // 
             // Hub
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(984, 526);
+            this.Controls.Add(this.HBox2);
             this.Controls.Add(this.HBox1);
             this.Controls.Add(this.DataChart2);
             this.Controls.Add(this.DataChart);
@@ -191,5 +202,6 @@
         private System.Windows.Forms.DataVisualization.Charting.Chart DataChart2;
         private System.Windows.Forms.ToolStripMenuItem newBoxToolStripMenuItem;
         private System.Windows.Forms.TextBox HBox1;
+        private System.Windows.Forms.TextBox HBox2;
     }
 }

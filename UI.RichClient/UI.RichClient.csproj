@@ -82,8 +82,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets.cs" />
-    <Compile Include="Box.cs" />
+    <Compile Include="Global.cs" />
+    <Compile Include="LpcAsset.cs" />
     <Compile Include="Boxes.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -96,7 +96,6 @@
     <Compile Include="File.Designer.cs">
       <DependentUpon>File.cs</DependentUpon>
     </Compile>
-    <Compile Include="Global.cs" />
     <Compile Include="Group.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -122,7 +121,6 @@
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Modes.cs" />
-    <Compile Include="Port.cs" />
     <Compile Include="Ports.cs">
       <SubType>Form</SubType>
     </Compile>

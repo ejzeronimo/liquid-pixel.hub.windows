@@ -187,12 +187,12 @@ namespace UI.RichClient
         {
             var items = new List<string>
             {
-                Global.port1,
-                Global.port2,
-                Global.port3,
-                Global.port4,
-                Global.port5,
-                Global.port6
+                //Global.port1,
+                //Global.port2,
+                //Global.port3,
+                //Global.port4,
+                //Global.port5,
+                //Global.port6
 
         };
            // PortBox.DataSource = items;

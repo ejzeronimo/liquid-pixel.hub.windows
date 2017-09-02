@@ -35,10 +35,12 @@
             this.StatusLabel = new System.Windows.Forms.Label();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.Open = new System.Windows.Forms.ToolStripMenuItem();
             this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.NameBox = new System.Windows.Forms.TextBox();
             this.NameLabel = new System.Windows.Forms.Label();
-            this.Open = new System.Windows.Forms.ToolStripMenuItem();
+            this.TypeBox = new System.Windows.Forms.TextBox();
+            this.TypeLabel = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -97,6 +99,13 @@
             this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
             this.fileToolStripMenuItem.Text = "File";
             // 
+            // Open
+            // 
+            this.Open.Name = "Open";
+            this.Open.Size = new System.Drawing.Size(152, 22);
+            this.Open.Text = "Open";
+            this.Open.Click += new System.EventHandler(this.OpenAssets);
+            // 
             // saveToolStripMenuItem
             // 
             this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
@@ -122,18 +131,30 @@
             this.NameLabel.TabIndex = 27;
             this.NameLabel.Text = "Name:";
             // 
-            // Open
+            // TypeBox
             // 
-            this.Open.Name = "Open";
-            this.Open.Size = new System.Drawing.Size(152, 22);
-            this.Open.Text = "Open";
-            this.Open.Click += new System.EventHandler(this.OpenAssets);
+            this.TypeBox.Location = new System.Drawing.Point(12, 86);
+            this.TypeBox.Name = "TypeBox";
+            this.TypeBox.Size = new System.Drawing.Size(100, 20);
+            this.TypeBox.TabIndex = 29;
+            this.TypeBox.Text = "null";
+            // 
+            // TypeLabel
+            // 
+            this.TypeLabel.AutoSize = true;
+            this.TypeLabel.Location = new System.Drawing.Point(12, 70);
+            this.TypeLabel.Name = "TypeLabel";
+            this.TypeLabel.Size = new System.Drawing.Size(34, 13);
+            this.TypeLabel.TabIndex = 30;
+            this.TypeLabel.Text = "Type:";
             // 
             // Ports
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(336, 216);
+            this.Controls.Add(this.TypeLabel);
+            this.Controls.Add(this.TypeBox);
             this.Controls.Add(this.NameBox);
             this.Controls.Add(this.NameLabel);
             this.Controls.Add(this.StatusLabel);
@@ -164,5 +185,7 @@
         private System.Windows.Forms.TextBox NameBox;
         private System.Windows.Forms.Label NameLabel;
         private System.Windows.Forms.ToolStripMenuItem Open;
+        private System.Windows.Forms.TextBox TypeBox;
+        private System.Windows.Forms.Label TypeLabel;
     }
 }

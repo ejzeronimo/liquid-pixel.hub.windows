@@ -20,33 +20,32 @@ namespace UI.RichClient
         {
             InitializeComponent();
         }
-
         private void Ports_Load(object sender, EventArgs e)
         {
             UpdateCommPortStatusInUi(PortNum.Text, Status);
         }
         private void UpdateCommPortStatusInUi(string boxtText, TextBox statusBox)
         {
-            bool status;
-            statusBox.TextAlign = HorizontalAlignment.Center;
-            if (!Global.CommPortsConnectionStatus.TryGetValue(boxtText, out status))
-            {
-                statusBox.Text = "UNKNOWN";
-                statusBox.BackColor = Color.LightSlateGray;
-            }
-            else
-            {
-                if (status)
-                {
-                    statusBox.Text = "CONNECTED";
-                    statusBox.BackColor = Color.LightGreen;
-                }
-                else
-                {
-                    statusBox.Text = "NOT CONNECTED";
-                    statusBox.BackColor = Color.Red;
-                }
-            }
+            //bool status;
+            //statusBox.TextAlign = HorizontalAlignment.Center;
+            //if (!Global.CommPortsConnectionStatus.TryGetValue(boxtText, out status))
+            //{
+            //    statusBox.Text = "UNKNOWN";
+            //    statusBox.BackColor = Color.LightSlateGray;
+            //}
+            //else
+            //{
+            //    if (status)
+            //    {
+            //        statusBox.Text = "CONNECTED";
+            //        statusBox.BackColor = Color.LightGreen;
+            //    }
+            //    else
+            //    {
+            //        statusBox.Text = "NOT CONNECTED";
+            //        statusBox.BackColor = Color.Red;
+            //    }
+            //}
         }
 
         private void Box1_TextChanged(object sender, EventArgs e)
@@ -55,27 +54,34 @@ namespace UI.RichClient
             UpdateCommPortStatusInUi(PortNum.Text, Status);
 
         }
-
         private void SaveLpcAsset(object sender, EventArgs e)
         {
             //C:\_Src\Prod\LiquidPixel\UI.RichClient\bin\Debug save location
-            string filestruct = "Type=LpcAsset\r\nName=" + NameBox.Text + "\r\nComport=" + PortNum.Text;
+            
             if (NameBox.Text == "null" || PortNum.Text == "null")
             {
                 MessageBox.Show("Must enter a name and port before this file can be saved");
             }
             else
             {
-                System.IO.StreamWriter file = new System.IO.StreamWriter(NameBox.Text + ".txt");
+                SaveFileDialog log = new SaveFileDialog();
+                //writes file to address
+                log.Filter = "Text Files (*.txt*)|*.txt*";
+                log.FilterIndex = 1;
+                log.DefaultExt = "txt";
+                log.FileName = NameBox.Text;
+                log.ShowDialog();
+                string filestruct = "Type=LpcAsset\r\nName=" + NameBox.Text + "\r\nComport=" + PortNum.Text;
+                System.IO.StreamWriter file = new System.IO.StreamWriter(log.FileName);
                 file.WriteLine(filestruct);
                 file.Close();
-
+                //creates LpcAsset and puts in list
                 var myAsset = new LpcAsset();
-
                 myAsset.Comport.PortName = PortNum.Text;
                 myAsset.Name = NameBox.Text;
+                Global.Assets.Add(new Mode() { Name = NameBox.Text, Value = Global.AssetAmount });
+                Global.AssetAmount++;
             }
-
         }
 
         private void NameChange(object sender, EventArgs e)
@@ -86,14 +92,55 @@ namespace UI.RichClient
         private void OpenAssets(object sender, EventArgs e)
         {
             //check and see what assets can be opened
-            //create new form that has all Assets 
-
             OpenFileDialog log = new OpenFileDialog();
             log.Filter = "Text Files (*.txt*)|*.txt*";
             log.FilterIndex = 1;
-            log.Multiselect = true;
+            log.Multiselect = false;
             log.ShowDialog();
             string address = log.FileName;
+            System.IO.StreamReader file = new System.IO.StreamReader(address);
+            //reads file and assigns to temp values
+            string name = "";
+            string type = "";
+            string port = "";
+            int i = 0;
+            string line = "not null";
+            while (line != null && i < 3)
+            {
+                line = file.ReadLine();
+                if (line != null)
+                {
+                    if (i == 0)
+                    {
+                        type = line;
+                        type = type.Replace("Type=",null);
+                        TypeBox.Text = type;
+                    }
+                    if (i == 1)
+                    {
+                        name = line;
+                        name = name.Replace("Name=", null);
+                        
+                    }
+                    if (i == 2)
+                    {
+                        port = line;
+                        port = port.Replace("Comport=", null);
+                        PortNum.Text = port;
+                        var tempobj = new LpcAsset();
+                        Global.Assets.Add(new Mode() { Name = name, Value = Global.AssetAmount });
+                        Global.AssetAmount++;
+                        tempobj.Name = name;
+                        NameBox.Text = name;
+                        tempobj.Comport.PortName = port;
+                    }
+                    i++;
+                }
+                //file.Close();
+
+            }
+           
         }
     }
 }
+
