@@ -8,8 +8,7 @@ namespace UI.RichClient
 {
     public static class Global
     {
-        public static List<Mode> Assets = new List<Mode>();
-        public static int AssetAmount { get; set; }
+        public static Dictionary<string, LpcAsset> AssetList = new Dictionary<string, LpcAsset>();
 
     }
 }

@@ -11,11 +11,8 @@ using System.IO.Ports;
 
 namespace UI.RichClient
 {
-
-
     public partial class Hub : Form
     {
-        public SerialPort Comport1;
         public Hub()
         {
             InitializeComponent();
@@ -29,7 +26,7 @@ namespace UI.RichClient
 
         private void infoToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            MessageBox.Show('"' + "Madrix is insuperior, Liquid Pixel is the best" + '"' + "-Elliot");
+            MessageBox.Show('"' + "Madrix is insuperior, Liquid Systems is the best" + '"' + "-Elliot");
         }
 
         private void groupOBoxesToolStripMenuItem_Click(object sender, EventArgs e)
@@ -46,20 +43,24 @@ namespace UI.RichClient
 
         private void UpdateGlobalHBox1(object sender, EventArgs e)
         {
-            try
-            {
-                HBox1.Text = Global.Assets[0].Name;
-            }
-            catch
-            {
-            }
+            foreach (KeyValuePair<string, LpcAsset> entry in Global.AssetList)
+            { 
+                try
+                {
+                    HBox1.Text = entry.Value.Comport.BaudRate.ToString();
+                }
+                catch
+                {
+
+                }
+            };
         }
 
         private void UpdateGlobalHBox2(object sender, EventArgs e)
         {
             try
             {
-                HBox1.Text = Global.Assets[1].Name;
+                
             }
             catch
             {

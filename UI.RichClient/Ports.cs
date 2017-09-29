@@ -61,9 +61,13 @@ namespace UI.RichClient
                 var myAsset = new LpcAsset();
                 myAsset.Comport.PortName = PortNum.Text;
                 myAsset.Name = NameBox.Text;
-                Global.Assets.Add(new Mode() { Name = NameBox.Text, Value = Global.AssetAmount });
-                Global.AssetAmount++;
                 UpdatePortStatus(myAsset, Status);
+                myAsset.Comport.Parity = Parity.None;
+                myAsset.Comport.DataBits = 8;
+                myAsset.Comport.StopBits = StopBits.One;
+                myAsset.Comport.Encoding = Encoding.ASCII;
+                myAsset.Comport.BaudRate = Int32.Parse(Baudrate.Text);
+                Global.AssetList.Add(myAsset.Name, myAsset);
                 this.Text = NameBox.Text;
             }
         }
@@ -83,7 +87,7 @@ namespace UI.RichClient
             string port = "";
             int i = 0;
             string line = "not null";
-            var tempobj = new LpcAsset();
+            var tempAsset = new LpcAsset();
             while (line != null && i < 3)
             {
                 line = file.ReadLine();
@@ -98,25 +102,27 @@ namespace UI.RichClient
                     if (i == 1)
                     {
                         name = line;
-                        name = name.Replace("Name=", null);
-                        
+                        name = name.Replace("Name=", null);  
                     }
                     if (i == 2)
                     {
                         port = line;
                         port = port.Replace("Comport=", null);
                         PortNum.Text = port;
-                        Global.Assets.Add(new Mode() { Name = name, Value = Global.AssetAmount });
-                        Global.AssetAmount++;
-                        tempobj.Name = name;
+                        tempAsset.Name = name;
                         NameBox.Text = name;
-                        tempobj.Comport.PortName = port;
+                        tempAsset.Comport.PortName = port;
+                        tempAsset.Comport.Parity = Parity.None;
+                        tempAsset.Comport.DataBits = 8;
+                        tempAsset.Comport.StopBits = StopBits.One;
+                        tempAsset.Comport.Encoding = Encoding.ASCII;
+                        Global.AssetList.Add(tempAsset.Name, tempAsset);
                     }
                     i++;
                 }
             }
             this.Text = NameBox.Text;
-            UpdatePortStatus(tempobj,Status);
+            UpdatePortStatus(tempAsset, Status);
         }
     }
 }

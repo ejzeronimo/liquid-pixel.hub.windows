@@ -10,43 +10,6 @@ namespace UI.RichClient
 {
     public partial class Group : Form
     {
-        private string r1;
-        private string g1;
-        private string b1;
-        private string r2;
-        private string g2;
-        private string b2;
-        private string r3;
-        private string g3;
-        private string b3;
-        private string r4;
-        private string g4;
-        private string b4;
-        private string r5;
-        private string g5;
-        private string b5;
-        private string r6;
-        private string g6;
-        private string b6;
-        private string package1;
-        private string package2;
-        private string package3;
-        private string package4;
-        private string package5;
-        private string package6;
-        private int delay1;
-        private int delay2;
-        private int delay3;
-        private int delay4;
-        private int delay5;
-        private int delay6;
-        private string box;
-        private int moder1;
-        private int moder2;
-        private int moder3;
-        private int moder4;
-        private int moder5;
-        private int moder6;
         //public bool IsComport1Connected => Comport1.IsOpen;
         public SerialPort Comport2;
         //public bool IsComport2Connected => Comport2.IsOpen;
@@ -68,17 +31,18 @@ namespace UI.RichClient
         public Group()
         {
             InitializeComponent();
+            
         }
         void ColorChange(int[] array, Panel pan)
         {
             ColorDialog cdlg = new ColorDialog();
             cdlg.ShowDialog();
-            Color clr = cdlg.Color;
+
             try
             {
-                array[0] = (clr.R);
-                array[1] = (clr.R);
-                array[2] = (clr.R);
+                array[0] = (cdlg.Color.R);
+                array[1] = (cdlg.Color.G);
+                array[2] = (cdlg.Color.B);
                 pan.BackColor = cdlg.Color;
             }
             catch (Exception ex)
@@ -92,7 +56,7 @@ namespace UI.RichClient
             {
                 if (package == null)
                 {
-                    asset.Comport.Write($"T0C{asset.BoxNumber}R{asset.Color[0]}G{asset.Color[1]}B{asset.Color[2]}D{asset.Delay}X0M{asset.Mode}~");
+                    asset.Comport.Write($"T0C{asset.BoxNumber}R{asset.Color[0]}G{asset.Color[1]}B{asset.Color[2]}D{asset.Delay}X0M{0}~");
                 }
                 else
                 {
@@ -106,13 +70,13 @@ namespace UI.RichClient
         }
         void ModeSelect(LpcAsset asset, ComboBox mode)
         {
+            //Mode CurrentMode = Mode.Off;
             try
             {
-
             }
-            catch
+            catch (Exception ex)
             {
-
+                MessageBox.Show("An error occured while choosing the mode, please try again.");
             }
         }
         void BindToSetting(LpcAsset asset,ComboBox mode )
@@ -126,6 +90,7 @@ namespace UI.RichClient
 
             }
         }
+        //changes the color
         private void button7_Click(object sender, EventArgs e)
         {
             ColorChange(null, panel1);
@@ -241,8 +206,6 @@ namespace UI.RichClient
         {
             try
             {
-                //Comport2.PortName = Global.port2;
-                //Comport2.BaudRate = 9600;
                 //Comport2.Parity = Parity.None;
                 //Comport2.DataBits = 8;
                 //Comport2.StopBits = StopBits.One;
@@ -263,34 +226,34 @@ namespace UI.RichClient
                 switch (queueSelectedCommands[i])
                 {
                     case 0:
-                        package = package1 ?? string.Empty;
-                        qDelay = q1Delay.Value;
-                        packagePortSender = () => queueCommand_Click(sender, e, 0, package, command1SelectedCommPorts);
+                        //qDelay = q1Delay.Value;
+                        PackageCompAndSend(null, null);
+                        //packagePortSender = () => queueCommand_Click(sender, e, 0, package, command1SelectedCommPorts);
                         break;
                     case 1:
-                        package = package2 ?? string.Empty;
-                        qDelay = q2Delay.Value;
-                        packagePortSender = () => queueCommand_Click(sender, e, 0, package, command2SelectedCommPorts);
+                        //qDelay = q2Delay.Value;
+                        PackageCompAndSend(null, null);
+                        //packagePortSender = () => queueCommand_Click(sender, e, 0, package, command2SelectedCommPorts);
                         break;
                     case 2:
-                        package = package3 ?? string.Empty;
-                        qDelay = q3Delay.Value;
-                        packagePortSender = () => queueCommand_Click(sender, e, 0, package, command3SelectedCommPorts);
+                        //qDelay = q3Delay.Value;
+                        PackageCompAndSend(null, null);
+                        //packagePortSender = () => queueCommand_Click(sender, e, 0, package, command3SelectedCommPorts);
                         break;
                     case 3:
-                        package = package4 ?? string.Empty;
-                        qDelay = q4Delay.Value;
-                        packagePortSender = () => queueCommand_Click(sender, e, 0, package, command4SelectedCommPorts);
+                        //qDelay = q4Delay.Value;
+                        PackageCompAndSend(null, null);
+                        //packagePortSender = () => queueCommand_Click(sender, e, 0, package, command4SelectedCommPorts);
                         break;
                     case 4:
-                        package = package5 ?? string.Empty;
-                        qDelay = q5Delay.Value;
-                        packagePortSender = () => queueCommand_Click(sender, e, 0, package, command5SelectedCommPorts);
+                        //qDelay = q5Delay.Value;
+                        PackageCompAndSend(null, null);
+                        //packagePortSender = () => queueCommand_Click(sender, e, 0, package, command5SelectedCommPorts);
                         break;
                     case 5:
-                        package = package6 ?? string.Empty;
-                        qDelay = q6Delay.Value;
-                        packagePortSender = () => queueCommand_Click(sender, e, 0, package, command6SelectedCommPorts);
+                        //qDelay = q6Delay.Value;
+                        PackageCompAndSend(null, null);
+                        //packagePortSender = () => queueCommand_Click(sender, e, 0, package, command6SelectedCommPorts);
                         break;
                     default:
                         break;
@@ -350,9 +313,6 @@ namespace UI.RichClient
 
         private void SendDataToSerialPorts(string package, int selectedIndex)
         {
-            if (string.IsNullOrEmpty(package?.Trim()))
-                return;
-            //feature
             switch (selectedIndex)
             {
                 case 0:
@@ -366,7 +326,6 @@ namespace UI.RichClient
                     break;
                 case 3:
                     PackageCompAndSend(null, null);
-
                     break;
                 case 4:
                     PackageCompAndSend(null, null);
@@ -379,58 +338,32 @@ namespace UI.RichClient
             }
         }
 
-        private async Task SendWatchdogResetAsyncInfiniteLoop()
-        {
-            var keepAlivePackage = $"T99~";
-            while (true)
-            {
-                for (int i = 0; i < 6; i++)
-                {
-                    //Global.Comport1.Write($"T99~");
-                }
-
-                await Task.Delay(2000);
-            }
-        }
+        //private async Task SendWatchdogResetAsyncInfiniteLoop()
+        //{
+        //    var keepAlivePackage = $"T99~";
+        //    while (true)
+        //    {
+        //        for (int i = 0; i < 6; i++)
+        //        {
+        //            //Global.Comport1.Write($"T99~");
+        //        }
+        //        await Task.Delay(2000);
+        //    }
+        //}
 
         private void Disconnect(object sender, EventArgs e)
         {
             try
             {
-                //Global.Comport1.Close();
-                //Global.CommPortsConnectionStatus.Add(Global.Comport1.PortName, false);
+                for (;;)
+                {
+
+                }
             }
-            catch { }
-            try
+            catch
             {
-                //Comport2.Close();
-                //Global.CommPortsConnectionStatus.Add(Comport2.PortName, false);
+                MessageBox.Show("An error ocurred while closing ports");
             }
-            catch { }
-            try
-            {
-                //Comport3.Close();
-                //Global.CommPortsConnectionStatus.Add(Comport3.PortName, false);
-            }
-            catch { }
-            try
-            {
-                //Comport4.Close();
-                //Global.CommPortsConnectionStatus.Add(Comport4.PortName, false);
-            }
-            catch { }
-            try
-            {
-                Comport5.Close();
-                //Global.CommPortsConnectionStatus.Add(Comport5.PortName, false);
-            }
-            catch { }
-            try
-            {
-                //Comport6.Close();
-                //Global.CommPortsConnectionStatus.Add(Comport6.PortName, false);
-            }
-            catch { }
         }
     }
 }
