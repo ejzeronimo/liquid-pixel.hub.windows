@@ -8,7 +8,6 @@ namespace UI.RichClient
 {
     public static class Global
     {
-        public static Dictionary<string, LpcAsset> AssetList = new Dictionary<string, LpcAsset>();
-
+        public static SortedDictionary<string, LpcAsset> AssetList = new SortedDictionary<string, LpcAsset>();
     }
 }

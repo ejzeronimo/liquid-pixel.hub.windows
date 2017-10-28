@@ -183,20 +183,6 @@ namespace UI.RichClient
         private void MainForm_Load(object sender, EventArgs e)
         {
         }
-        private void PortBox_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            var items = new List<string>
-            {
-                //Global.port1,
-                //Global.port2,
-                //Global.port3,
-                //Global.port4,
-                //Global.port5,
-                //Global.port6
-
-        };
-           // PortBox.DataSource = items;
-        }
         private void label4_Click(object sender, EventArgs e)
         {
         }
@@ -432,6 +418,27 @@ namespace UI.RichClient
             packageq = $"T{brightq}C{box}R{rq}G{gq}B{bq}D{delayq}X{randomboolq}M{moderq}~";
             StringBoxQ.Text = packageq;
             //cmdBbx1R255G255B255D10WtrueMbreath
+        }
+
+        private void Asset_Changed(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Asset_List_Update(object sender, EventArgs e)
+        {
+            int maxlist = Global.AssetList.Count;
+
+            foreach (KeyValuePair<string, LpcAsset> entry in Global.AssetList)
+            {
+                try
+                {
+                    PortBox.Items.Add(entry.Key);
+                }
+                catch
+                {
+                }
+            };
         }
     }
 }

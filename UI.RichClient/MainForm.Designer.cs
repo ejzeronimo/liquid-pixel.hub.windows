@@ -74,9 +74,9 @@
             // button3
             // 
             this.button3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            this.button3.Location = new System.Drawing.Point(12, 71);
+            this.button3.Location = new System.Drawing.Point(12, 183);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(176, 140);
+            this.button3.Size = new System.Drawing.Size(176, 85);
             this.button3.TabIndex = 4;
             this.button3.Text = "Make Connection";
             this.button3.UseVisualStyleBackColor = false;
@@ -85,9 +85,9 @@
             // button4
             // 
             this.button4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
-            this.button4.Location = new System.Drawing.Point(12, 219);
+            this.button4.Location = new System.Drawing.Point(12, 274);
             this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(176, 140);
+            this.button4.Size = new System.Drawing.Size(176, 85);
             this.button4.TabIndex = 5;
             this.button4.Text = "Close Connection";
             this.button4.UseVisualStyleBackColor = false;
@@ -108,7 +108,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(9, 47);
+            this.label2.Location = new System.Drawing.Point(12, 85);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(53, 13);
             this.label2.TabIndex = 7;
@@ -192,19 +192,13 @@
             // PortBox
             // 
             this.PortBox.FormattingEnabled = true;
-            this.PortBox.Items.AddRange(new object[] {
-            "COM4",
-            "COM5",
-            "COM6",
-            "COM7",
-            "COM8",
-            "COM9"});
-            this.PortBox.Location = new System.Drawing.Point(67, 44);
+            this.PortBox.Location = new System.Drawing.Point(71, 82);
             this.PortBox.Name = "PortBox";
-            this.PortBox.Size = new System.Drawing.Size(121, 21);
+            this.PortBox.Size = new System.Drawing.Size(117, 21);
             this.PortBox.TabIndex = 15;
-            this.PortBox.Text = "COM4";
-            this.PortBox.SelectedIndexChanged += new System.EventHandler(this.PortBox_SelectedIndexChanged);
+            this.PortBox.Text = "Select an Asset...";
+            this.PortBox.SelectedIndexChanged += new System.EventHandler(this.Asset_Changed);
+            this.PortBox.MouseHover += new System.EventHandler(this.Asset_List_Update);
             // 
             // DelayBar
             // 

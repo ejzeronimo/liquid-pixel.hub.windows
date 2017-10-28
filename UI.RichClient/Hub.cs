@@ -41,30 +41,36 @@ namespace UI.RichClient
             prt.Show();
         }
 
-        private void UpdateGlobalHBox1(object sender, EventArgs e)
+        private void MouseHoverCheckForBoxes(object sender, EventArgs e)
         {
             foreach (KeyValuePair<string, LpcAsset> entry in Global.AssetList)
-            { 
+            {
                 try
                 {
-                    HBox1.Text = entry.Value.Comport.BaudRate.ToString();
+                    ListOfBoxes.Text += entry.Value.Name + Environment.NewLine;
+                    ToolStripItem subItem = new ToolStripMenuItem(entry.Value.Name);
+                    portsToolStripMenuItem.DropDownItems.Add(subItem);
                 }
                 catch
                 {
-
                 }
             };
         }
 
-        private void UpdateGlobalHBox2(object sender, EventArgs e)
+        private void AssetListUpdate(object sender, EventArgs e)
         {
-            try
+            int maxlist = Global.AssetList.Count;
+            foreach (KeyValuePair<string, LpcAsset> entry in Global.AssetList)
             {
-                
-            }
-            catch
-            {
-            }
+                try
+                {
+                    ToolStripItem subItem = new ToolStripMenuItem(entry.Value.Name);
+                    portsToolStripMenuItem.DropDownItems.Add(subItem);
+                }
+                catch
+                {
+                }
+            };
         }
     }
 }

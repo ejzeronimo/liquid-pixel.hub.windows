@@ -47,6 +47,7 @@
             this.DataChart2 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.HBox1 = new System.Windows.Forms.TextBox();
             this.HBox2 = new System.Windows.Forms.TextBox();
+            this.ListOfBoxes = new System.Windows.Forms.RichTextBox();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DataChart)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DataChart2)).BeginInit();
@@ -61,7 +62,7 @@
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(984, 24);
             this.menuStrip1.TabIndex = 0;
-            this.menuStrip1.Text = "menuStrip1";
+            this.menuStrip1.Text = "Menu";
             // 
             // fileToolStripMenuItem
             // 
@@ -101,11 +102,12 @@
             this.portsToolStripMenuItem.Name = "portsToolStripMenuItem";
             this.portsToolStripMenuItem.Size = new System.Drawing.Size(153, 22);
             this.portsToolStripMenuItem.Text = "Assets";
+            this.portsToolStripMenuItem.MouseHover += new System.EventHandler(this.AssetListUpdate);
             // 
             // newBoxToolStripMenuItem
             // 
             this.newBoxToolStripMenuItem.Name = "newBoxToolStripMenuItem";
-            this.newBoxToolStripMenuItem.Size = new System.Drawing.Size(151, 22);
+            this.newBoxToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.newBoxToolStripMenuItem.Text = "New Lpc Asset";
             this.newBoxToolStripMenuItem.Click += new System.EventHandler(this.NewLpcAssetCreate);
             // 
@@ -131,6 +133,7 @@
             this.DataChart.Size = new System.Drawing.Size(423, 241);
             this.DataChart.TabIndex = 1;
             this.DataChart.Text = "chart1";
+            this.DataChart.Visible = false;
             // 
             // DataChart2
             // 
@@ -147,6 +150,7 @@
             this.DataChart2.Size = new System.Drawing.Size(423, 241);
             this.DataChart2.TabIndex = 2;
             this.DataChart2.Text = "chart1";
+            this.DataChart2.Visible = false;
             // 
             // HBox1
             // 
@@ -155,7 +159,6 @@
             this.HBox1.Size = new System.Drawing.Size(100, 20);
             this.HBox1.TabIndex = 3;
             this.HBox1.Text = "Box1";
-            this.HBox1.MouseHover += new System.EventHandler(this.UpdateGlobalHBox1);
             // 
             // HBox2
             // 
@@ -164,13 +167,22 @@
             this.HBox2.Size = new System.Drawing.Size(100, 20);
             this.HBox2.TabIndex = 4;
             this.HBox2.Text = "Box2";
-            this.HBox2.MouseHover += new System.EventHandler(this.UpdateGlobalHBox2);
+            // 
+            // ListOfBoxes
+            // 
+            this.ListOfBoxes.Location = new System.Drawing.Point(441, 89);
+            this.ListOfBoxes.Name = "ListOfBoxes";
+            this.ListOfBoxes.Size = new System.Drawing.Size(100, 179);
+            this.ListOfBoxes.TabIndex = 5;
+            this.ListOfBoxes.Text = "";
+            this.ListOfBoxes.MouseHover += new System.EventHandler(this.MouseHoverCheckForBoxes);
             // 
             // Hub
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(984, 526);
+            this.Controls.Add(this.ListOfBoxes);
             this.Controls.Add(this.HBox2);
             this.Controls.Add(this.HBox1);
             this.Controls.Add(this.DataChart2);
@@ -203,5 +215,6 @@
         private System.Windows.Forms.ToolStripMenuItem newBoxToolStripMenuItem;
         private System.Windows.Forms.TextBox HBox1;
         private System.Windows.Forms.TextBox HBox2;
+        private System.Windows.Forms.RichTextBox ListOfBoxes;
     }
 }
