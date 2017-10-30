@@ -126,29 +126,14 @@
             // ModeBox
             // 
             this.ModeBox.FormattingEnabled = true;
-            this.ModeBox.Items.AddRange(new object[] {
-            "Off",
-            "Solid",
-            "Flash",
-            "Sweep",
-            "Twinkle",
-            "Random Twinkle",
-            "Random Flash",
-            "Theater Chase",
-            "Fade In",
-            "Fade Out",
-            "Breath",
-            "Random Breath",
-            "Sudden Flash",
-            "Chroma",
-            "Random Cloudy"});
             this.ModeBox.Location = new System.Drawing.Point(252, 55);
             this.ModeBox.Name = "ModeBox";
             this.ModeBox.Size = new System.Drawing.Size(121, 21);
             this.ModeBox.TabIndex = 10;
-            this.ModeBox.Text = "Off";
+            this.ModeBox.Text = "Slect a Mode...";
             this.ModeBox.SelectedIndexChanged += new System.EventHandler(this.ModeBox_SelectedIndexChanged);
-            this.ModeBox.Click += new System.EventHandler(this.Dropdown);
+            this.ModeBox.SelectedValueChanged += new System.EventHandler(this.ModeBox_SelectedValueChanged);
+            this.ModeBox.MouseHover += new System.EventHandler(this.ModeUpdatesPreQueue);
             // 
             // button6
             // 

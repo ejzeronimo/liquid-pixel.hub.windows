@@ -65,7 +65,11 @@ namespace UI.RichClient
                 try
                 {
                     ToolStripItem subItem = new ToolStripMenuItem(entry.Value.Name);
-                    portsToolStripMenuItem.DropDownItems.Add(subItem);
+                    subItem.Name = entry.Value.Name;
+                    if (!portsToolStripMenuItem.DropDownItems.ContainsKey(entry.Value.Name))
+                    {
+                        portsToolStripMenuItem.DropDownItems.Add(subItem);
+                    }
                 }
                 catch
                 {

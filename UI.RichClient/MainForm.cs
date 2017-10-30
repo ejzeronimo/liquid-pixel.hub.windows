@@ -110,76 +110,10 @@ namespace UI.RichClient
                 MessageBox.Show("Failure...Try Again :(");
             }
         }
-
-        private void Dropdown(object sender, EventArgs e)
-        {
-        }
         private void ArduinoBox_TextChanged(object sender, EventArgs e)
         {
         }
-        private void ModeBox_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (ModeBox.Text == "Off")
-            {
-                moder = 0;
-            }
-            if (ModeBox.Text == "Solid")
-            {
-                moder = 1;
-            }
-            if (ModeBox.Text == "Random Cloudy")
-            {
-                moder = 2;
-            }
-            if (ModeBox.Text == "Flash")
-            {
-                moder = 3;
-            }
-            if (ModeBox.Text == "Sweep")
-            {
-                moder = 4;
-            }
-            if (ModeBox.Text == "Twinkle")
-            {
-                moder = 5;
-            }
-            if (ModeBox.Text == "Random Twinkle")
-            {
-                moder = 6;
-            }
-            if (ModeBox.Text == "Random Flash")
-            {
-                moder = 7;
-            }
-            if (ModeBox.Text == "Theater Chase")
-            {
-                moder = 8;
-            }
-            if (ModeBox.Text == "Chroma")
-            {
-                moder = 9;
-            }
-            if (ModeBox.Text == "Fade In")
-            {
-                moder = 10;
-            }
-            if (ModeBox.Text == "Fade Out")
-            {
-                moder = 11;
-            }
-            if (ModeBox.Text == "Sudden Flash")
-            {
-                moder = 12;
-            }
-            if (ModeBox.Text == "Random Breath")
-            {
-                moder = 13;
-            }
-            if (ModeBox.Text == "Breath")
-            {
-                moder = 14;
-            }
-        }
+
         private void MainForm_Load(object sender, EventArgs e)
         {
         }
@@ -189,66 +123,7 @@ namespace UI.RichClient
 
         private void ModeBar_Scroll(object sender, EventArgs e)
         {
-            if (ModeBar.Value == 0)
-            {
-                ModeBox.Text = "Off";
-            }
-            if (ModeBar.Value == 1)
-            {
-                ModeBox.Text = "Solid";
-            }
-            if (ModeBar.Value == 2)
-            {
-                ModeBox.Text = "Random Cloudy";
-            }
-            if (ModeBar.Value == 3)
-            {
-                ModeBox.Text = "Flash";
-            }
-            if (ModeBar.Value == 4)
-            {
-                ModeBox.Text = "Sweep";
-            }
-            if (ModeBar.Value == 5)
-            {
-                ModeBox.Text = "Twinkle";
-            }
-            if (ModeBar.Value == 6)
-            {
-                ModeBox.Text = "Random Twinkle";
-            }
-            if (ModeBar.Value == 7)
-            {
-                ModeBox.Text = "Random Flash";
-            }
-            if (ModeBar.Value == 8)
-            {
-                ModeBox.Text = "Theater Chase";
-            }
-            if (ModeBar.Value == 9)
-            {
-                ModeBox.Text = "Chroma";
-            }
-            if (ModeBar.Value == 10)
-            {
-                ModeBox.Text = "Fade In";
-            }
-            if (ModeBar.Value == 11)
-            {
-                ModeBox.Text = "Fade Out";
-            }
-            if (ModeBar.Value == 12)
-            {
-                ModeBox.Text = "Sudden Flash";
-            }
-            if (ModeBar.Value == 13)
-            {
-                ModeBox.Text = "Random Breath";
-            }
-            if (ModeBar.Value == 14)
-            {
-                ModeBox.Text = "Breath";
-            }
+            
         }
 
         private void button1q_Click(object sender, EventArgs e)
@@ -433,7 +308,65 @@ namespace UI.RichClient
             {
                 try
                 {
+                    if (!PortBox.Items.Contains(entry.Key))
+                    { 
                     PortBox.Items.Add(entry.Key);
+                    }
+                }
+                catch
+                {
+                }
+            };
+        }
+
+        private void ModeUpdatesPreQueue(object sender, EventArgs e)
+        {
+            foreach (KeyValuePair<string, LpcAsset> entry in Global.AssetList)
+            {
+                try
+                {
+                    if (PortBox.SelectedText == entry.Key)
+                    {
+                        ModeBox.DisplayMember = "Name";
+                        ModeBox.ValueMember = "Value";
+                        ModeBox.DataSource = entry.Value.Modes;
+                    }
+                }
+                catch
+                {
+                }
+            };
+
+        }
+        private void ModeBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            foreach (KeyValuePair<string, LpcAsset> entry in Global.AssetList)
+            {
+                try
+                {
+                    if (PortBox.SelectedText == entry.Key)
+                    {
+                        entry.Value.CurMode = Convert.ToByte(ModeBox.SelectedValue);
+                        //StringBox.Text = entry.Value.CurMode.ToString();
+                    }
+                }
+                catch
+                {
+                }
+            };
+        }
+
+        private void ModeBox_SelectedValueChanged(object sender, EventArgs e)
+        {
+            foreach (KeyValuePair<string, LpcAsset> entry in Global.AssetList)
+            {
+                try
+                {
+                    if (PortBox.SelectedText == entry.Key)
+                    {
+                        entry.Value.CurMode = Convert.ToByte(ModeBox.SelectedValue);
+                        StringBox.Text = entry.Value.CurMode.ToString();
+                    }
                 }
                 catch
                 {
