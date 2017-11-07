@@ -52,6 +52,7 @@ namespace UI.RichClient
         public string Sent { get; set; }
         public byte[] Color { get; set; }
         public int CurMode { get; set; }
+        public int QueMode { get; set; }
         public List<Mode> Modes { get { return _modes; } }
         public byte BoxNumber { get; set; }
         public int Delay { get; set; }

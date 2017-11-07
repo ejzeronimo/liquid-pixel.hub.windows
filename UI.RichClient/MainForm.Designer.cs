@@ -130,9 +130,8 @@
             this.ModeBox.Name = "ModeBox";
             this.ModeBox.Size = new System.Drawing.Size(121, 21);
             this.ModeBox.TabIndex = 10;
-            this.ModeBox.Text = "Slect a Mode...";
+            this.ModeBox.Text = "Select a Mode...";
             this.ModeBox.SelectedIndexChanged += new System.EventHandler(this.ModeBox_SelectedIndexChanged);
-            this.ModeBox.SelectedValueChanged += new System.EventHandler(this.ModeBox_SelectedValueChanged);
             this.ModeBox.MouseHover += new System.EventHandler(this.ModeUpdatesPreQueue);
             // 
             // button6
@@ -193,6 +192,7 @@
             this.DelayBar.Name = "DelayBar";
             this.DelayBar.Size = new System.Drawing.Size(226, 45);
             this.DelayBar.TabIndex = 16;
+            this.DelayBar.Scroll += new System.EventHandler(this.DelayBar_Scroll);
             // 
             // ModeBar
             // 
