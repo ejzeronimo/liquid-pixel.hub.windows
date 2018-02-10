@@ -32,7 +32,8 @@ namespace UI.RichClient
             new Mode() { Name="Breath", Value=14 },
             new Mode() { Name="Falling Stars", Value=15 },
             new Mode() { Name="Xmas Chase", Value=16 },
-            new Mode() { Name="Pong", Value=17 }
+            new Mode() { Name="Pong", Value=17 },
+            new Mode() { Name="Waterfall", Value=18 }
         };
         private readonly List<Mode> _modesq = new List<Mode>() // mast be exaclty like the _modes for system to work
         {
@@ -53,7 +54,8 @@ namespace UI.RichClient
             new Mode() { Name="Breath", Value=14 },
             new Mode() { Name="Falling Stars", Value=15 },
             new Mode() { Name="Xmas Chase", Value=16 },
-            new Mode() { Name="Pong", Value=17 }
+            new Mode() { Name="Pong", Value=17 },
+            new Mode() { Name="Waterfall", Value=18 }
         };
         public SerialPort Comport { get { return _comport; } }
         public List<Mode> Modes { get { return _modes; } }

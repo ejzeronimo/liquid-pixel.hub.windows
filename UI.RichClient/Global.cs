@@ -28,7 +28,8 @@ namespace UI.RichClient
             new Mode() { Name="Breath", Value=14 },
             new Mode() { Name="Falling Stars", Value=15 },
             new Mode() { Name="Xmas Chase", Value=16 },
-            new Mode() { Name="Pong", Value=17 }
+            new Mode() { Name="Pong", Value=17 },
+            new Mode() { Name="Waterfall", Value=18 }
         };
         public static List<Mode> Modes { get { return _modes; } }
     }
