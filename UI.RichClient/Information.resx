@@ -117,6 +117,18 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <metadata name="richTextBox1.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="richTextBox1.Text" xml:space="preserve">
+    <value>Current Version:
+Edge_Cube1.17 "Wintergreen"
+Beacon1.1 "Reverb Becon 1.1"
+Lpc0.9.15 "Liquid Pixel Verion .9"
+
+Information:
+The version name of the edge program is the color that will run on startup. This is an easy way to identify problems with wiring or get the version of the file. The .15 refers to all of the built in modes that the edge has command. If it has less than the third number in the lpc version than certain modes will not work. </value>
+  </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>

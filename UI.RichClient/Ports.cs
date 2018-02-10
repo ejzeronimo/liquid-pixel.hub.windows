@@ -15,14 +15,28 @@ namespace UI.RichClient
 {
     public partial class Ports : Form
     {
-
-        public Ports()
+        /////////////////////////////////////////////////////////////////////////// SETUP THE FORM
+        public Ports(LpcAsset asset = null)
         {
             InitializeComponent();
+            if (asset != null)
+            {
+                NameBox.Text = asset.Name;
+                PortNum.Text = asset.Comport.PortName;
+                Baudrate.Text = asset.Comport.BaudRate.ToString();
+                try
+                {
+                    UpdatePortStatus(asset, Status);
+                    ColorPanel.BackColor = Color.FromArgb(asset.Color[0], asset.Color[1], asset.Color[2]);
+                    panelq.BackColor = Color.FromArgb(asset.ColorQue[0], asset.ColorQue[1], asset.ColorQue[2]);
+                }
+                catch { }
+            }
         }
         private void Ports_Load(object sender, EventArgs e)
         {
         }
+        /////////////////////////////////////////////////////////////////////////// INFORMATION ON THE ASSET
         private void UpdatePortStatus(LpcAsset asset, TextBox statusBox)
         {
             bool status = asset.Comport.IsOpen;
@@ -37,6 +51,7 @@ namespace UI.RichClient
                 statusBox.BackColor = Color.LightSalmon;
             }
         }
+        /////////////////////////////////////////////////////////////////////////// ASSET LOADING AND SAVING
         private void SaveLpcAsset(object sender, EventArgs e)
         {
             //C:\_Src\Prod\LiquidPixel\UI.RichClient\bin\Debug save location   
@@ -116,6 +131,7 @@ namespace UI.RichClient
                         tempAsset.Comport.DataBits = 8;
                         tempAsset.Comport.StopBits = StopBits.One;
                         tempAsset.Comport.Encoding = Encoding.ASCII;
+                        tempAsset.Comport.BaudRate = Int32.Parse(Baudrate.Text);
                         Global.AssetList.Add(tempAsset.Name, tempAsset);
                     }
                     i++;

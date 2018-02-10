@@ -1,6 +1,6 @@
 ﻿namespace UI.RichClient
 {
-    partial class DelayBarQ
+    partial class MainForm
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DelayBarQ));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.button3 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
@@ -50,7 +50,7 @@
             this.label7 = new System.Windows.Forms.Label();
             this.BrightBarQ = new System.Windows.Forms.TrackBar();
             this.ModeBarQ = new System.Windows.Forms.TrackBar();
-            this.Delayq = new System.Windows.Forms.TrackBar();
+            this.DelayBarQ = new System.Windows.Forms.TrackBar();
             this.StringBoxQ = new System.Windows.Forms.TextBox();
             this.SendStringQ = new System.Windows.Forms.Button();
             this.UpdateStringQ = new System.Windows.Forms.Button();
@@ -68,7 +68,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.BrightBar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.BrightBarQ)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ModeBarQ)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Delayq)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DelayBarQ)).BeginInit();
             this.SuspendLayout();
             // 
             // button3
@@ -171,7 +171,6 @@
             this.label4.Size = new System.Drawing.Size(37, 13);
             this.label4.TabIndex = 14;
             this.label4.Text = "String:";
-            this.label4.Click += new System.EventHandler(this.label4_Click);
             // 
             // PortBox
             // 
@@ -188,7 +187,7 @@
             // 
             this.DelayBar.BackColor = System.Drawing.Color.DarkGray;
             this.DelayBar.Location = new System.Drawing.Point(212, 146);
-            this.DelayBar.Maximum = 50;
+            this.DelayBar.Maximum = 1000;
             this.DelayBar.Name = "DelayBar";
             this.DelayBar.Size = new System.Drawing.Size(226, 45);
             this.DelayBar.TabIndex = 16;
@@ -199,7 +198,7 @@
             this.ModeBar.BackColor = System.Drawing.Color.DarkGray;
             this.ModeBar.LargeChange = 1;
             this.ModeBar.Location = new System.Drawing.Point(211, 82);
-            this.ModeBar.Maximum = 14;
+            this.ModeBar.Maximum = 15;
             this.ModeBar.Name = "ModeBar";
             this.ModeBar.Size = new System.Drawing.Size(226, 45);
             this.ModeBar.TabIndex = 28;
@@ -270,14 +269,15 @@
             this.ModeBarQ.TabIndex = 28;
             this.ModeBarQ.Scroll += new System.EventHandler(this.ModeBarQ_Scroll);
             // 
-            // Delayq
+            // DelayBarQ
             // 
-            this.Delayq.BackColor = System.Drawing.Color.DarkGray;
-            this.Delayq.Location = new System.Drawing.Point(957, 112);
-            this.Delayq.Maximum = 50;
-            this.Delayq.Name = "Delayq";
-            this.Delayq.Size = new System.Drawing.Size(240, 45);
-            this.Delayq.TabIndex = 27;
+            this.DelayBarQ.BackColor = System.Drawing.Color.DarkGray;
+            this.DelayBarQ.Location = new System.Drawing.Point(957, 112);
+            this.DelayBarQ.Maximum = 50;
+            this.DelayBarQ.Name = "DelayBarQ";
+            this.DelayBarQ.Size = new System.Drawing.Size(240, 45);
+            this.DelayBarQ.TabIndex = 27;
+            this.DelayBarQ.Scroll += new System.EventHandler(this.DelayBarQ_Scroll);
             // 
             // StringBoxQ
             // 
@@ -296,6 +296,7 @@
             this.SendStringQ.TabIndex = 24;
             this.SendStringQ.Text = "Send String";
             this.SendStringQ.UseVisualStyleBackColor = true;
+            this.SendStringQ.Click += new System.EventHandler(this.SendQ);
             // 
             // UpdateStringQ
             // 
@@ -310,28 +311,13 @@
             // ModeBoxQ
             // 
             this.ModeBoxQ.FormattingEnabled = true;
-            this.ModeBoxQ.Items.AddRange(new object[] {
-            "Off",
-            "Solid",
-            "Flash",
-            "Sweep",
-            "Twinkle",
-            "Random Twinkle",
-            "Random Flash",
-            "Theater Chase",
-            "Fade In",
-            "Fade Out",
-            "Breath",
-            "Random Breath",
-            "Sudden Flash",
-            "Chroma",
-            "Random Cloudy"});
             this.ModeBoxQ.Location = new System.Drawing.Point(1000, 21);
             this.ModeBoxQ.Name = "ModeBoxQ";
             this.ModeBoxQ.Size = new System.Drawing.Size(121, 21);
             this.ModeBoxQ.TabIndex = 22;
-            this.ModeBoxQ.Text = "Off";
+            this.ModeBoxQ.Text = "Select a Mode...";
             this.ModeBoxQ.SelectedIndexChanged += new System.EventHandler(this.ModeBoxQ_SelectedIndexChanged);
+            this.ModeBoxQ.MouseHover += new System.EventHandler(this.ModeUpdatesQueue);
             // 
             // label9
             // 
@@ -352,7 +338,7 @@
             this.button1q.TabIndex = 34;
             this.button1q.Text = "Color Wheel";
             this.button1q.UseVisualStyleBackColor = true;
-            this.button1q.Click += new System.EventHandler(this.button1q_Click);
+            this.button1q.Click += new System.EventHandler(this.Colorq_Click);
             // 
             // panel1
             // 
@@ -397,7 +383,6 @@
             this.label11.Size = new System.Drawing.Size(61, 13);
             this.label11.TabIndex = 39;
             this.label11.Text = "Color Later:";
-            this.label11.Click += new System.EventHandler(this.label11_Click);
             // 
             // button1
             // 
@@ -407,9 +392,9 @@
             this.button1.TabIndex = 40;
             this.button1.Text = "Queue Up Now";
             this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.button1.Click += new System.EventHandler(this.TransitionFromCurrentToQ);
             // 
-            // DelayBarQ
+            // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -425,7 +410,7 @@
             this.Controls.Add(this.label7);
             this.Controls.Add(this.BrightBarQ);
             this.Controls.Add(this.ModeBarQ);
-            this.Controls.Add(this.Delayq);
+            this.Controls.Add(this.DelayBarQ);
             this.Controls.Add(this.StringBoxQ);
             this.Controls.Add(this.SendStringQ);
             this.Controls.Add(this.UpdateStringQ);
@@ -448,15 +433,15 @@
             this.Controls.Add(this.button4);
             this.Controls.Add(this.button3);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Name = "DelayBarQ";
-            this.Text = "Box";
+            this.Name = "MainForm";
+            this.Text = "Single Asset Control";
             this.Load += new System.EventHandler(this.MainForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.DelayBar)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ModeBar)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.BrightBar)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.BrightBarQ)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ModeBarQ)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Delayq)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DelayBarQ)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -484,7 +469,7 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TrackBar BrightBarQ;
         private System.Windows.Forms.TrackBar ModeBarQ;
-        private System.Windows.Forms.TrackBar Delayq;
+        private System.Windows.Forms.TrackBar DelayBarQ;
         private System.Windows.Forms.TextBox StringBoxQ;
         private System.Windows.Forms.Button SendStringQ;
         private System.Windows.Forms.Button UpdateStringQ;

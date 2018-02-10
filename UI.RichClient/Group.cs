@@ -8,361 +8,466 @@ using System.Windows.Forms;
 
 namespace UI.RichClient
 {
+    
+     
     public partial class Group : Form
     {
-        //public bool IsComport1Connected => Comport1.IsOpen;
-        public SerialPort Comport2;
-        //public bool IsComport2Connected => Comport2.IsOpen;
-        public SerialPort Comport3;
-        //public bool IsComport3Connected => Comport3.IsOpen;
-        public SerialPort Comport4;
-        //public bool IsComport4Connected => Comport4.IsOpen;
-        public SerialPort Comport5;
-        //public bool IsComport5Connected => Comport5.IsOpen;
-        public SerialPort Comport6;
-        //public bool IsComport6Connected => Comport6.IsOpen;
-        public CheckedListBox.CheckedIndexCollection command1SelectedCommPorts;
-        public CheckedListBox.CheckedIndexCollection command2SelectedCommPorts;
-        public CheckedListBox.CheckedIndexCollection command3SelectedCommPorts;
-        public CheckedListBox.CheckedIndexCollection command4SelectedCommPorts;
-        public CheckedListBox.CheckedIndexCollection command5SelectedCommPorts;
-        public CheckedListBox.CheckedIndexCollection command6SelectedCommPorts;
-        public CheckedListBox.CheckedIndexCollection queueSelectedCommands;
+        /////////////////////////////////////////////////////////////////////////// SETUP THE FORM
         public Group()
         {
             InitializeComponent();
-            
         }
-        void ColorChange(int[] array, Panel pan)
-        {
-            ColorDialog cdlg = new ColorDialog();
-            cdlg.ShowDialog();
 
-            try
-            {
-                array[0] = (cdlg.Color.R);
-                array[1] = (cdlg.Color.G);
-                array[2] = (cdlg.Color.B);
-                pan.BackColor = cdlg.Color;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("An error occured while setting color, please try again.");
-            }
-        }
-        void PackageCompAndSend(LpcAsset asset, string package)
+        private void Group_Load(object sender, EventArgs e)
         {
-            try
-            {
-                if (package == null)
-                {
-                    asset.Comport.Write($"T0C{asset.BoxNumber}R{asset.Color[0]}G{asset.Color[1]}B{asset.Color[2]}D{asset.Delay}X0M{0}~");
-                }
-                else
-                {
-                    asset.Comport.Write(package);
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("An error occured while sending command, please try again.");
-            }
-        }
-        void ModeSelect(LpcAsset asset, ComboBox mode)
-        {
-            //Mode CurrentMode = Mode.Off;
-            try
-            {
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("An error occured while choosing the mode, please try again.");
-            }
-        }
-        void BindToSetting(LpcAsset asset,ComboBox mode )
-        {
-            try
-            {
 
+        }
+        int delaybetweencommands = 0;
+        /////////////////////////////////////////////////////////////////////////// CHOOSE ALL ASSETS TO BE USED AND GENERATE THE TILES
+        private void Grouplist_Update_List(object sender, EventArgs e)
+        {
+            // gets the assets and place them into a list
+            try
+            {
+                //GroupList.DisplayMember = Global.AssetList.Keys.ToString();
+                //GroupList.ValueMember = Global.AssetList.Keys.ToString();
+                //GroupList.DataSource = Global.AssetList;
+                foreach (KeyValuePair<string, LpcAsset> entry in Global.AssetList)
+                {
+                    if (!GroupList.Items.Contains(entry.Key))
+                    {
+                        GroupList.Items.Add(entry.Key, true);
+                    }
+                };
             }
             catch
             {
-
+                //doing nothing
             }
         }
-        //changes the color
-        private void button7_Click(object sender, EventArgs e)
+        private void GenerateAssetControls(object sender, EventArgs e)
         {
-            ColorChange(null, panel1);
+            //gets checked assets and generates a ui for each one
+            //set up the asset panels
+            // 225, 13 and 13,13 are pos so 212 range
+            // 200,476 size
+            int i = 0;
+            int distance = 212;
+            int height = 476+12;
+            int rows = 1;
+            int maxpan = 8;
+            foreach (KeyValuePair<string, LpcAsset> entry in Global.AssetList)//change to the index of assets so that the assets can be assigned and the pos can be set
+            {
+                if (GroupList.CheckedItems.Contains(entry.Key))
+                {
+                    if (i >= maxpan)
+                    {
+                        i = 0;
+                        rows++;
+                        panel1.Height = (476 +12) * rows;
+                    }
+                    //generate the label ontop of the settings so the user knows what it is
+                    Label detail = new Label();
+                    detail.BackColor = Color.Gray;
+                    detail.Name = "detail" + i;
+                    detail.Text = "Current Settings for " + entry.Key + ":";
+                    detail.Size = new System.Drawing.Size(195, 13);
+                    detail.Location = new System.Drawing.Point((228 + distance * i), 27 + (height * (rows - 1)));
+                    Controls.Add(detail);
+                    //generate the color panel for ref
+                    Panel color = new Panel();
+                    color.Name = "color"+i;
+                    color.Size = new System.Drawing.Size(194, 67);
+                    color.Location = new System.Drawing.Point((228 + distance * i), 43 + (height * (rows - 1)));
+                    color.BorderStyle = BorderStyle.FixedSingle;
+                    try
+                    {
+                        color.BackColor = Color.FromArgb(225, entry.Value.Color[0], entry.Value.Color[1], entry.Value.Color[2]);
+                    }
+                    catch
+                    {
+                        color.BackColor = Color.Gray;
+                    }
+                    Controls.Add(color);
+                    //generate the buttons for the color
+                    Button colorbutton = new Button();
+                    colorbutton.Name = "colorbutton" + i;
+                    colorbutton.Size = new System.Drawing.Size(97, 35);
+                    colorbutton.Location = new System.Drawing.Point((228 + distance * i), 116 + (height * (rows - 1)));
+                    colorbutton.Text = "Color Wheel";
+                    colorbutton.Click += (cbs, cbe) => ColorChange_Click(cbs, cbe, entry, color);
+                    Controls.Add(colorbutton);
+                    //generates the button for sending the string
+                    Button sendbutton = new Button();
+                    sendbutton.Click += (sbs, sbe) => Send_Click(sbs, sbe, entry);
+                    sendbutton.Name = "sendbutton" + i;
+                    sendbutton.Size = new System.Drawing.Size(97, 35);
+                    sendbutton.Location = new System.Drawing.Point((325 + distance * i), 116 + (height * (rows - 1)));
+                    sendbutton.Text = "Send String";
+                    sendbutton.BackColor = Color.LightGreen;
+                    Controls.Add(sendbutton);
+                    //generates the scroll bar for the delay time in ms
+                    TrackBar delayscroll = new TrackBar();
+                    TextBox delaytxt = new TextBox();
+                    delayscroll.Maximum = 1000;
+                    delayscroll.ValueChanged += (dss, dse) => DelayBar_Scroll(dss, dse, entry,delaytxt);
+                    delayscroll.Name = "delayscroll" + i;
+                    delayscroll.Size = new System.Drawing.Size(136, 45);
+                    delayscroll.Location = new System.Drawing.Point((228 + distance * i), (157) + (height * (rows - 1)));
+                    delayscroll.BackColor = Color.Gray;
+                    Controls.Add(delayscroll);
+                    //generate a textbox for the delay for more "precise changes"
+                    delaytxt.MouseHover += (dts, dte) => DelayTxt_Update(dts, dte, entry);
+                    delaytxt.TextChanged += (dts,dte) => DelayTxt_Changed(dts, dte, entry,delayscroll);
+                    delaytxt.Name = "delaytxt" + i;
+                    delaytxt.Size = new System.Drawing.Size(51, 20);
+                    delaytxt.Location = new System.Drawing.Point(((225 + 146) + distance * i), (157) + (height * (rows - 1)));
+                    Controls.Add(delaytxt);
+                    //generates the combobox for the modes for better pickability
+                    ComboBox modebox = new ComboBox();
+                    TrackBar modescroll = new TrackBar();
+                    modebox.SelectedIndexChanged += (mbs, mbe) => ModeBox_Update(mbs, mbe, entry, modescroll);
+                    modebox.DisplayMember = "Name";
+                    modebox.ValueMember = "Value";
+                    modebox.DataSource = entry.Value.Modes;
+                    modebox.Name = "modebox" + i;
+                    modebox.Size = new System.Drawing.Size(51+36, 20);
+                    modebox.Location = new System.Drawing.Point(((225 + 146 - 36) + distance * i), (208) + (height * (rows - 1)));
+                    Controls.Add(modebox);
+                    //generates the scroll bar for modes 
+                    modescroll.ValueChanged += (mss, mse) => ScrollMode_Update(mss, mse, entry, modebox);
+                    modescroll.Maximum = entry.Value.Modes.Count - 1;
+                    modescroll.Name = "modescroll" + i;
+                    modescroll.Size = new System.Drawing.Size(100, 45);
+                    modescroll.Location = new System.Drawing.Point((228 + distance * i), (208) + (height * (rows - 1)));
+                    modescroll.BackColor = Color.Gray;
+                    Controls.Add(modescroll);
+                    //////////////////////////////////////////////////////////////////////////////////////////////// QUEING CONTROLS
+                    //generate the label ontop of the settings so the user knows what it is
+                    Label detailq = new Label();
+                    detailq.Name = "detailq" + i;
+                    detailq.Text = "Queue Settings for " + entry.Key + ":";
+                    detailq.BackColor = Color.Gray;
+                    detailq.Size = new System.Drawing.Size(195, 13);
+                    detailq.Location = new System.Drawing.Point((228 + distance * i), 263 + (height * (rows - 1)));
+                    Controls.Add(detailq);
+                    //generate the que color
+                    Panel colorq = new Panel(); 
+                    colorq.Name = "colorq" + i;
+                    colorq.Size = new System.Drawing.Size(194, 67);
+                    colorq.Location = new System.Drawing.Point((228 + distance * i), (279) + (height * (rows - 1)));
+                    colorq.BorderStyle = BorderStyle.FixedSingle;
+                    try
+                    {
+                        colorq.BackColor = Color.FromArgb(225, entry.Value.ColorQue[0], entry.Value.ColorQue[1], entry.Value.ColorQue[2]);
+                    }
+                    catch
+                    {
+                        colorq.BackColor = Color.Gray;
+                    }
+                    Controls.Add(colorq);
+                    //generate the buttons for the que color
+                    Button colorbuttonq = new Button();
+                    colorbuttonq.Click += (cbqs, cbqe) => ColorChangeQ_Click(cbqs, cbqe, entry, colorq);
+                    colorbuttonq.Name = "colorbuttonq" + i;
+                    colorbuttonq.Size = new System.Drawing.Size(97, 35);
+                    colorbuttonq.Location = new System.Drawing.Point((228 + distance * i), 352 + (height * (rows - 1)));
+                    colorbuttonq.Text = "Color Wheel";
+                    //implement later once assets are included colorbuttonq.Click += Entry.setcolormain(panel1);
+                    Controls.Add(colorbuttonq);
+                    //generates the button for sending the que string
+                    Button sendbuttonq = new Button();
+                    sendbuttonq.Click += (sbqs, sbqe) => SendQ_Click(sbqs, sbqe, entry);
+                    sendbuttonq.Name = "sendbuttonq" + i;
+                    sendbuttonq.Size = new System.Drawing.Size(97, 35);
+                    sendbuttonq.Location = new System.Drawing.Point((325 + distance * i), 352 + (height * (rows - 1)));
+                    sendbuttonq.Text = "Send String";
+                    sendbuttonq.BackColor = Color.LightGreen;
+                    Controls.Add(sendbuttonq);
+                    //generates the scroll bar for the que delay time in ms
+                    TrackBar delayscrollq = new TrackBar();
+                    TextBox delaytxtq = new TextBox();
+                    delayscrollq.Maximum = 1000;
+                    delayscrollq.ValueChanged += (dsqs, dsqe) => DelayBarQ_Scroll(dsqs, dsqe, entry,delaytxtq);
+                    delayscrollq.Name = "delayscrollq" + i;
+                    delayscrollq.Size = new System.Drawing.Size(136, 45);
+                    delayscrollq.Location = new System.Drawing.Point((228 + distance * i), (393) + (height * (rows - 1)));
+                    delayscrollq.BackColor = Color.Gray;
+                    Controls.Add(delayscrollq);
+                    //generate a textbox for the que delay for more "precise changes"
+                    delaytxtq.MouseHover += (dts, dte) => DelayTxtQ_Update(dts, dte, entry);
+                    delaytxtq.TextChanged += (dts, dte) => DelayTxtQ_Changed(dts, dte, entry, delayscrollq);
+                    delaytxtq.Name = "delaytxtq" + i;
+                    delaytxtq.Size = new System.Drawing.Size(51, 20);
+                    delaytxtq.Location = new System.Drawing.Point(((371) + distance * i), (393) + (height * (rows - 1)));
+                    Controls.Add(delaytxtq);
+                    //generates the combobox for the que modes for better pickability
+                    ComboBox modeboxq = new ComboBox();
+                    TrackBar modescrollq = new TrackBar();
+                    modeboxq.SelectedIndexChanged += (mbqs, mbqe) => ModeBoxQ_Update(mbqs, mbqe, entry, modescrollq);
+                    modeboxq.DisplayMember = "Name";
+                    modeboxq.ValueMember = "Value";
+                    modeboxq.DataSource = entry.Value.QueModes;
+                    modeboxq.Name = "modeboxq" + i;
+                    modeboxq.Size = new System.Drawing.Size(51+36, 20);
+                    modeboxq.Location = new System.Drawing.Point(((335) + distance * i), (440) + (height * (rows - 1)));
+                    Controls.Add(modeboxq);
+                    //generates the scroll bar for que modes
+                    modescrollq.Name = "modescrollq" + i;
+                    modescrollq.ValueChanged += (msqs, msqe) => ScrollMode_Update(msqs, msqe, entry, modeboxq);
+                    modescrollq.Maximum = entry.Value.Modes.Count - 1;
+                    modescrollq.Size = new System.Drawing.Size(136 - 36, 45);
+                    modescrollq.Location = new System.Drawing.Point((228 + distance * i), (440) + (height * (rows - 1)));
+                    modescrollq.BackColor = Color.Gray;
+                    Controls.Add(modescrollq);
+                    //generate the background
+                    Panel mainback = new Panel();
+                    mainback.Size = new System.Drawing.Size(200, 476);
+                    mainback.Location = new System.Drawing.Point((225 + distance * i), 13 + (height * (rows - 1)));
+                    mainback.BackColor = Color.Gray;
+                    Controls.Add(mainback);
+                    //adds so that can be gen properly  
+                    i++;
+                }
+            };
+            this.Size = new Size(244 + distance * (GroupList.CheckedItems.Count), 542 +(height * (rows-1)));
+            i = 0;
         }
 
-        private void button8_Click(object sender, EventArgs e)
+        /////////////////////////////////////////////////////////////////////////// SETUP THE HANDLERS FOR THE TILES
+        private void ColorChange_Click(object sender, EventArgs e, KeyValuePair<string, LpcAsset> entry, Panel panel)
         {
-            ColorChange(null, panel2);
+            entry.Value.setcolormain(panel);  
         }
-
-        private void button9_Click(object sender, EventArgs e)
+        private void ColorChangeQ_Click(object sender, EventArgs e, KeyValuePair<string, LpcAsset> entry, Panel panel)
         {
-            ColorChange(null, panel3);
+            entry.Value.setcolorque(panel);
         }
-
-        private void button10_Click(object sender, EventArgs e)
+        private void Send_Click(object sender, EventArgs e, KeyValuePair<string, LpcAsset> entry)
         {
-            ColorChange(null, panel4);
+            entry.Value.updatecommandmain();
+            entry.Value.sendpackage(entry.Value.Command);
         }
-
-        private void button11_Click(object sender, EventArgs e)
+        private void SendQ_Click(object sender, EventArgs e, KeyValuePair<string, LpcAsset> entry)
         {
-            ColorChange(null, panel5);
+            entry.Value.updatecommandque();
+            entry.Value.sendpackage(entry.Value.CommandQue);
         }
-
-        private void button12_Click(object sender, EventArgs e)
+        private void DelayBar_Scroll(object sender, EventArgs e, KeyValuePair<string, LpcAsset> entry, object text)
         {
-            ColorChange(null, panel6);
+            TrackBar track = (TrackBar) sender;
+            TextBox txt = (TextBox)text;
+            entry.Value.Delay = track.Value;
+            txt.Text = entry.Value.Delay.ToString();
         }
-
-        private void modeComboBox_SelectedIndexChanged(object sender, EventArgs e, ref int moder)
+        private void DelayBarQ_Scroll(object sender, EventArgs e, KeyValuePair<string, LpcAsset> entry, object text)
         {
-            //var comboBox = (ComboBox)sender;
-            //if (comboBox.Text == "Off")//done
-            //{
-            //    moder = 0;
-            //    return;
-            //}
-            //if (comboBox.Text == "Solid")//done
-            //{
-            //    moder = 1;
-            //    return;
-            //}
-            //if (comboBox.Text == "Random Cloudy")//done
-            //{
-            //    moder = 2;
-            //    return;
-            //}
-            //if (comboBox.Text == "Flash")//done
-            //{
-            //    moder = 3;
-            //    return;
-            //}
-            //if (comboBox.Text == "Sweep")//done
-            //{
-            //    moder = 4;
-            //    return;
-            //}
-            //if (comboBox.Text == "Twinkle")//done
-            //{
-            //    moder = 5;
-            //    return;
-            //}
-            //if (comboBox.Text == "Random Twinkle")//done
-            //{
-            //    moder = 6;
-            //    return;
-            //}
-            //if (comboBox.Text == "Random Flash")//done
-            //{
-            //    moder = 7;
-            //    return;
-            //}
-            //if (comboBox.Text == "Theater Chase")//done
-            //{
-            //    moder = 8;
-            //    return;
-            //}
-            //if (comboBox.Text == "Chroma")
-            //{
-            //    moder = 9;
-            //    return;
-            //}
-            //if (comboBox.Text == "Fade In")//done
-            //{
-            //    moder = 10;
-            //    return;
-            //}
-            //if (comboBox.Text == "Fade Out")//done
-            //{
-            //    moder = 11;
-            //    return;
-            //}
-            //if (comboBox.Text == "Sudden Flash")//done
-            //{
-            //    moder = 12;
-            //    return;
-            //}
-            //if (comboBox.Text == "Random Breath")//done
-            //{
-            //    moder = 13;
-            //    return;
-            //}
-            //if (comboBox.Text == "Breath")//done
-            //{
-            //    moder = 14;
-            //    return;
-            //}
+            TrackBar track = (TrackBar)sender;
+            TextBox txt = (TextBox)text;
+            entry.Value.DelayQue = track.Value;
+            txt.Text = entry.Value.DelayQue.ToString();
         }
+        private void DelayTxt_Update(object sender, EventArgs e, KeyValuePair<string, LpcAsset> entry)
+        {
+            TextBox txt = (TextBox)sender;
+            txt.Text = entry.Value.Delay.ToString();
+        }
+        private void DelayTxt_Changed(object sender, EventArgs e, KeyValuePair<string, LpcAsset> entry, object track)
+        {
+            TextBox txt = (TextBox)sender;
+            TrackBar trk = (TrackBar)track;
+            try
+            {
+                trk.Value = Convert.ToInt32(txt.Text);
+                entry.Value.Delay = Convert.ToInt32(txt.Text);
+            }
+            catch { }
+        }
+        private void DelayTxtQ_Update(object sender, EventArgs e, KeyValuePair<string, LpcAsset> entry)
+        {
+            TextBox txt = (TextBox)sender;
+            txt.Text = entry.Value.DelayQue.ToString();
+        }
+        private void DelayTxtQ_Changed(object sender, EventArgs e, KeyValuePair<string, LpcAsset> entry, object track)
+        {
+            TextBox txt = (TextBox)sender;
+            TrackBar trk = (TrackBar)track;
+            try
+            {
+                trk.Value = Convert.ToInt32(txt.Text);
+                entry.Value.DelayQue = Convert.ToInt32(txt.Text);
+            }
+            catch { }
+        }
+        private void ModeBox_Update(object sender, EventArgs e, KeyValuePair<string, LpcAsset> entry, object track)
+        {
+            ComboBox combo = (ComboBox)sender;
+            TrackBar trk = (TrackBar)track;
+            try
+            {
+                entry.Value.CurMode = Convert.ToInt32(combo.SelectedValue.ToString());
+                trk.Value = entry.Value.CurMode;
+                
+            }
+            catch { }
+        }
+        private void ModeBoxQ_Update(object sender, EventArgs e, KeyValuePair<string, LpcAsset> entry, object track)
+        {
+            ComboBox combo = (ComboBox)sender;
+            TrackBar trk = (TrackBar)track;
+            try
+            {
+                entry.Value.QueMode = Convert.ToInt32(combo.SelectedValue.ToString());
+                trk.Value = entry.Value.QueMode;
 
-
-        private void initializeCommPortsButton_Click(object sender, EventArgs e)
+            }
+            catch { }
+        }
+        private void ScrollMode_Update(object sender, EventArgs e, KeyValuePair<string, LpcAsset> entry, object combox)
+        {
+            ComboBox combo = (ComboBox)combox;
+            TrackBar trk = (TrackBar)sender;
+            try
+            {
+                entry.Value.CurMode = trk.Value;
+                combo.SelectedValue = entry.Value.CurMode;
+            }
+            catch { }
+        }
+        private void ScrollModeQ_Update(object sender, EventArgs e, KeyValuePair<string, LpcAsset> entry, object combox)
+        {
+            ComboBox combo = (ComboBox)combox;
+            TrackBar trk = (TrackBar)sender;
+            try
+            {
+                entry.Value.QueMode = trk.Value;
+                combo.SelectedValue = entry.Value.QueMode;
+            }
+            catch { }
+        }
+        /////////////////////////////////////////////////////////////////////////// START AND END THE ASSETS SO THAT THEY CAN BE USED
+        private void StartAssets(object sender, EventArgs e)
+        {
+            foreach (KeyValuePair<string, LpcAsset> entry in Global.AssetList)//change to the index of assets so that the assets can be assigned and the pos can be set
+            {
+                if (GroupList.CheckedItems.Contains(entry.Key))
+                {
+                    try
+                    {
+                        entry.Value.Comport.Open();
+                    }
+                    catch { }
+                }
+            }
+        }
+        private void EndAssets(object sender, EventArgs e)
+        {
+            foreach (KeyValuePair<string, LpcAsset> entry in Global.AssetList)//change to the index of assets so that the assets can be assigned and the pos can be set
+            {
+                if (GroupList.CheckedItems.Contains(entry.Key))
+                {
+                    entry.Value.Comport.Close();
+                }
+            }
+        }
+        /////////////////////////////////////////////////////////////////////////// QUEUING AND TIMED QUE
+        private void TimeBoxChanged(object sender, EventArgs e)
         {
             try
             {
-                //Comport2.Parity = Parity.None;
-                //Comport2.DataBits = 8;
-                //Comport2.StopBits = StopBits.One;
-                //Comport2.Encoding = Encoding.ASCII;
+                delaybetweencommands = Convert.ToInt32(TimeBox.Text);
+                TimeBar.Value = delaybetweencommands;
             }
             catch
-            {
-
-            }      
+            {}
         }
-        private async void QueueUpNow_ClickAsync(object sender, EventArgs e)
+        private void TimeBarChanged(object sender, EventArgs e)
         {
-            string package = string.Empty;
-            int qDelay = 0;
-            Action packagePortSender = null;
-            for (int i = 0; i < queueSelectedCommands?.Count; i++)
+            delaybetweencommands = TimeBar.Value;
+            TimeBox.Text = delaybetweencommands.ToString();
+        }
+        private async void RunTimedQ(object sender, EventArgs e)
+        {
+            while (RunLoopCheck.Checked)
             {
-                switch (queueSelectedCommands[i])
+                TimeQueBtn.Text = "Running uncheck to stop..";
+                TimeQueBtn.BackColor = Color.LightSalmon;
+                foreach (KeyValuePair<string, LpcAsset> entry in Global.AssetList)//change to the index of assets so that the assets can be assigned and the pos can be set
                 {
-                    case 0:
-                        //qDelay = q1Delay.Value;
-                        PackageCompAndSend(null, null);
-                        //packagePortSender = () => queueCommand_Click(sender, e, 0, package, command1SelectedCommPorts);
-                        break;
-                    case 1:
-                        //qDelay = q2Delay.Value;
-                        PackageCompAndSend(null, null);
-                        //packagePortSender = () => queueCommand_Click(sender, e, 0, package, command2SelectedCommPorts);
-                        break;
-                    case 2:
-                        //qDelay = q3Delay.Value;
-                        PackageCompAndSend(null, null);
-                        //packagePortSender = () => queueCommand_Click(sender, e, 0, package, command3SelectedCommPorts);
-                        break;
-                    case 3:
-                        //qDelay = q4Delay.Value;
-                        PackageCompAndSend(null, null);
-                        //packagePortSender = () => queueCommand_Click(sender, e, 0, package, command4SelectedCommPorts);
-                        break;
-                    case 4:
-                        //qDelay = q5Delay.Value;
-                        PackageCompAndSend(null, null);
-                        //packagePortSender = () => queueCommand_Click(sender, e, 0, package, command5SelectedCommPorts);
-                        break;
-                    case 5:
-                        //qDelay = q6Delay.Value;
-                        PackageCompAndSend(null, null);
-                        //packagePortSender = () => queueCommand_Click(sender, e, 0, package, command6SelectedCommPorts);
-                        break;
-                    default:
-                        break;
+                    if (GroupList.CheckedItems.Contains(entry.Key))
+                    {
+                        entry.Value.sendpackage(entry.Value.Command);
+                    }
                 }
-
-                // send payload out serial port and wait
-                var payloadSenderTask = Task.Run(packagePortSender);
-                var delayTask = Task.Delay(TimeSpan.FromSeconds(qDelay));
-                await Task.WhenAll(payloadSenderTask, delayTask); 
-            }
-        }
-
-        private void queueCommand_Click(object sender, EventArgs e, int index, string package, CheckedListBox.CheckedIndexCollection checkedCommPorts)
-        {
-            int selectedIndex;
-            for (int i = 0; i < checkedCommPorts?.Count; i++)
-            {
-                selectedIndex = checkedCommPorts[i];
-                SendDataToSerialPorts(package, selectedIndex);
-            }
-        }
-
-        private void command1CommPortList_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            command1SelectedCommPorts = command1CommPortCheckedListBox.CheckedIndices;
-        }
-
-        private void command2CommPortList_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            command2SelectedCommPorts = command2CommPortCheckedListBox.CheckedIndices;
-        }
-
-        private void command3CommPortList_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            command3SelectedCommPorts = command3CommPortCheckedListBox.CheckedIndices;
-        }
-
-        private void command4CommPortList_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            command4SelectedCommPorts = command4CommPortCheckedListBox.CheckedIndices;
-        }
-
-        private void command5CommPortList_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            command5SelectedCommPorts = command5CommPortCheckedListBox.CheckedIndices;
-        }
-
-        private void command6CommPortList_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            command6SelectedCommPorts = command6CommPortCheckedListBox.CheckedIndices;
-        }
-
-        private void queueCheckedListBox_SelectedIndexChanged(object sender, EventArgs e)
-        {     
-            queueSelectedCommands = queueCheckedListBox.CheckedIndices;
-        }
-
-        private void SendDataToSerialPorts(string package, int selectedIndex)
-        {
-            switch (selectedIndex)
-            {
-                case 0:
-                    PackageCompAndSend(null, null);
-                    break;
-                case 1:
-                    PackageCompAndSend(null, null);
-                    break;
-                case 2:
-                    PackageCompAndSend(null, null);
-                    break;
-                case 3:
-                    PackageCompAndSend(null, null);
-                    break;
-                case 4:
-                    PackageCompAndSend(null, null);
-                    break;
-                case 5:
-                    PackageCompAndSend(null, null);
-                    break;
-                default:
-                    break;
-            }
-        }
-
-        //private async Task SendWatchdogResetAsyncInfiniteLoop()
-        //{
-        //    var keepAlivePackage = $"T99~";
-        //    while (true)
-        //    {
-        //        for (int i = 0; i < 6; i++)
-        //        {
-        //            //Global.Comport1.Write($"T99~");
-        //        }
-        //        await Task.Delay(2000);
-        //    }
-        //}
-
-        private void Disconnect(object sender, EventArgs e)
-        {
-            try
-            {
-                for (;;)
+                await Task.Delay(delaybetweencommands);
+                TimeQueBtn.Text = "Running uncheck to stop...";
+                TimeQueBtn.BackColor = Color.LightGreen;
+                foreach (KeyValuePair<string, LpcAsset> entry in Global.AssetList)//change to the index of assets so that the assets can be assigned and the pos can be set
                 {
+                    if (GroupList.CheckedItems.Contains(entry.Key))
+                    {
+                        entry.Value.sendpackage(entry.Value.CommandQue);
+                    }
+                }
+                await Task.Delay(delaybetweencommands);
+            }
+            if(!RunLoopCheck.Checked)
+            {
 
+                TimeQueBtn.BackColor = Color.Gainsboro;
+                TimeQueBtn.Text = "Run Timed Queuing";
+                foreach (KeyValuePair<string, LpcAsset> entry in Global.AssetList)//change to the index of assets so that the assets can be assigned and the pos can be set
+                {
+                    if (GroupList.CheckedItems.Contains(entry.Key))
+                    {
+                        entry.Value.sendpackage(entry.Value.Command);
+                    }
+                }
+                // just run once
+                //put delay here
+                await Task.Delay(delaybetweencommands);
+                foreach (KeyValuePair<string, LpcAsset> entry in Global.AssetList)//change to the index of assets so that the assets can be assigned and the pos can be set
+                {
+                    if (GroupList.CheckedItems.Contains(entry.Key))
+                    {
+                        entry.Value.sendpackage(entry.Value.CommandQue);
+                    }
                 }
             }
-            catch
+        }
+        private void SendAllCurrent(object sender, EventArgs e)
+        {
+            foreach (KeyValuePair<string, LpcAsset> entry in Global.AssetList)//change to the index of assets so that the assets can be assigned and the pos can be set
             {
-                MessageBox.Show("An error ocurred while closing ports");
+                if (GroupList.CheckedItems.Contains(entry.Key))
+                {
+                    entry.Value.sendpackage(entry.Value.Command);
+                }
+            }
+        }
+        private void SendAllQue(object sender, EventArgs e)
+        {
+            foreach (KeyValuePair<string, LpcAsset> entry in Global.AssetList)//change to the index of assets so that the assets can be assigned and the pos can be set
+            {
+                if (GroupList.CheckedItems.Contains(entry.Key))
+                {
+                    entry.Value.sendpackage(entry.Value.CommandQue);
+                }
+            }
+        }
+        private void UpdateCommands(object sender, EventArgs e)
+        {
+            foreach (KeyValuePair<string, LpcAsset> entry in Global.AssetList)//change to the index of assets so that the assets can be assigned and the pos can be set
+            {
+                if (GroupList.CheckedItems.Contains(entry.Key))
+                {
+                    try
+                    {
+                        entry.Value.updatecommandmain();
+                        entry.Value.updatecommandque();
+                    }
+                    catch { }
+                }
             }
         }
     }

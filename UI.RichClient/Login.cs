@@ -15,16 +15,16 @@ namespace UI.RichClient
 {
     public partial class Login : Form
     {
+        /////////////////////////////////////////////////////////////////////////// FORM SETUP
         public Login()
         {
             InitializeComponent();
         }
-
         private void Login_Load(object sender, EventArgs e)
         {
             Password.UseSystemPasswordChar = true;
         }
-
+        /////////////////////////////////////////////////////////////////////////// BUTTONS
         private void Help_Click(object sender, EventArgs e)
         {
             MessageBox.Show("This username and password are provided to you by a developer in beta, or by purchasing a key from the website");
@@ -36,7 +36,9 @@ namespace UI.RichClient
             SqlDataAdapter sda = new SqlDataAdapter("Select Count(*) From Login where Username= '" + Username.Text + "' and Password = '" + Password.Text + "' ",connection);
             DataTable data = new DataTable();
             sda.Fill(data);
+            //uncomment these lines for product release
             if (data.Rows[0][0].ToString() == "1")
+            //if (true)
             {
                 Hub main = new Hub();
                 main.Show();
@@ -48,7 +50,7 @@ namespace UI.RichClient
             }
             
         }
-
+        /////////////////////////////////////////////////////////////////////////// LABEL CLICKED
         private void ShowPassword(object sender, EventArgs e)
         {
             if (HidePass.Checked)

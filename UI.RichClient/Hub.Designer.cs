@@ -31,9 +31,6 @@
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Hub));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -42,15 +39,12 @@
             this.boxToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.portsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.newBoxToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.refreshHubToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.WarningLabel = new System.Windows.Forms.Label();
+            this.ModeChart = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.infoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.DataChart = new System.Windows.Forms.DataVisualization.Charting.Chart();
-            this.DataChart2 = new System.Windows.Forms.DataVisualization.Charting.Chart();
-            this.HBox1 = new System.Windows.Forms.TextBox();
-            this.HBox2 = new System.Windows.Forms.TextBox();
-            this.ListOfBoxes = new System.Windows.Forms.RichTextBox();
             this.menuStrip1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.DataChart)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.DataChart2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ModeChart)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -66,6 +60,9 @@
             // 
             // fileToolStripMenuItem
             // 
+            this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.refreshHubToolStripMenuItem,
+            this.infoToolStripMenuItem});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
             this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
             this.fileToolStripMenuItem.Text = "File";
@@ -75,8 +72,7 @@
             this.windowsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.groupOBoxesToolStripMenuItem,
             this.boxToolStripMenuItem,
-            this.portsToolStripMenuItem,
-            this.infoToolStripMenuItem});
+            this.portsToolStripMenuItem});
             this.windowsToolStripMenuItem.Name = "windowsToolStripMenuItem";
             this.windowsToolStripMenuItem.Size = new System.Drawing.Size(68, 20);
             this.windowsToolStripMenuItem.Text = "Windows";
@@ -84,15 +80,15 @@
             // groupOBoxesToolStripMenuItem
             // 
             this.groupOBoxesToolStripMenuItem.Name = "groupOBoxesToolStripMenuItem";
-            this.groupOBoxesToolStripMenuItem.Size = new System.Drawing.Size(153, 22);
-            this.groupOBoxesToolStripMenuItem.Text = "Group o\' Boxes";
+            this.groupOBoxesToolStripMenuItem.Size = new System.Drawing.Size(232, 22);
+            this.groupOBoxesToolStripMenuItem.Text = "Group of Assets Control Panel";
             this.groupOBoxesToolStripMenuItem.Click += new System.EventHandler(this.groupOBoxesToolStripMenuItem_Click);
             // 
             // boxToolStripMenuItem
             // 
             this.boxToolStripMenuItem.Name = "boxToolStripMenuItem";
-            this.boxToolStripMenuItem.Size = new System.Drawing.Size(153, 22);
-            this.boxToolStripMenuItem.Text = "Box";
+            this.boxToolStripMenuItem.Size = new System.Drawing.Size(232, 22);
+            this.boxToolStripMenuItem.Text = "Single Asset Control";
             this.boxToolStripMenuItem.Click += new System.EventHandler(this.boxToolStripMenuItem_Click);
             // 
             // portsToolStripMenuItem
@@ -100,8 +96,9 @@
             this.portsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.newBoxToolStripMenuItem});
             this.portsToolStripMenuItem.Name = "portsToolStripMenuItem";
-            this.portsToolStripMenuItem.Size = new System.Drawing.Size(153, 22);
-            this.portsToolStripMenuItem.Text = "Assets";
+            this.portsToolStripMenuItem.Size = new System.Drawing.Size(232, 22);
+            this.portsToolStripMenuItem.Text = "Assets List";
+            this.portsToolStripMenuItem.DropDownItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.AssetListClicked);
             this.portsToolStripMenuItem.MouseHover += new System.EventHandler(this.AssetListUpdate);
             // 
             // newBoxToolStripMenuItem
@@ -111,82 +108,61 @@
             this.newBoxToolStripMenuItem.Text = "New Lpc Asset";
             this.newBoxToolStripMenuItem.Click += new System.EventHandler(this.NewLpcAssetCreate);
             // 
-            // infoToolStripMenuItem
+            // refreshHubToolStripMenuItem
             // 
-            this.infoToolStripMenuItem.Name = "infoToolStripMenuItem";
-            this.infoToolStripMenuItem.Size = new System.Drawing.Size(153, 22);
-            this.infoToolStripMenuItem.Text = "Info";
-            this.infoToolStripMenuItem.Click += new System.EventHandler(this.infoToolStripMenuItem_Click);
+            this.refreshHubToolStripMenuItem.Name = "refreshHubToolStripMenuItem";
+            this.refreshHubToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.refreshHubToolStripMenuItem.Text = "Refresh Hub";
+            this.refreshHubToolStripMenuItem.Click += new System.EventHandler(this.RefreshHubClick);
             // 
-            // DataChart
+            // WarningLabel
             // 
+            this.WarningLabel.AutoSize = true;
+            this.WarningLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 32F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.WarningLabel.ForeColor = System.Drawing.SystemColors.ActiveBorder;
+            this.WarningLabel.Location = new System.Drawing.Point(46, 257);
+            this.WarningLabel.Name = "WarningLabel";
+            this.WarningLabel.Size = new System.Drawing.Size(908, 51);
+            this.WarningLabel.TabIndex = 1;
+            this.WarningLabel.Text = "Nothing will appear until you select Lpc Assets";
+            // 
+            // ModeChart
+            // 
+            this.ModeChart.BackColor = System.Drawing.Color.Gray;
+            this.ModeChart.BackImageTransparentColor = System.Drawing.Color.Gray;
+            this.ModeChart.BackSecondaryColor = System.Drawing.Color.Gray;
+            this.ModeChart.BorderlineColor = System.Drawing.Color.Gray;
+            this.ModeChart.BorderSkin.BorderColor = System.Drawing.Color.Gray;
+            this.ModeChart.BorderSkin.PageColor = System.Drawing.Color.Gray;
             chartArea1.Name = "ChartArea1";
-            this.DataChart.ChartAreas.Add(chartArea1);
+            this.ModeChart.ChartAreas.Add(chartArea1);
             legend1.Name = "Legend1";
-            this.DataChart.Legends.Add(legend1);
-            this.DataChart.Location = new System.Drawing.Point(12, 27);
-            this.DataChart.Name = "DataChart";
+            this.ModeChart.Legends.Add(legend1);
+            this.ModeChart.Location = new System.Drawing.Point(13, 28);
+            this.ModeChart.Name = "ModeChart";
             series1.ChartArea = "ChartArea1";
             series1.Legend = "Legend1";
             series1.Name = "Series1";
-            this.DataChart.Series.Add(series1);
-            this.DataChart.Size = new System.Drawing.Size(423, 241);
-            this.DataChart.TabIndex = 1;
-            this.DataChart.Text = "chart1";
-            this.DataChart.Visible = false;
+            this.ModeChart.Series.Add(series1);
+            this.ModeChart.Size = new System.Drawing.Size(525, 486);
+            this.ModeChart.TabIndex = 2;
+            this.ModeChart.Text = "ModeChart";
+            this.ModeChart.Visible = false;
             // 
-            // DataChart2
+            // infoToolStripMenuItem
             // 
-            chartArea2.Name = "ChartArea1";
-            this.DataChart2.ChartAreas.Add(chartArea2);
-            legend2.Name = "Legend1";
-            this.DataChart2.Legends.Add(legend2);
-            this.DataChart2.Location = new System.Drawing.Point(12, 274);
-            this.DataChart2.Name = "DataChart2";
-            series2.ChartArea = "ChartArea1";
-            series2.Legend = "Legend1";
-            series2.Name = "Series1";
-            this.DataChart2.Series.Add(series2);
-            this.DataChart2.Size = new System.Drawing.Size(423, 241);
-            this.DataChart2.TabIndex = 2;
-            this.DataChart2.Text = "chart1";
-            this.DataChart2.Visible = false;
-            // 
-            // HBox1
-            // 
-            this.HBox1.Location = new System.Drawing.Point(442, 27);
-            this.HBox1.Name = "HBox1";
-            this.HBox1.Size = new System.Drawing.Size(100, 20);
-            this.HBox1.TabIndex = 3;
-            this.HBox1.Text = "Box1";
-            // 
-            // HBox2
-            // 
-            this.HBox2.Location = new System.Drawing.Point(442, 63);
-            this.HBox2.Name = "HBox2";
-            this.HBox2.Size = new System.Drawing.Size(100, 20);
-            this.HBox2.TabIndex = 4;
-            this.HBox2.Text = "Box2";
-            // 
-            // ListOfBoxes
-            // 
-            this.ListOfBoxes.Location = new System.Drawing.Point(441, 89);
-            this.ListOfBoxes.Name = "ListOfBoxes";
-            this.ListOfBoxes.Size = new System.Drawing.Size(100, 179);
-            this.ListOfBoxes.TabIndex = 5;
-            this.ListOfBoxes.Text = "";
-            this.ListOfBoxes.MouseHover += new System.EventHandler(this.MouseHoverCheckForBoxes);
+            this.infoToolStripMenuItem.Name = "infoToolStripMenuItem";
+            this.infoToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.infoToolStripMenuItem.Text = "Info";
+            this.infoToolStripMenuItem.Click += new System.EventHandler(this.infoToolStripMenuItem_Click);
             // 
             // Hub
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(984, 526);
-            this.Controls.Add(this.ListOfBoxes);
-            this.Controls.Add(this.HBox2);
-            this.Controls.Add(this.HBox1);
-            this.Controls.Add(this.DataChart2);
-            this.Controls.Add(this.DataChart);
+            this.Controls.Add(this.ModeChart);
+            this.Controls.Add(this.WarningLabel);
             this.Controls.Add(this.menuStrip1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
@@ -194,8 +170,7 @@
             this.Text = "Hub";
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.DataChart)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.DataChart2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ModeChart)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -208,13 +183,11 @@
         private System.Windows.Forms.ToolStripMenuItem windowsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem boxToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem portsToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem infoToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem groupOBoxesToolStripMenuItem;
-        private System.Windows.Forms.DataVisualization.Charting.Chart DataChart;
-        private System.Windows.Forms.DataVisualization.Charting.Chart DataChart2;
         private System.Windows.Forms.ToolStripMenuItem newBoxToolStripMenuItem;
-        private System.Windows.Forms.TextBox HBox1;
-        private System.Windows.Forms.TextBox HBox2;
-        private System.Windows.Forms.RichTextBox ListOfBoxes;
+        private System.Windows.Forms.ToolStripMenuItem refreshHubToolStripMenuItem;
+        private System.Windows.Forms.Label WarningLabel;
+        private System.Windows.Forms.DataVisualization.Charting.Chart ModeChart;
+        private System.Windows.Forms.ToolStripMenuItem infoToolStripMenuItem;
     }
 }

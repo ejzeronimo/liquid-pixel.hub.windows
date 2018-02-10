@@ -46,6 +46,7 @@
             this.Baudrate = new System.Windows.Forms.TextBox();
             this.BaudLabel = new System.Windows.Forms.Label();
             this.PortSettingsLabel = new System.Windows.Forms.Label();
+            this.panelq = new System.Windows.Forms.Panel();
             this.menuStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -107,14 +108,14 @@
             // Open
             // 
             this.Open.Name = "Open";
-            this.Open.Size = new System.Drawing.Size(152, 22);
+            this.Open.Size = new System.Drawing.Size(103, 22);
             this.Open.Text = "Open";
             this.Open.Click += new System.EventHandler(this.OpenAssets);
             // 
             // saveToolStripMenuItem
             // 
             this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
-            this.saveToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.saveToolStripMenuItem.Size = new System.Drawing.Size(103, 22);
             this.saveToolStripMenuItem.Text = "Save";
             this.saveToolStripMenuItem.Click += new System.EventHandler(this.SaveLpcAsset);
             // 
@@ -157,7 +158,7 @@
             this.ColorPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.ColorPanel.Location = new System.Drawing.Point(12, 27);
             this.ColorPanel.Name = "ColorPanel";
-            this.ColorPanel.Size = new System.Drawing.Size(200, 200);
+            this.ColorPanel.Size = new System.Drawing.Size(100, 200);
             this.ColorPanel.TabIndex = 31;
             // 
             // panel1
@@ -200,11 +201,20 @@
             this.PortSettingsLabel.TabIndex = 33;
             this.PortSettingsLabel.Text = "Port Settings:";
             // 
+            // panelq
+            // 
+            this.panelq.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panelq.Location = new System.Drawing.Point(112, 27);
+            this.panelq.Name = "panelq";
+            this.panelq.Size = new System.Drawing.Size(100, 200);
+            this.panelq.TabIndex = 32;
+            // 
             // Ports
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(464, 255);
+            this.Controls.Add(this.panelq);
             this.Controls.Add(this.PortSettingsLabel);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.ColorPanel);
@@ -245,5 +255,6 @@
         private System.Windows.Forms.TextBox Baudrate;
         private System.Windows.Forms.Label BaudLabel;
         private System.Windows.Forms.Label PortSettingsLabel;
+        private System.Windows.Forms.Panel panelq;
     }
 }
