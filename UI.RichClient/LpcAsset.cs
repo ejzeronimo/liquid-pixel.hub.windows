@@ -74,7 +74,7 @@ namespace UI.RichClient
         public string Command { get; set; }
         public string CommandQue { get; set; }
         /////////////////////////////////////////////////////////////////////////// PUBLIC FUNCTIONS
-        public void setcolormain(Panel colorpanel)
+        public void Setcolormain(Panel colorpanel)
         {
             ColorDialog cdlg = new ColorDialog();
             cdlg.ShowDialog();
@@ -90,7 +90,7 @@ namespace UI.RichClient
                 //doing nothing
             }
         }
-        public void setcolorque(Panel colorpanel)
+        public void Setcolorque(Panel colorpanel)
         {
             ColorDialog cdlg = new ColorDialog();
             cdlg.ShowDialog();
@@ -106,7 +106,7 @@ namespace UI.RichClient
                 //doing nothing
             }
         }
-        public void updatecommandmain(int type = 0)
+        public void Updatecommandmain(int type = 0)
         {
             try
             {
@@ -117,7 +117,7 @@ namespace UI.RichClient
                 //doing nothing
             }
         }
-        public void updatecommandque(int type = 0)
+        public void Updatecommandque(int type = 0)
         {
             try
             {
@@ -128,7 +128,7 @@ namespace UI.RichClient
                 //doing nothing
             }
         }
-        public void sendpackage(string package)
+        public void Sendpackage(string package)
         {
             try
             {

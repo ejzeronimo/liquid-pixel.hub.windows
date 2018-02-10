@@ -128,7 +128,7 @@ namespace UI.RichClient
             try
             {
                 //updated to use the classes
-                Entry.setcolormain(panel1);
+                Entry.Setcolormain(panel1);
             }
             catch { }
         }
@@ -137,7 +137,7 @@ namespace UI.RichClient
             try
             {
                 //updated to use the classes
-                Entry.setcolorque(panel2);
+                Entry.Setcolorque(panel2);
             }
             catch { }
         }
@@ -155,7 +155,7 @@ namespace UI.RichClient
         {
             try
             {
-                Entry.updatecommandmain();
+                Entry.Updatecommandmain();
                 StringBox.Text = Entry.Command;
             }
             catch { }
@@ -164,7 +164,7 @@ namespace UI.RichClient
         {
             try
             {
-                Entry.updatecommandque();
+                Entry.Updatecommandque();
                 StringBoxQ.Text = Entry.CommandQue;
             }
             catch{ }
@@ -174,7 +174,7 @@ namespace UI.RichClient
         {
             try
             {
-                Entry.sendpackage(Entry.Command);
+                Entry.Sendpackage(Entry.Command);
             }
             catch
             {
@@ -192,7 +192,7 @@ namespace UI.RichClient
                 {
                     Entry.Comport.Write(fader);
                 } while (then.AddSeconds(Entry.Random/1000) > DateTime.Now);
-                Entry.sendpackage(Entry.CommandQue);
+                Entry.Sendpackage(Entry.CommandQue);
             }
             catch
             {
@@ -204,7 +204,7 @@ namespace UI.RichClient
         {
             try
             {
-                Entry.sendpackage(Entry.CommandQue);
+                Entry.Sendpackage(Entry.CommandQue);
             }
             catch
             {

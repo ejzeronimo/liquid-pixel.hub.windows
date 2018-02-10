@@ -33,6 +33,8 @@ namespace UI.RichClient
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Group));
             this.panel1 = new System.Windows.Forms.Panel();
+            this.UpdateBtn = new System.Windows.Forms.Button();
+            this.UpdateLabel = new System.Windows.Forms.Label();
             this.RunLoopCheck = new System.Windows.Forms.CheckBox();
             this.TimeQueBtn = new System.Windows.Forms.Button();
             this.TimeBar = new System.Windows.Forms.TrackBar();
@@ -46,8 +48,11 @@ namespace UI.RichClient
             this.GenerateAssetsBtn = new System.Windows.Forms.Button();
             this.GroupList = new System.Windows.Forms.CheckedListBox();
             this.ChooseLabel = new System.Windows.Forms.Label();
-            this.UpdateLabel = new System.Windows.Forms.Label();
-            this.UpdateBtn = new System.Windows.Forms.Button();
+            this.AllPanel = new System.Windows.Forms.Panel();
+            this.AllSend = new System.Windows.Forms.Button();
+            this.AllMode = new System.Windows.Forms.ComboBox();
+            this.AllDelay = new System.Windows.Forms.TextBox();
+            this.button1 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.TimeBar)).BeginInit();
             this.SuspendLayout();
@@ -55,6 +60,11 @@ namespace UI.RichClient
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            this.panel1.Controls.Add(this.button1);
+            this.panel1.Controls.Add(this.AllDelay);
+            this.panel1.Controls.Add(this.AllMode);
+            this.panel1.Controls.Add(this.AllSend);
+            this.panel1.Controls.Add(this.AllPanel);
             this.panel1.Controls.Add(this.UpdateBtn);
             this.panel1.Controls.Add(this.UpdateLabel);
             this.panel1.Controls.Add(this.RunLoopCheck);
@@ -74,6 +84,25 @@ namespace UI.RichClient
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(200, 476);
             this.panel1.TabIndex = 0;
+            // 
+            // UpdateBtn
+            // 
+            this.UpdateBtn.Location = new System.Drawing.Point(6, 313);
+            this.UpdateBtn.Name = "UpdateBtn";
+            this.UpdateBtn.Size = new System.Drawing.Size(190, 23);
+            this.UpdateBtn.TabIndex = 14;
+            this.UpdateBtn.Text = "Update All Commands";
+            this.UpdateBtn.UseVisualStyleBackColor = true;
+            this.UpdateBtn.Click += new System.EventHandler(this.UpdateCommands);
+            // 
+            // UpdateLabel
+            // 
+            this.UpdateLabel.AutoSize = true;
+            this.UpdateLabel.Location = new System.Drawing.Point(3, 297);
+            this.UpdateLabel.Name = "UpdateLabel";
+            this.UpdateLabel.Size = new System.Drawing.Size(100, 13);
+            this.UpdateLabel.TabIndex = 13;
+            this.UpdateLabel.Text = "Update Commands:";
             // 
             // RunLoopCheck
             // 
@@ -211,24 +240,51 @@ namespace UI.RichClient
             this.ChooseLabel.TabIndex = 0;
             this.ChooseLabel.Text = "Choose Assets:";
             // 
-            // UpdateLabel
+            // AllPanel
             // 
-            this.UpdateLabel.AutoSize = true;
-            this.UpdateLabel.Location = new System.Drawing.Point(3, 297);
-            this.UpdateLabel.Name = "UpdateLabel";
-            this.UpdateLabel.Size = new System.Drawing.Size(100, 13);
-            this.UpdateLabel.TabIndex = 13;
-            this.UpdateLabel.Text = "Update Commands:";
+            this.AllPanel.Location = new System.Drawing.Point(6, 343);
+            this.AllPanel.Name = "AllPanel";
+            this.AllPanel.Size = new System.Drawing.Size(77, 77);
+            this.AllPanel.TabIndex = 15;
             // 
-            // UpdateBtn
+            // AllSend
             // 
-            this.UpdateBtn.Location = new System.Drawing.Point(6, 313);
-            this.UpdateBtn.Name = "UpdateBtn";
-            this.UpdateBtn.Size = new System.Drawing.Size(190, 23);
-            this.UpdateBtn.TabIndex = 14;
-            this.UpdateBtn.Text = "Update All Commands";
-            this.UpdateBtn.UseVisualStyleBackColor = true;
-            this.UpdateBtn.Click += new System.EventHandler(this.UpdateCommands);
+            this.AllSend.BackColor = System.Drawing.Color.LightGreen;
+            this.AllSend.Location = new System.Drawing.Point(6, 426);
+            this.AllSend.Name = "AllSend";
+            this.AllSend.Size = new System.Drawing.Size(77, 23);
+            this.AllSend.TabIndex = 16;
+            this.AllSend.Text = "Send";
+            this.AllSend.UseVisualStyleBackColor = false;
+            this.AllSend.Click += new System.EventHandler(this.AllGenerateAndSend);
+            // 
+            // AllMode
+            // 
+            this.AllMode.FormattingEnabled = true;
+            this.AllMode.Location = new System.Drawing.Point(90, 343);
+            this.AllMode.Name = "AllMode";
+            this.AllMode.Size = new System.Drawing.Size(103, 21);
+            this.AllMode.TabIndex = 17;
+            this.AllMode.MouseHover += new System.EventHandler(this.AllModeChanged);
+            // 
+            // AllDelay
+            // 
+            this.AllDelay.Location = new System.Drawing.Point(90, 371);
+            this.AllDelay.Name = "AllDelay";
+            this.AllDelay.Size = new System.Drawing.Size(103, 20);
+            this.AllDelay.TabIndex = 18;
+            this.AllDelay.Text = "0";
+            // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.Color.LightGreen;
+            this.button1.Location = new System.Drawing.Point(90, 397);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(103, 23);
+            this.button1.TabIndex = 19;
+            this.button1.Text = "Color";
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.AllColorChanged);
             // 
             // Group
             // 
@@ -265,5 +321,10 @@ namespace UI.RichClient
         private System.Windows.Forms.Button TimeQueBtn;
         private System.Windows.Forms.Button UpdateBtn;
         private System.Windows.Forms.Label UpdateLabel;
+        private System.Windows.Forms.TextBox AllDelay;
+        private System.Windows.Forms.ComboBox AllMode;
+        private System.Windows.Forms.Button AllSend;
+        private System.Windows.Forms.Panel AllPanel;
+        private System.Windows.Forms.Button button1;
     }
 }

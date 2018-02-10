@@ -19,10 +19,13 @@ namespace UI.RichClient
         }
 
         private void Group_Load(object sender, EventArgs e)
-        {
-
+        {;
         }
         int delaybetweencommands = 0;
+        private byte[] color;
+
+        public string AllCommand { get; set; }
+
         /////////////////////////////////////////////////////////////////////////// CHOOSE ALL ASSETS TO BE USED AND GENERATE THE TILES
         private void Grouplist_Update_List(object sender, EventArgs e)
         {
@@ -55,7 +58,7 @@ namespace UI.RichClient
             int distance = 212;
             int height = 476+12;
             int rows = 1;
-            int maxpan = 8;
+            int maxpan = 5;
             foreach (KeyValuePair<string, LpcAsset> entry in Global.AssetList)//change to the index of assets so that the assets can be assigned and the pos can be set
             {
                 if (GroupList.CheckedItems.Contains(entry.Key))
@@ -237,21 +240,21 @@ namespace UI.RichClient
         /////////////////////////////////////////////////////////////////////////// SETUP THE HANDLERS FOR THE TILES
         private void ColorChange_Click(object sender, EventArgs e, KeyValuePair<string, LpcAsset> entry, Panel panel)
         {
-            entry.Value.setcolormain(panel);  
+            entry.Value.Setcolormain(panel);  
         }
         private void ColorChangeQ_Click(object sender, EventArgs e, KeyValuePair<string, LpcAsset> entry, Panel panel)
         {
-            entry.Value.setcolorque(panel);
+            entry.Value.Setcolorque(panel);
         }
         private void Send_Click(object sender, EventArgs e, KeyValuePair<string, LpcAsset> entry)
         {
-            entry.Value.updatecommandmain();
-            entry.Value.sendpackage(entry.Value.Command);
+            entry.Value.Updatecommandmain();
+            entry.Value.Sendpackage(entry.Value.Command);
         }
         private void SendQ_Click(object sender, EventArgs e, KeyValuePair<string, LpcAsset> entry)
         {
-            entry.Value.updatecommandque();
-            entry.Value.sendpackage(entry.Value.CommandQue);
+            entry.Value.Updatecommandque();
+            entry.Value.Sendpackage(entry.Value.CommandQue);
         }
         private void DelayBar_Scroll(object sender, EventArgs e, KeyValuePair<string, LpcAsset> entry, object text)
         {
@@ -396,7 +399,7 @@ namespace UI.RichClient
                 {
                     if (GroupList.CheckedItems.Contains(entry.Key))
                     {
-                        entry.Value.sendpackage(entry.Value.Command);
+                        entry.Value.Sendpackage(entry.Value.Command);
                     }
                 }
                 await Task.Delay(delaybetweencommands);
@@ -406,7 +409,7 @@ namespace UI.RichClient
                 {
                     if (GroupList.CheckedItems.Contains(entry.Key))
                     {
-                        entry.Value.sendpackage(entry.Value.CommandQue);
+                        entry.Value.Sendpackage(entry.Value.CommandQue);
                     }
                 }
                 await Task.Delay(delaybetweencommands);
@@ -420,7 +423,7 @@ namespace UI.RichClient
                 {
                     if (GroupList.CheckedItems.Contains(entry.Key))
                     {
-                        entry.Value.sendpackage(entry.Value.Command);
+                        entry.Value.Sendpackage(entry.Value.Command);
                     }
                 }
                 // just run once
@@ -430,7 +433,7 @@ namespace UI.RichClient
                 {
                     if (GroupList.CheckedItems.Contains(entry.Key))
                     {
-                        entry.Value.sendpackage(entry.Value.CommandQue);
+                        entry.Value.Sendpackage(entry.Value.CommandQue);
                     }
                 }
             }
@@ -441,7 +444,7 @@ namespace UI.RichClient
             {
                 if (GroupList.CheckedItems.Contains(entry.Key))
                 {
-                    entry.Value.sendpackage(entry.Value.Command);
+                    entry.Value.Sendpackage(entry.Value.Command);
                 }
             }
         }
@@ -451,7 +454,7 @@ namespace UI.RichClient
             {
                 if (GroupList.CheckedItems.Contains(entry.Key))
                 {
-                    entry.Value.sendpackage(entry.Value.CommandQue);
+                    entry.Value.Sendpackage(entry.Value.CommandQue);
                 }
             }
         }
@@ -463,11 +466,62 @@ namespace UI.RichClient
                 {
                     try
                     {
-                        entry.Value.updatecommandmain();
-                        entry.Value.updatecommandque();
+                        entry.Value.Updatecommandmain();
+                        entry.Value.Updatecommandque();
                     }
                     catch { }
                 }
+            }
+        }
+
+        private void AllGenerateAndSend(object sender, EventArgs e)
+        {
+            try
+            {
+                AllCommand = $"T{0}C{0}R{color[0]}G{color[1]}B{color[2]}D{Convert.ToInt32(AllDelay.Text)}X{0}M{AllMode.SelectedValue}~";
+            }
+            catch
+            {
+                AllCommand = $"T{0}C{0}R{0}G{0}B{0}D{Convert.ToInt32(AllDelay.Text)}X{0}M{AllMode.SelectedValue}~";
+                //doing nothing
+            }
+           // MessageBox.Show(AllCommand);
+            foreach (KeyValuePair<string, LpcAsset> entry in Global.AssetList)//change to the index of assets so that the assets can be assigned and the pos can be set
+            {
+                if (GroupList.CheckedItems.Contains(entry.Key))
+                {
+                    try
+                    {
+                        entry.Value.Command = AllCommand;
+                        entry.Value.Sendpackage(entry.Value.Command);
+                    }
+                    catch {
+                        
+                    }
+                }
+            }
+        }
+
+        private void AllModeChanged(object sender, EventArgs e)
+        {
+            AllMode.DisplayMember = "Name";
+            AllMode.ValueMember = "Value";
+            AllMode.DataSource = Global.Modes;
+        }
+
+        private void AllColorChanged(object sender, EventArgs e)
+        {
+            ColorDialog cdlg = new ColorDialog();
+            cdlg.ShowDialog();
+            Color clr = cdlg.Color;
+            try
+            {
+                AllPanel.BackColor = cdlg.Color;
+                color = new byte[] { clr.R, clr.G, clr.B };
+            }
+            catch (Exception)
+            {
+                //doing nothing
             }
         }
     }
