@@ -104,6 +104,7 @@ namespace UI.RichClient
         {
             try
             {
+                Global.PortList.Add(Entry.Comport.PortName, Entry.Comport);
                 Entry.Comport.Open();
             }
             catch
@@ -115,6 +116,7 @@ namespace UI.RichClient
         {
             try
             {
+                Global.PortList.Remove(Entry.Comport.PortName);
                 Entry.Comport.Close();
             }
             catch
@@ -190,7 +192,7 @@ namespace UI.RichClient
                 DateTime then = DateTime.Now;
                 do
                 {
-                    Entry.Comport.Write(fader);
+                    Entry.Sendpackage(fader);
                 } while (then.AddSeconds(Entry.Random/1000) > DateTime.Now);
                 Entry.Sendpackage(Entry.CommandQue);
             }

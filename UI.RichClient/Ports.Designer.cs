@@ -47,6 +47,8 @@
             this.BaudLabel = new System.Windows.Forms.Label();
             this.PortSettingsLabel = new System.Windows.Forms.Label();
             this.panelq = new System.Windows.Forms.Panel();
+            this.ChainBox = new System.Windows.Forms.TextBox();
+            this.ChainLabel = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -209,11 +211,29 @@
             this.panelq.Size = new System.Drawing.Size(100, 200);
             this.panelq.TabIndex = 32;
             // 
+            // ChainBox
+            // 
+            this.ChainBox.Location = new System.Drawing.Point(218, 119);
+            this.ChainBox.Name = "ChainBox";
+            this.ChainBox.Size = new System.Drawing.Size(100, 20);
+            this.ChainBox.TabIndex = 34;
+            // 
+            // ChainLabel
+            // 
+            this.ChainLabel.AutoSize = true;
+            this.ChainLabel.Location = new System.Drawing.Point(215, 103);
+            this.ChainLabel.Name = "ChainLabel";
+            this.ChainLabel.Size = new System.Drawing.Size(77, 13);
+            this.ChainLabel.TabIndex = 35;
+            this.ChainLabel.Text = "Chain Position:";
+            // 
             // Ports
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(464, 255);
+            this.Controls.Add(this.ChainLabel);
+            this.Controls.Add(this.ChainBox);
             this.Controls.Add(this.panelq);
             this.Controls.Add(this.PortSettingsLabel);
             this.Controls.Add(this.panel1);
@@ -256,5 +276,7 @@
         private System.Windows.Forms.Label BaudLabel;
         private System.Windows.Forms.Label PortSettingsLabel;
         private System.Windows.Forms.Panel panelq;
+        private System.Windows.Forms.TextBox ChainBox;
+        private System.Windows.Forms.Label ChainLabel;
     }
 }

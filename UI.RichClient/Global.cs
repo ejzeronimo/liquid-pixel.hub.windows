@@ -3,12 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO.Ports;
 
 namespace UI.RichClient
 {
     public class Global
     {
         public static SortedDictionary<string, LpcAsset> AssetList = new SortedDictionary<string, LpcAsset>();
+        public static SortedDictionary<string, SerialPort> PortList = new SortedDictionary<string, SerialPort>();
         private static readonly List<Mode> _modes = new List<Mode>()
         {
             new Mode() { Name="Off", Value=0 },

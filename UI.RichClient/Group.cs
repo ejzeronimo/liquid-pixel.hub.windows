@@ -357,6 +357,7 @@ namespace UI.RichClient
                 {
                     try
                     {
+                        Global.PortList.Add(entry.Value.Comport.PortName, entry.Value.Comport);
                         entry.Value.Comport.Open();
                     }
                     catch { }
@@ -369,6 +370,7 @@ namespace UI.RichClient
             {
                 if (GroupList.CheckedItems.Contains(entry.Key))
                 {
+                    Global.PortList.Remove(entry.Value.Comport.PortName);
                     entry.Value.Comport.Close();
                 }
             }
@@ -479,6 +481,7 @@ namespace UI.RichClient
             try
             {
                 AllCommand = $"T{0}C{0}R{color[0]}G{color[1]}B{color[2]}D{Convert.ToInt32(AllDelay.Text)}X{0}M{AllMode.SelectedValue}~";
+                //with a Cube index of 0 they all activate vs when they are on multiple ports and recieve the commands
             }
             catch
             {

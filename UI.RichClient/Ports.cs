@@ -24,6 +24,7 @@ namespace UI.RichClient
                 NameBox.Text = asset.Name;
                 PortNum.Text = asset.Comport.PortName;
                 Baudrate.Text = asset.Comport.BaudRate.ToString();
+                ChainBox.Text = asset.BoxNumber.ToString();
                 try
                 {
                     UpdatePortStatus(asset, Status);
@@ -68,7 +69,7 @@ namespace UI.RichClient
                 log.DefaultExt = "txt";
                 log.FileName = NameBox.Text;
                 log.ShowDialog();
-                string filestruct = "Type=LpcAsset\r\nName=" + NameBox.Text + "\r\nComport=" + PortNum.Text;
+                string filestruct = "Type=LpcAsset\r\nName=" + NameBox.Text + "\r\nComport=" + PortNum.Text + "\r\nChainPosition=" + ChainBox.Text;
                 System.IO.StreamWriter file = new System.IO.StreamWriter(log.FileName);
                 file.WriteLine(filestruct);
                 file.Close();
@@ -76,6 +77,7 @@ namespace UI.RichClient
                 var myAsset = new LpcAsset();
                 myAsset.Comport.PortName = PortNum.Text;
                 myAsset.Name = NameBox.Text;
+                myAsset.BoxNumber = Int32.Parse(ChainBox.Text);
                 UpdatePortStatus(myAsset, Status);
                 myAsset.Comport.Parity = Parity.None;
                 myAsset.Comport.DataBits = 8;
@@ -100,10 +102,11 @@ namespace UI.RichClient
             string name = "";
             string type = "";
             string port = "";
+            string chainpos = "";
             int i = 0;
             string line = "not null";
             var tempAsset = new LpcAsset();
-            while (line != null && i < 3)
+            while (line != null && i < 4)
             {
                 line = file.ReadLine();
                 if (line != null)
@@ -132,6 +135,14 @@ namespace UI.RichClient
                         tempAsset.Comport.StopBits = StopBits.One;
                         tempAsset.Comport.Encoding = Encoding.ASCII;
                         tempAsset.Comport.BaudRate = Int32.Parse(Baudrate.Text);
+
+                    }
+                    if (i == 3)
+                    {
+                        chainpos = line;
+                        chainpos = chainpos.Replace("ChainPosition=", null);
+                        tempAsset.BoxNumber = Int32.Parse(chainpos);
+                        ChainBox.Text = chainpos;
                         Global.AssetList.Add(tempAsset.Name, tempAsset);
                     }
                     i++;

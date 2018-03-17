@@ -64,7 +64,7 @@ namespace UI.RichClient
         public string Name { get; set; }
         public float CmdsPerSecond { get; set; }
         public string Sent { get; set; }
-        public byte BoxNumber { get; set; }
+        public int BoxNumber { get; set; }
         public byte[] Color { get; set; } 
         public byte[] ColorQue { get; set; }
         public int CurMode { get; set; }
@@ -138,7 +138,21 @@ namespace UI.RichClient
             }
             catch
             {
-                MessageBox.Show("Failure to send data to asset... Try again :(");
+                try
+                {
+                    foreach (KeyValuePair<string, SerialPort> port in Global.PortList)
+                    {
+                        if (port.Value.PortName == this.Comport.PortName)
+                        {
+                            //MessageBox.Show("New feature works!");
+                            port.Value.Write(package);
+                        }
+                    }
+                }
+                catch
+                {
+                    MessageBox.Show("Failure to send data to asset... Try again :(");
+                }
             }
         }
     }
