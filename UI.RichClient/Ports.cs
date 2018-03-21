@@ -89,67 +89,77 @@ namespace UI.RichClient
             }
         }
         private void OpenAssets(object sender, EventArgs e)
-        {
-            //check and see what assets can be opened
-            OpenFileDialog log = new OpenFileDialog();
-            log.Filter = "Text Files (*.txt*)|*.txt*";
-            log.FilterIndex = 1;
-            log.Multiselect = false;
-            log.ShowDialog();
-            string address = log.FileName;
-            System.IO.StreamReader file = new System.IO.StreamReader(address);
-            //reads file and assigns to temp values
-            string name = "";
-            string type = "";
-            string port = "";
-            string chainpos = "";
-            int i = 0;
-            string line = "not null";
-            var tempAsset = new LpcAsset();
-            while (line != null && i < 4)
+        { 
+            try
             {
-                line = file.ReadLine();
-                if (line != null)
+                //check and see what assets can be opened
+                OpenFileDialog log = new OpenFileDialog();
+                log.Filter = "Text Files (*.txt*)|*.txt*";
+                log.ValidateNames = false;
+                log.CheckFileExists = false;
+                log.CheckPathExists = true;
+                log.FilterIndex = 1;
+                log.Multiselect = true;
+                log.ShowDialog();
+                string[] address = log.FileNames;
+                for (int f = 0; f <= address.Length; f++)
                 {
-                    if (i == 0)
+                    StreamReader file = new StreamReader(address[f]);
+                    //reads file and assigns to temp values
+                    string name = "";
+                    string type = "";
+                    string port = "";
+                    string chainpos = "";
+                    int i = 0;
+                    string line = "not null";
+                    var tempAsset = new LpcAsset();
+                    while (line != null && i < 4)
                     {
-                        type = line;
-                        type = type.Replace("Type=",null);
-                        TypeBox.Text = type;
-                    }
-                    if (i == 1)
-                    {
-                        name = line;
-                        name = name.Replace("Name=", null);  
-                    }
-                    if (i == 2)
-                    {
-                        port = line;
-                        port = port.Replace("Comport=", null);
-                        PortNum.Text = port;
-                        tempAsset.Name = name;
-                        NameBox.Text = name;
-                        tempAsset.Comport.PortName = port;
-                        tempAsset.Comport.Parity = Parity.None;
-                        tempAsset.Comport.DataBits = 8;
-                        tempAsset.Comport.StopBits = StopBits.One;
-                        tempAsset.Comport.Encoding = Encoding.ASCII;
-                        tempAsset.Comport.BaudRate = Int32.Parse(Baudrate.Text);
+                        line = file.ReadLine();
+                        if (line != null)
+                        {
+                            if (i == 0)
+                            {
+                                type = line;
+                                type = type.Replace("Type=", null);
+                                TypeBox.Text = type;
+                            }
+                            if (i == 1)
+                            {
+                                name = line;
+                                name = name.Replace("Name=", null);
+                            }
+                            if (i == 2)
+                            {
+                                port = line;
+                                port = port.Replace("Comport=", null);
+                                PortNum.Text = port;
+                                tempAsset.Name = name;
+                                NameBox.Text = name;
+                                tempAsset.Comport.PortName = port;
+                                tempAsset.Comport.Parity = Parity.None;
+                                tempAsset.Comport.DataBits = 8;
+                                tempAsset.Comport.StopBits = StopBits.One;
+                                tempAsset.Comport.Encoding = Encoding.ASCII;
+                                tempAsset.Comport.BaudRate = Int32.Parse(Baudrate.Text);
 
+                            }
+                            if (i == 3)
+                            {
+                                chainpos = line;
+                                chainpos = chainpos.Replace("ChainPosition=", null);
+                                tempAsset.BoxNumber = Int32.Parse(chainpos);
+                                ChainBox.Text = chainpos;
+                                Global.AssetList.Add(tempAsset.Name, tempAsset);
+                            }
+                            i++;
+                        }
                     }
-                    if (i == 3)
-                    {
-                        chainpos = line;
-                        chainpos = chainpos.Replace("ChainPosition=", null);
-                        tempAsset.BoxNumber = Int32.Parse(chainpos);
-                        ChainBox.Text = chainpos;
-                        Global.AssetList.Add(tempAsset.Name, tempAsset);
-                    }
-                    i++;
+                    this.Text = NameBox.Text;
+                    UpdatePortStatus(tempAsset, Status);
                 }
             }
-            this.Text = NameBox.Text;
-            UpdatePortStatus(tempAsset, Status);
+            catch { }
         }
     }
 }

@@ -233,7 +233,7 @@ namespace UI.RichClient
                     i++;
                 }
             };
-            this.Size = new Size(244 + distance * (GroupList.CheckedItems.Count), 542 +(height * (rows-1)));
+            this.Size = new Size(244 + distance * (maxpan), 542 +(height * (rows-1)));
             i = 0;
         }
 

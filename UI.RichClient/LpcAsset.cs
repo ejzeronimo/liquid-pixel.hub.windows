@@ -75,10 +75,10 @@ namespace UI.RichClient
         public int RandomQue { get; set; }
         public string Command { get; set; }
         public string CommandQue { get; set; }
+        public ColorDialog cdlg = new ColorDialog();
         /////////////////////////////////////////////////////////////////////////// PUBLIC FUNCTIONS
         public void Setcolormain(Panel colorpanel)
         {
-            ColorDialog cdlg = new ColorDialog();
             cdlg.ShowDialog();
             Color clr = cdlg.Color;
             try
@@ -94,7 +94,6 @@ namespace UI.RichClient
         }
         public void Setcolorque(Panel colorpanel)
         {
-            ColorDialog cdlg = new ColorDialog();
             cdlg.ShowDialog();
             Color clr = cdlg.Color;
             try

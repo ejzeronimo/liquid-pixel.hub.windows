@@ -53,6 +53,7 @@ namespace UI.RichClient
             this.GenerateAssetsBtn = new System.Windows.Forms.Button();
             this.GroupList = new System.Windows.Forms.CheckedListBox();
             this.ChooseLabel = new System.Windows.Forms.Label();
+            this.AllCommands = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.TimeBar)).BeginInit();
             this.SuspendLayout();
@@ -60,6 +61,7 @@ namespace UI.RichClient
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            this.panel1.Controls.Add(this.AllCommands);
             this.panel1.Controls.Add(this.button1);
             this.panel1.Controls.Add(this.AllDelay);
             this.panel1.Controls.Add(this.AllMode);
@@ -88,7 +90,7 @@ namespace UI.RichClient
             // button1
             // 
             this.button1.BackColor = System.Drawing.Color.Gainsboro;
-            this.button1.Location = new System.Drawing.Point(6, 426);
+            this.button1.Location = new System.Drawing.Point(6, 438);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(77, 23);
             this.button1.TabIndex = 19;
@@ -98,7 +100,7 @@ namespace UI.RichClient
             // 
             // AllDelay
             // 
-            this.AllDelay.Location = new System.Drawing.Point(90, 371);
+            this.AllDelay.Location = new System.Drawing.Point(90, 383);
             this.AllDelay.Name = "AllDelay";
             this.AllDelay.Size = new System.Drawing.Size(103, 20);
             this.AllDelay.TabIndex = 18;
@@ -107,7 +109,7 @@ namespace UI.RichClient
             // AllMode
             // 
             this.AllMode.FormattingEnabled = true;
-            this.AllMode.Location = new System.Drawing.Point(90, 343);
+            this.AllMode.Location = new System.Drawing.Point(90, 355);
             this.AllMode.Name = "AllMode";
             this.AllMode.Size = new System.Drawing.Size(103, 21);
             this.AllMode.TabIndex = 17;
@@ -116,7 +118,7 @@ namespace UI.RichClient
             // AllSend
             // 
             this.AllSend.BackColor = System.Drawing.Color.LightGreen;
-            this.AllSend.Location = new System.Drawing.Point(89, 397);
+            this.AllSend.Location = new System.Drawing.Point(89, 409);
             this.AllSend.Name = "AllSend";
             this.AllSend.Size = new System.Drawing.Size(104, 52);
             this.AllSend.TabIndex = 16;
@@ -126,7 +128,7 @@ namespace UI.RichClient
             // 
             // AllPanel
             // 
-            this.AllPanel.Location = new System.Drawing.Point(6, 343);
+            this.AllPanel.Location = new System.Drawing.Point(6, 355);
             this.AllPanel.Name = "AllPanel";
             this.AllPanel.Size = new System.Drawing.Size(77, 77);
             this.AllPanel.TabIndex = 15;
@@ -286,6 +288,15 @@ namespace UI.RichClient
             this.ChooseLabel.TabIndex = 0;
             this.ChooseLabel.Text = "Choose Assets:";
             // 
+            // AllCommands
+            // 
+            this.AllCommands.AutoSize = true;
+            this.AllCommands.Location = new System.Drawing.Point(3, 339);
+            this.AllCommands.Name = "AllCommands";
+            this.AllCommands.Size = new System.Drawing.Size(76, 13);
+            this.AllCommands.TabIndex = 20;
+            this.AllCommands.Text = "All Commands:";
+            // 
             // Group
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -326,5 +337,6 @@ namespace UI.RichClient
         private System.Windows.Forms.Button AllSend;
         private System.Windows.Forms.Panel AllPanel;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Label AllCommands;
     }
 }
